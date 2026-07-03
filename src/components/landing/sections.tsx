@@ -1,0 +1,429 @@
+import { Button } from "@/components/ui/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ArrowRight, Check, Clock, Users, MessageCircle, Sparkles, ShieldCheck } from "lucide-react";
+import { buildWhatsappUrl, CONTACT_EMAIL } from "@/lib/contact";
+import { useOpenQuiz } from "@/components/quiz/QuizProvider";
+
+import img0483 from "@/assets/IMG_0483.jpg.asset.json";
+import img0484 from "@/assets/IMG_0484.jpg.asset.json";
+import img0487 from "@/assets/IMG_0487.jpg.asset.json";
+import img0488 from "@/assets/IMG_0488.jpg.asset.json";
+import img0489 from "@/assets/IMG_0489.jpg.asset.json";
+import img0490 from "@/assets/IMG_0490.jpg.asset.json";
+import img0493 from "@/assets/IMG_0493.jpg.asset.json";
+import img0496 from "@/assets/IMG_0496.jpg.asset.json";
+import img0498 from "@/assets/IMG_0498.jpg.asset.json";
+
+const heroWa = "Olá, Ester! Vim pelo site — quero conversar sobre uma palestra/workshop.";
+
+export function Nav() {
+  const openQuiz = useOpenQuiz();
+  return (
+    <nav className="fixed top-0 inset-x-0 z-30 backdrop-blur-md bg-background/70 border-b border-border/50">
+      <div className="mx-auto max-w-7xl px-5 md:px-10 h-16 flex items-center justify-between">
+        <a href="#top" className="font-display text-lg tracking-tight">
+          Ester Zen<span className="text-primary">.</span>
+        </a>
+        <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
+          <a href="#programas" className="hover:text-foreground transition-colors">Programas</a>
+          <a href="#bastidores" className="hover:text-foreground transition-colors">Bastidores</a>
+          <a href="#faq" className="hover:text-foreground transition-colors">FAQ</a>
+          <a href="#contato" className="hover:text-foreground transition-colors">Contato</a>
+        </div>
+        <Button onClick={openQuiz} size="sm" variant="outline" className="gap-2">
+          <Sparkles className="h-3.5 w-3.5" /> Fazer o teste
+        </Button>
+      </div>
+    </nav>
+  );
+}
+
+export function Hero() {
+  const openQuiz = useOpenQuiz();
+  return (
+    <section id="top" className="relative min-h-[100svh] flex items-end overflow-hidden pt-16 grain">
+      {/* Background photo */}
+      <div className="absolute inset-0">
+        <img
+          src={img0483.url}
+          alt="Ester Zen palestrando"
+          className="w-full h-full object-cover object-[center_30%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-10 py-16 md:py-24 w-full">
+        <div className="max-w-3xl animate-fade-up">
+          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-6">
+            Ester Zen · Comportamento & Resultado
+          </p>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl leading-[0.95] text-balance">
+            Sua equipe te <span className="italic text-primary">segue</span>
+            <span className="block text-muted-foreground/70">— ou apenas te obedece?</span>
+          </h1>
+          <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+            Palestras e workshops de liderança comportamental para líderes que precisam parar de ser o teto do próprio time — e virar o padrão que a equipe segue quando eles não estão na sala.
+          </p>
+          <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <Button onClick={openQuiz} size="lg" className="gap-2 text-base">
+              Fazer o teste em 2 min <Sparkles className="h-4 w-4" />
+            </Button>
+            <Button asChild size="lg" variant="outline" className="gap-2 text-base">
+              <a href={buildWhatsappUrl(heroWa)} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-4 w-4" /> Falar no WhatsApp
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Authority() {
+  const items = [
+    "20+ anos em gestão comercial e liderança",
+    "Credenciada SEBRAE SC · PR · SP · RJ",
+    "Facilitadora SESCOOP",
+    "Formação em Comunicação Não-Violenta e Coaching Executivo",
+  ];
+  return (
+    <section className="border-y border-border bg-surface/50">
+      <div className="mx-auto max-w-7xl px-5 md:px-10 py-8">
+        <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-sm text-muted-foreground">
+          {items.map((it) => (
+            <li key={it} className="inline-flex items-center gap-2">
+              <ShieldCheck className="h-4 w-4 text-primary shrink-0" />
+              <span>{it}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+export function Manifesto() {
+  return (
+    <section className="relative py-24 md:py-36">
+      <div className="mx-auto max-w-5xl px-5 md:px-10">
+        <p className="text-xs uppercase tracking-[0.3em] text-primary mb-8">O ponto cego da liderança</p>
+        <h2 className="text-4xl md:text-6xl leading-tight text-balance">
+          Quase todo líder acha que está liderando.<br />
+          <span className="text-muted-foreground/70">Muitos estão apenas sendo</span>{" "}
+          <span className="italic text-primary">obedecidos</span>.
+        </h2>
+        <div className="mt-10 grid md:grid-cols-2 gap-8 text-lg leading-relaxed">
+          <p className="text-muted-foreground">
+            A diferença só aparece quando você não está na sala: nas decisões que ficam paradas, nos erros que só chegam quando já viraram crise, nas reuniões em que todo mundo concorda — sempre.
+          </p>
+          <p className="text-muted-foreground">
+            Ser obedecido tem um custo silencioso: <span className="text-foreground">você vira o teto do time</span>. E o time só cresce até onde você consegue estar presente.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function QuizBanner() {
+  const openQuiz = useOpenQuiz();
+  return (
+    <section className="relative py-20 border-y border-border overflow-hidden">
+      <div className="absolute inset-0 opacity-30">
+        <img src={img0496.url} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-background/80" />
+      </div>
+      <div className="relative mx-auto max-w-4xl px-5 md:px-10 text-center">
+        <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">O teste · 7 perguntas · 2 minutos</p>
+        <h2 className="text-3xl md:text-5xl leading-tight text-balance">
+          Descubra em qual dos lados<br className="hidden md:block" /> sua equipe está{" "}
+          <span className="italic text-primary">agora</span>.
+        </h2>
+        <p className="mt-5 text-muted-foreground max-w-xl mx-auto">
+          Sete cenários do dia a dia. Duas alternativas. Um diagnóstico honesto — e o próximo passo, se você quiser mudar.
+        </p>
+        <Button size="lg" onClick={openQuiz} className="mt-8 gap-2">
+          Começar o teste <ArrowRight className="h-4 w-4" />
+        </Button>
+      </div>
+    </section>
+  );
+}
+
+export function ProgramCompare() {
+  const wa = (t: string) =>
+    buildWhatsappUrl(`Olá, Ester! Tenho interesse em ${t}. Podemos conversar?`);
+
+  return (
+    <section id="programas" className="py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <div className="max-w-3xl">
+          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Programas principais</p>
+          <h2 className="text-4xl md:text-6xl leading-tight text-balance">
+            Dois formatos.<br />
+            <span className="text-muted-foreground/70">Uma mesma virada de chave.</span>
+          </h2>
+        </div>
+
+        <div className="mt-14 grid md:grid-cols-2 gap-6">
+          {/* Palestra */}
+          <article className="rounded-2xl border border-border bg-card p-8 md:p-10 flex flex-col">
+            <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-primary">
+              <Clock className="h-3.5 w-3.5" /> 50–60 min · plateia aberta
+            </div>
+            <h3 className="mt-4 text-3xl md:text-4xl leading-tight">
+              Palestra<br /><span className="italic text-primary">“O líder que a equipe segue”</span>
+            </h3>
+            <p className="mt-5 text-muted-foreground leading-relaxed">
+              Uma provocação direta sobre a diferença entre ser obedecido e ser seguido — com histórias reais de gestão, dados de comportamento e um convite: sair da sala sabendo exatamente onde o seu padrão está travando o time.
+            </p>
+            <ul className="mt-6 space-y-3 text-sm">
+              {[
+                "O custo invisível de ser 'só obedecido'",
+                "As 4 condutas diárias de quem é seguido",
+                "Como ler os sinais que sua equipe já dá",
+                "Ideal para congressos, convenções e eventos de entidades",
+              ].map((i) => (
+                <li key={i} className="flex gap-3">
+                  <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                  <span>{i}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 pt-6 border-t border-border">
+              <Button asChild className="w-full gap-2">
+                <a href={wa("a palestra 'O líder que a equipe segue'")} target="_blank" rel="noopener noreferrer">
+                  Levar para minha equipe <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
+            </div>
+          </article>
+
+          {/* Workshop */}
+          <article className="rounded-2xl border border-primary/40 bg-gradient-to-b from-primary/10 to-card p-8 md:p-10 flex flex-col relative">
+            <span className="absolute -top-3 left-8 bg-primary text-primary-foreground text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
+              Transformação profunda
+            </span>
+            <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-primary">
+              <Users className="h-3.5 w-3.5" /> 3–4 horas · turma fechada
+            </div>
+            <h3 className="mt-4 text-3xl md:text-4xl leading-tight">
+              Workshop<br /><span className="italic text-primary">“Como se tornar o líder que a equipe segue”</span>
+            </h3>
+            <p className="mt-5 text-muted-foreground leading-relaxed">
+              Vai além da provocação: 5 etapas práticas em que cada líder mapeia o próprio padrão, identifica onde trava a equipe e sai com um <strong className="text-foreground">Plano de Conduta</strong> — um contrato pessoal do que vai mudar já na próxima segunda-feira.
+            </p>
+            <ul className="mt-6 space-y-3 text-sm">
+              {[
+                "Diagnóstico individual do padrão de liderança",
+                "5 etapas guiadas com exercícios em dupla",
+                "Plano de Conduta como entregável tangível",
+                "Apoio ao cumprimento da NR-1 (riscos psicossociais)",
+                "Ideal para in-company, núcleos e turmas de líderes",
+              ].map((i) => (
+                <li key={i} className="flex gap-3">
+                  <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                  <span>{i}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 pt-6 border-t border-primary/20">
+              <Button asChild className="w-full gap-2">
+                <a href={wa("o workshop 'Como se tornar o líder que a equipe segue'")} target="_blank" rel="noopener noreferrer">
+                  Quero o workshop na minha empresa <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Gallery() {
+  const shots = [img0484, img0487, img0488, img0489, img0490, img0493, img0496, img0498];
+  return (
+    <section id="bastidores" className="py-24 md:py-32 bg-surface/40">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Bastidores</p>
+            <h2 className="text-4xl md:text-5xl leading-tight text-balance">Do palco à sala de treinamento.</h2>
+          </div>
+          <p className="text-muted-foreground max-w-md">
+            Empresas, entidades, cooperativas e associações — de Norte a Sul do Brasil.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          {shots.map((s, i) => (
+            <div
+              key={s.url}
+              className={`relative overflow-hidden rounded-lg bg-surface ${
+                i === 0 || i === 5 ? "col-span-2 row-span-2 aspect-square" : "aspect-[4/5]"
+              }`}
+            >
+              <img
+                src={s.url}
+                alt="Ester Zen em palestra"
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ProgramsGrid() {
+  const programs = [
+    {
+      tag: "Vendas",
+      title: "Vendas que constroem relação",
+      body: "Método para times comerciais venderem mais sem perder a confiança do cliente. Foco em comportamento de vendedor consultivo e recorrência.",
+    },
+    {
+      tag: "Atendimento",
+      title: "Atendimento & Experiência",
+      body: "Transformar o atendimento em vantagem competitiva. Padrões de conduta, jornada do cliente e recuperação de crises.",
+    },
+    {
+      tag: "Mulheres",
+      title: "Marca & Mulheres Empreendedoras",
+      body: "Programas específicos para mulheres à frente do próprio negócio: posicionamento, autoridade e sustentação da marca pessoal.",
+    },
+  ];
+  return (
+    <section className="py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <div className="max-w-3xl">
+          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Outros programas</p>
+          <h2 className="text-4xl md:text-5xl leading-tight text-balance">
+            Comportamento como resultado —{" "}
+            <span className="text-muted-foreground/70">em várias frentes.</span>
+          </h2>
+        </div>
+        <div className="mt-14 grid md:grid-cols-3 gap-6">
+          {programs.map((p) => (
+            <article key={p.title} className="rounded-2xl border border-border bg-card p-8 transition-colors hover:border-primary/40">
+              <p className="text-xs uppercase tracking-widest text-primary">{p.tag}</p>
+              <h3 className="mt-3 text-2xl leading-tight">{p.title}</h3>
+              <p className="mt-4 text-muted-foreground leading-relaxed">{p.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function ForWhom() {
+  const items = [
+    { t: "Entidades", d: "SEBRAE, sindicatos, associações e cooperativas que buscam palestras de alto impacto para associados e congressos." },
+    { t: "Empresas", d: "In-company para times de liderança de média e alta gestão — do C-level a coordenadores." },
+    { t: "Líderes individuais", d: "Empreendedores e executivos que sentem que o time depende demais deles para andar." },
+  ];
+  return (
+    <section className="py-20 border-y border-border bg-surface/40">
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <p className="text-xs uppercase tracking-[0.3em] text-primary mb-6">Para quem é</p>
+        <div className="grid md:grid-cols-3 gap-8">
+          {items.map((i) => (
+            <div key={i.t}>
+              <h3 className="text-2xl">{i.t}</h3>
+              <p className="mt-3 text-muted-foreground leading-relaxed">{i.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Faq() {
+  const items = [
+    {
+      q: "A Ester atende fora de Santa Catarina?",
+      a: "Sim. Palestras e workshops são realizados em todo o Brasil. Deslocamento e hospedagem são combinados no orçamento.",
+    },
+    {
+      q: "Qual o tamanho ideal de turma para o workshop?",
+      a: "O formato roda muito bem com grupos de 15 a 40 líderes. Turmas maiores são possíveis mediante ajuste de dinâmica.",
+    },
+    {
+      q: "O workshop ajuda no cumprimento da NR-1?",
+      a: "Sim. O conteúdo endereça diretamente riscos psicossociais ligados à liderança e é um ativo aceito no plano de ação da NR-1.",
+    },
+    {
+      q: "Qual o prazo para agendar?",
+      a: "Recomendamos com pelo menos 30 dias de antecedência. Datas em alta estação (novembro/dezembro e março) costumam fechar cedo.",
+    },
+    {
+      q: "Vocês emitem certificado?",
+      a: "Sim, para todos os participantes do workshop, com carga horária e conteúdo programático.",
+    },
+  ];
+  return (
+    <section id="faq" className="py-24 md:py-32">
+      <div className="mx-auto max-w-4xl px-5 md:px-10">
+        <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Perguntas frequentes</p>
+        <h2 className="text-4xl md:text-5xl leading-tight text-balance mb-12">Dúvidas que costumam aparecer.</h2>
+        <Accordion type="single" collapsible className="w-full">
+          {items.map((it, i) => (
+            <AccordionItem key={it.q} value={`i-${i}`} className="border-border">
+              <AccordionTrigger className="text-left text-lg font-normal font-display hover:no-underline">
+                {it.q}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground leading-relaxed">{it.a}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  );
+}
+
+export function Footer() {
+  return (
+    <footer className="border-t border-border bg-surface/60 py-14">
+      <div className="mx-auto max-w-7xl px-5 md:px-10 grid md:grid-cols-3 gap-10">
+        <div>
+          <p className="font-display text-2xl">Ester Zen<span className="text-primary">.</span></p>
+          <p className="mt-2 text-sm text-muted-foreground">Comportamento & Resultado</p>
+        </div>
+        <div className="text-sm space-y-2">
+          <p className="text-muted-foreground uppercase tracking-widest text-xs mb-3">Contato</p>
+          <p>
+            <a href={buildWhatsappUrl("Olá, Ester!")} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+              WhatsApp (47) 99254-3200
+            </a>
+          </p>
+          <p>
+            <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-primary transition-colors">{CONTACT_EMAIL}</a>
+          </p>
+        </div>
+        <div className="text-sm space-y-2">
+          <p className="text-muted-foreground uppercase tracking-widest text-xs mb-3">Redes</p>
+          <p>
+            <a href="https://instagram.com/esterzen" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+              @esterzen
+            </a>
+          </p>
+          <p>
+            <a href="https://instagram.com/aesterzen" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+              @aesterzen
+            </a>
+          </p>
+        </div>
+      </div>
+      <div className="mx-auto max-w-7xl px-5 md:px-10 mt-10 pt-6 border-t border-border/50 text-xs text-muted-foreground text-center">
+        © {new Date().getFullYear()} Ester Zen · Todos os direitos reservados
+      </div>
+    </footer>
+  );
+}
