@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Ester Zen · Comportamento & Resultado" },
+      { title: "Ester Zen · O líder que a equipe segue | Palestras & Workshops de Liderança" },
       {
         name: "description",
         content:
@@ -86,6 +86,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "Ester Zen" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Ester Zen · O líder que a equipe segue | Palestras & Workshops de Liderança" },
+      { name: "twitter:title", content: "Ester Zen · O líder que a equipe segue | Palestras & Workshops de Liderança" },
+      { name: "description", content: "Palestras e workshops de liderança comportamental para entidades e empresas. Pare de ser o teto do seu time." },
+      { property: "og:description", content: "Palestras e workshops de liderança comportamental para entidades e empresas. Pare de ser o teto do seu time." },
+      { name: "twitter:description", content: "Palestras e workshops de liderança comportamental para entidades e empresas. Pare de ser o teto do seu time." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b52a5307-f189-412d-9a70-ff82168aac79/id-preview-f9ea298f--630bd03a-b9cc-4c82-8b38-105ee90e9963.lovable.app-1783296174764.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b52a5307-f189-412d-9a70-ff82168aac79/id-preview-f9ea298f--630bd03a-b9cc-4c82-8b38-105ee90e9963.lovable.app-1783296174764.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
