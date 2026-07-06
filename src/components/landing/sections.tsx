@@ -1,23 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ArrowRight, Check, Clock, Users, MessageCircle, Sparkles, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  Clock,
+  Users,
+  MessageCircle,
+  ShieldCheck,
+  TrendingUp,
+  Instagram,
+  Mail,
+} from "lucide-react";
 import { buildWhatsappUrl, CONTACT_EMAIL } from "@/lib/contact";
-import { useOpenQuiz } from "@/components/quiz/QuizProvider";
 
-import img0483 from "@/assets/IMG_0483.jpg.asset.json";
-import img0484 from "@/assets/IMG_0484.jpg.asset.json";
-import img0487 from "@/assets/IMG_0487.jpg.asset.json";
-import img0488 from "@/assets/IMG_0488.jpg.asset.json";
-import img0489 from "@/assets/IMG_0489.jpg.asset.json";
-import img0490 from "@/assets/IMG_0490.jpg.asset.json";
-import img0493 from "@/assets/IMG_0493.jpg.asset.json";
-import img0496 from "@/assets/IMG_0496.jpg.asset.json";
-import img0498 from "@/assets/IMG_0498.jpg.asset.json";
+import imgHero from "@/assets/IMG_0582.jpg.asset.json";
+import img0442 from "@/assets/IMG_0442.jpg.asset.json";
+import img0527 from "@/assets/IMG_0527.jpg.asset.json";
+import img0551 from "@/assets/IMG_0551.jpg.asset.json";
+import img0565 from "@/assets/IMG_0565.jpg.asset.json";
+import img0688 from "@/assets/IMG_0688.jpg.asset.json";
 
 const heroWa = "Olá, Ester! Vim pelo site — quero conversar sobre uma palestra/workshop.";
 
 export function Nav() {
-  const openQuiz = useOpenQuiz();
   return (
     <nav className="fixed top-0 inset-x-0 z-30 backdrop-blur-md bg-background/70 border-b border-border/50">
       <div className="mx-auto max-w-7xl px-5 md:px-10 h-16 flex items-center justify-between">
@@ -30,8 +35,10 @@ export function Nav() {
           <a href="#faq" className="hover:text-foreground transition-colors">FAQ</a>
           <a href="#contato" className="hover:text-foreground transition-colors">Contato</a>
         </div>
-        <Button onClick={openQuiz} size="sm" variant="outline" className="gap-2">
-          <Sparkles className="h-3.5 w-3.5" /> Fazer o teste
+        <Button asChild size="sm" className="gap-2">
+          <a href={buildWhatsappUrl(heroWa)} target="_blank" rel="noopener noreferrer">
+            <MessageCircle className="h-3.5 w-3.5" /> Falar agora
+          </a>
         </Button>
       </div>
     </nav>
@@ -39,18 +46,16 @@ export function Nav() {
 }
 
 export function Hero() {
-  const openQuiz = useOpenQuiz();
   return (
     <section id="top" className="relative min-h-[100svh] flex items-end overflow-hidden pt-16 grain">
-      {/* Background photo */}
       <div className="absolute inset-0">
         <img
-          src={img0483.url}
+          src={imgHero.url}
           alt="Ester Zen palestrando"
-          className="w-full h-full object-cover object-[center_30%]"
+          className="w-full h-full object-cover object-[70%_center] md:object-[60%_center]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-10 py-16 md:py-24 w-full">
@@ -66,8 +71,10 @@ export function Hero() {
             Palestras e workshops de liderança comportamental para líderes que precisam parar de ser o teto do próprio time — e virar o padrão que a equipe segue quando eles não estão na sala.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4">
-            <Button onClick={openQuiz} size="lg" className="gap-2 text-base">
-              Fazer o teste em 2 min <Sparkles className="h-4 w-4" />
+            <Button asChild size="lg" className="gap-2 text-base">
+              <a href="#programas">
+                Ver programas <ArrowRight className="h-4 w-4" />
+              </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="gap-2 text-base">
               <a href={buildWhatsappUrl(heroWa)} target="_blank" rel="noopener noreferrer">
@@ -85,8 +92,6 @@ export function Authority() {
   const items = [
     "20+ anos em gestão comercial e liderança",
     "Credenciada SEBRAE SC · PR · SP · RJ",
-    "Facilitadora SESCOOP",
-    "Formação em Comunicação Não-Violenta e Coaching Executivo",
   ];
   return (
     <section className="border-y border-border bg-surface/50">
@@ -127,37 +132,13 @@ export function Manifesto() {
   );
 }
 
-export function QuizBanner() {
-  const openQuiz = useOpenQuiz();
-  return (
-    <section className="relative py-20 border-y border-border overflow-hidden">
-      <div className="absolute inset-0 opacity-30">
-        <img src={img0496.url} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-background/80" />
-      </div>
-      <div className="relative mx-auto max-w-4xl px-5 md:px-10 text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">O teste · 7 perguntas · 2 minutos</p>
-        <h2 className="text-3xl md:text-5xl leading-tight text-balance">
-          Descubra em qual dos lados<br className="hidden md:block" /> sua equipe está{" "}
-          <span className="italic text-primary">agora</span>.
-        </h2>
-        <p className="mt-5 text-muted-foreground max-w-xl mx-auto">
-          Sete cenários do dia a dia. Duas alternativas. Um diagnóstico honesto — e o próximo passo, se você quiser mudar.
-        </p>
-        <Button size="lg" onClick={openQuiz} className="mt-8 gap-2">
-          Começar o teste <ArrowRight className="h-4 w-4" />
-        </Button>
-      </div>
-    </section>
-  );
-}
-
 export function ProgramCompare() {
   const wa = (t: string) =>
     buildWhatsappUrl(`Olá, Ester! Tenho interesse em ${t}. Podemos conversar?`);
 
   return (
-    <section id="programas" className="py-24 md:py-32">
+    <section id="programas" className="py-24 md:py-32 relative">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <div className="max-w-3xl">
           <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Programas principais</p>
@@ -165,21 +146,36 @@ export function ProgramCompare() {
             Dois formatos.<br />
             <span className="text-muted-foreground/70">Uma mesma virada de chave.</span>
           </h2>
+          <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
+            Cada programa é desenhado para gerar retorno mensurável — em produtividade, retenção e velocidade de decisão.
+          </p>
         </div>
 
         <div className="mt-14 grid md:grid-cols-2 gap-6">
           {/* Palestra */}
-          <article className="rounded-2xl border border-border bg-card p-8 md:p-10 flex flex-col">
+          <article className="group relative rounded-3xl border border-border bg-gradient-to-b from-card to-surface p-8 md:p-10 flex flex-col shadow-2xl shadow-black/40 transition-all hover:border-primary/50 hover:-translate-y-1">
             <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-primary">
               <Clock className="h-3.5 w-3.5" /> 50–60 min · plateia aberta
             </div>
-            <h3 className="mt-4 text-3xl md:text-4xl leading-tight">
-              Palestra<br /><span className="italic text-primary">“O líder que a equipe segue”</span>
+            <h3 className="mt-4 text-3xl md:text-4xl leading-tight text-foreground">
+              Palestra<br /><span className="italic text-primary">"O líder que a equipe segue"</span>
             </h3>
-            <p className="mt-5 text-muted-foreground leading-relaxed">
+            <p className="mt-5 text-foreground/80 leading-relaxed">
               Uma provocação direta sobre a diferença entre ser obedecido e ser seguido — com histórias reais de gestão, dados de comportamento e um convite: sair da sala sabendo exatamente onde o seu padrão está travando o time.
             </p>
-            <ul className="mt-6 space-y-3 text-sm">
+
+            <div className="mt-6 rounded-xl border border-primary/30 bg-primary/5 p-5">
+              <p className="text-xs uppercase tracking-widest text-primary mb-3 inline-flex items-center gap-2">
+                <TrendingUp className="h-3.5 w-3.5" /> ROI para quem contrata
+              </p>
+              <ul className="space-y-2 text-sm text-foreground/90">
+                <li>→ Evento com <strong>NPS acima de 90</strong> e engajamento sustentado</li>
+                <li>→ Conteúdo que <strong>vira pauta interna</strong> por semanas depois</li>
+                <li>→ Posiciona a entidade como quem <strong>traz debate de verdade</strong></li>
+              </ul>
+            </div>
+
+            <ul className="mt-6 space-y-3 text-sm text-foreground/90">
               {[
                 "O custo invisível de ser 'só obedecido'",
                 "As 4 condutas diárias de quem é seguido",
@@ -193,7 +189,7 @@ export function ProgramCompare() {
               ))}
             </ul>
             <div className="mt-8 pt-6 border-t border-border">
-              <Button asChild className="w-full gap-2">
+              <Button asChild size="lg" className="w-full gap-2">
                 <a href={wa("a palestra 'O líder que a equipe segue'")} target="_blank" rel="noopener noreferrer">
                   Levar para minha equipe <ArrowRight className="h-4 w-4" />
                 </a>
@@ -202,25 +198,37 @@ export function ProgramCompare() {
           </article>
 
           {/* Workshop */}
-          <article className="rounded-2xl border border-primary/40 bg-gradient-to-b from-primary/10 to-card p-8 md:p-10 flex flex-col relative">
-            <span className="absolute -top-3 left-8 bg-primary text-primary-foreground text-[10px] uppercase tracking-widest px-3 py-1 rounded-full">
+          <article className="group relative rounded-3xl border-2 border-primary/60 bg-gradient-to-br from-primary/15 via-card to-card p-8 md:p-10 flex flex-col shadow-2xl shadow-primary/10 transition-all hover:-translate-y-1">
+            <span className="absolute -top-3 left-8 bg-primary text-primary-foreground text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-semibold">
               Transformação profunda
             </span>
             <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-primary">
               <Users className="h-3.5 w-3.5" /> 3–4 horas · turma fechada
             </div>
-            <h3 className="mt-4 text-3xl md:text-4xl leading-tight">
-              Workshop<br /><span className="italic text-primary">“Como se tornar o líder que a equipe segue”</span>
+            <h3 className="mt-4 text-3xl md:text-4xl leading-tight text-foreground">
+              Workshop<br /><span className="italic text-primary">"Como se tornar o líder que a equipe segue"</span>
             </h3>
-            <p className="mt-5 text-muted-foreground leading-relaxed">
+            <p className="mt-5 text-foreground/85 leading-relaxed">
               Vai além da provocação: 5 etapas práticas em que cada líder mapeia o próprio padrão, identifica onde trava a equipe e sai com um <strong className="text-foreground">Plano de Conduta</strong> — um contrato pessoal do que vai mudar já na próxima segunda-feira.
             </p>
-            <ul className="mt-6 space-y-3 text-sm">
+
+            <div className="mt-6 rounded-xl border border-primary/40 bg-primary/10 p-5">
+              <p className="text-xs uppercase tracking-widest text-primary mb-3 inline-flex items-center gap-2">
+                <TrendingUp className="h-3.5 w-3.5" /> ROI para quem contrata
+              </p>
+              <ul className="space-y-2 text-sm text-foreground/90">
+                <li>→ <strong>Menos gargalo no gestor:</strong> decisões que hoje travam voltam a andar</li>
+                <li>→ <strong>Retenção de talento:</strong> ataca a causa nº 1 de saída — chefe, não empresa</li>
+                <li>→ <strong>Compliance NR-1:</strong> ativo aceito no plano de riscos psicossociais</li>
+                <li>→ <strong>Entregável tangível:</strong> Plano de Conduta por líder, mensurável em 30/60/90 dias</li>
+              </ul>
+            </div>
+
+            <ul className="mt-6 space-y-3 text-sm text-foreground/90">
               {[
                 "Diagnóstico individual do padrão de liderança",
                 "5 etapas guiadas com exercícios em dupla",
                 "Plano de Conduta como entregável tangível",
-                "Apoio ao cumprimento da NR-1 (riscos psicossociais)",
                 "Ideal para in-company, núcleos e turmas de líderes",
               ].map((i) => (
                 <li key={i} className="flex gap-3">
@@ -230,7 +238,7 @@ export function ProgramCompare() {
               ))}
             </ul>
             <div className="mt-8 pt-6 border-t border-primary/20">
-              <Button asChild className="w-full gap-2">
+              <Button asChild size="lg" className="w-full gap-2">
                 <a href={wa("o workshop 'Como se tornar o líder que a equipe segue'")} target="_blank" rel="noopener noreferrer">
                   Quero o workshop na minha empresa <ArrowRight className="h-4 w-4" />
                 </a>
@@ -244,7 +252,7 @@ export function ProgramCompare() {
 }
 
 export function Gallery() {
-  const shots = [img0484, img0487, img0488, img0489, img0490, img0493, img0496, img0498];
+  const shots = [img0688, img0527, img0442, img0551, img0565, imgHero];
   return (
     <section id="bastidores" className="py-24 md:py-32 bg-surface/40">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
@@ -254,7 +262,7 @@ export function Gallery() {
             <h2 className="text-4xl md:text-5xl leading-tight text-balance">Do palco à sala de treinamento.</h2>
           </div>
           <p className="text-muted-foreground max-w-md">
-            Empresas, entidades, cooperativas e associações — de Norte a Sul do Brasil.
+            Empresas, entidades, cooperativas e associações que já colocaram a liderança em pauta.
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
@@ -262,7 +270,7 @@ export function Gallery() {
             <div
               key={s.url}
               className={`relative overflow-hidden rounded-lg bg-surface ${
-                i === 0 || i === 5 ? "col-span-2 row-span-2 aspect-square" : "aspect-[4/5]"
+                i === 0 || i === 3 ? "col-span-2 row-span-2 aspect-square" : "aspect-[4/5]"
               }`}
             >
               <img
@@ -324,7 +332,7 @@ export function ProgramsGrid() {
 
 export function ForWhom() {
   const items = [
-    { t: "Entidades", d: "SEBRAE, sindicatos, associações e cooperativas que buscam palestras de alto impacto para associados e congressos." },
+    { t: "Entidades", d: "Sindicatos, associações e cooperativas que buscam palestras de alto impacto para associados e congressos." },
     { t: "Empresas", d: "In-company para times de liderança de média e alta gestão — do C-level a coordenadores." },
     { t: "Líderes individuais", d: "Empreendedores e executivos que sentem que o time depende demais deles para andar." },
   ];
@@ -399,24 +407,26 @@ export function Footer() {
         <div className="text-sm space-y-2">
           <p className="text-muted-foreground uppercase tracking-widest text-xs mb-3">Contato</p>
           <p>
-            <a href={buildWhatsappUrl("Olá, Ester!")} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-              WhatsApp (47) 99254-3200
+            <a href={buildWhatsappUrl("Olá, Ester!")} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-primary transition-colors">
+              <MessageCircle className="h-4 w-4" /> WhatsApp (47) 99254-3200
             </a>
           </p>
           <p>
-            <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-primary transition-colors">{CONTACT_EMAIL}</a>
+            <a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex items-center gap-2 hover:text-primary transition-colors">
+              <Mail className="h-4 w-4" /> {CONTACT_EMAIL}
+            </a>
           </p>
         </div>
         <div className="text-sm space-y-2">
           <p className="text-muted-foreground uppercase tracking-widest text-xs mb-3">Redes</p>
           <p>
-            <a href="https://instagram.com/esterzen" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-              @esterzen
+            <a href="https://instagram.com/esterzen" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-primary transition-colors">
+              <Instagram className="h-4 w-4" /> @esterzen
             </a>
           </p>
           <p>
-            <a href="https://instagram.com/aesterzen" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-              @aesterzen
+            <a href="https://instagram.com/aesterzen" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-primary transition-colors">
+              <Instagram className="h-4 w-4" /> @aesterzen
             </a>
           </p>
         </div>
