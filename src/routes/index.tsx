@@ -51,7 +51,6 @@ function Index() {
         <Gallery />
         <Testimonials />
         <ProgramsGrid />
-        <ProgramsGrid />
         <ForWhom />
         <section id="contato" className="py-24 md:py-32">
           <div className="mx-auto max-w-4xl px-5 md:px-10">
