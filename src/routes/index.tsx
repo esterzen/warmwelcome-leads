@@ -23,12 +23,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Palestras e workshops de liderança comportamental para entidades e empresas. Pare de ser o teto do seu time.",
+          "Palestras, workshops e consultoria de liderança comportamental e comercial para entidades e empresas. Pare de ser o teto do seu time.",
       },
-      { property: "og:title", content: "Ester Zen · O líder que a equipe segue" },
+      { property: "og:title", content: "Ester Zen | Palestras e Workshops de Liderança" },
       {
         property: "og:description",
-        content: "Palestras e workshops de liderança comportamental para entidades e empresas.",
+        content: "Palestras, workshops e consultoria de liderança comportamental e comercial para entidades e empresas. Pare de ser o teto do seu time.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://www.esterzen.com/" },
