@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   TrendingUp,
   Instagram,
+  Youtube,
   Mail,
 } from "lucide-react";
 import { buildWhatsappUrl, CONTACT_EMAIL } from "@/lib/contact";
@@ -425,8 +426,8 @@ export function Footer() {
             </a>
           </p>
           <p>
-            <a href="https://instagram.com/aesterzen" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-primary transition-colors">
-              <Instagram className="h-4 w-4" /> @aesterzen
+            <a href="https://www.youtube.com/@aesterzen" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-primary transition-colors">
+              <Youtube className="h-4 w-4" /> @aesterzen
             </a>
           </p>
         </div>
