@@ -8,6 +8,7 @@ import {
   Manifesto,
   ProgramCompare,
   Gallery,
+  Testimonials,
   ProgramsGrid,
   ForWhom,
   Faq,
