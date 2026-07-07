@@ -77,9 +77,9 @@ export function BriefingForm() {
         {form.formState.errors.telefone && <p className="text-xs text-destructive mt-1">{form.formState.errors.telefone.message}</p>}
       </div>
       <div>
-        <Label>Formato de interesse</Label>
+        <Label id="b-formato-label" htmlFor="b-formato">Formato de interesse</Label>
         <Select value={form.watch("formato")} onValueChange={(v) => form.setValue("formato", v as FormData["formato"])}>
-          <SelectTrigger className="mt-1.5"><SelectValue /></SelectTrigger>
+          <SelectTrigger id="b-formato" aria-labelledby="b-formato-label" className="mt-1.5"><SelectValue /></SelectTrigger>
           <SelectContent>
             <SelectItem value="Palestra">Palestra</SelectItem>
             <SelectItem value="Workshop">Workshop</SelectItem>

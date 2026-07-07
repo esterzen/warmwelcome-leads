@@ -54,6 +54,10 @@ export function Hero() {
         <img
           src={imgHero.url}
           alt="Ester Zen palestrando"
+          width={1600}
+          height={2000}
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover object-[70%_center] md:object-[60%_center]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/40" />
@@ -96,8 +100,9 @@ export function Authority() {
     "Credenciada SEBRAE SC · PR · SP · RJ",
   ];
   return (
-    <section className="border-y border-border bg-surface/50">
+    <section aria-labelledby="authority-heading" className="border-y border-border bg-surface/50">
       <div className="mx-auto max-w-7xl px-5 md:px-10 py-8">
+        <h2 id="authority-heading" className="sr-only">Credenciais e autoridade</h2>
         <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-sm text-muted-foreground">
           {items.map((it) => (
             <li key={it} className="inline-flex items-center gap-2">
@@ -342,6 +347,7 @@ export function ForWhom() {
     <section className="py-20 border-y border-border bg-surface/40">
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <p className="text-xs uppercase tracking-[0.3em] text-primary mb-6">Para quem é</p>
+        <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-10">Feito para três perfis.</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {items.map((i) => (
             <div key={i.t}>
