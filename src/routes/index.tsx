@@ -8,6 +8,7 @@ import {
   Manifesto,
   ProgramCompare,
   Gallery,
+  Testimonials,
   ProgramsGrid,
   ForWhom,
   Faq,
@@ -48,6 +49,7 @@ function Index() {
         <Manifesto />
         <ProgramCompare />
         <Gallery />
+        <Testimonials />
         <ProgramsGrid />
         <ForWhom />
         <section id="contato" className="py-24 md:py-32">
