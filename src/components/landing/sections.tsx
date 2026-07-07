@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   TrendingUp,
   Instagram,
+  Youtube,
   Mail,
 } from "lucide-react";
 import { buildWhatsappUrl, CONTACT_EMAIL } from "@/lib/contact";
