@@ -1,9 +1,10 @@
 # Ester Zen
 
-> Palestras e workshops de liderança comportamental para entidades e empresas. Ester Zen tem 20+ anos em gestão comercial, é credenciada SEBRAE (SC/PR/SP/RJ) e SESCOOP.
+> Palestras, workshops, mentoria e consultoria de liderança comportamental para entidades e empresas. Ester Zen tem 20+ anos em gestão comercial, é credenciada SEBRAE (SC/PR/SP/RJ) e SESCOOP, e criadora do método "O Líder Que a Equipe Segue".
 
 Ester Zen ajuda líderes a pararem de ser o teto do próprio time — a diferença entre uma equipe que apenas obedece e uma equipe que segue.
 
 ## Pages
 
 - [Início](/): Palestra "O líder que a equipe segue", workshop com Plano de Conduta, programas de vendas, atendimento e marca pessoal, FAQ e contato.
+- [Método O Líder Que a Equipe Segue](/metodo): Método autoral de liderança comportamental em 5 etapas, entrega do Plano de Conduta, formatos disponíveis (palestra, workshop in-company, mentoria e consultoria).
