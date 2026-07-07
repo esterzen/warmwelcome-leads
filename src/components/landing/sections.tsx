@@ -11,6 +11,7 @@ import {
   Instagram,
   Youtube,
   Mail,
+  Quote,
 } from "lucide-react";
 import { buildWhatsappUrl, CONTACT_EMAIL } from "@/lib/contact";
 
