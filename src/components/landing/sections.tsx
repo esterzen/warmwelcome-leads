@@ -32,10 +32,11 @@ export function Nav() {
           Ester Zen<span className="text-primary">.</span>
         </a>
         <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-          <a href="#programas" className="hover:text-foreground transition-colors">Programas</a>
-          <a href="#bastidores" className="hover:text-foreground transition-colors">Bastidores</a>
-          <a href="#faq" className="hover:text-foreground transition-colors">FAQ</a>
-          <a href="#contato" className="hover:text-foreground transition-colors">Contato</a>
+          <a href="/metodo" className="hover:text-foreground transition-colors">Método</a>
+          <a href="/#programas" className="hover:text-foreground transition-colors">Programas</a>
+          <a href="/#bastidores" className="hover:text-foreground transition-colors">Bastidores</a>
+          <a href="/#faq" className="hover:text-foreground transition-colors">FAQ</a>
+          <a href="/#contato" className="hover:text-foreground transition-colors">Contato</a>
         </div>
         <Button asChild size="sm" className="gap-2">
           <a href={buildWhatsappUrl(heroWa)} target="_blank" rel="noopener noreferrer">
