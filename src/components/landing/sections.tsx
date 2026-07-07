@@ -439,3 +439,62 @@ export function Footer() {
     </footer>
   );
 }
+
+export function Testimonials() {
+  const items = [
+    {
+      quote: "Eu tinha opiniões sobre atendimento e sobre cliente beeeem diferente. Ela realmente te dá solução pra tudo. Ela é espetacular.",
+      who: "Participante · workshop in-company",
+    },
+    {
+      quote: "Que voz! Foi a primeira coisa que percebi quando entrei na sala. Você é muito espontânea e autêntica — e tudo que falou foi extremamente valioso.",
+      who: "Líder na plateia · após palestra",
+    },
+    {
+      quote: "Foi ótima… insights e percepções bem pontuais. Vou te acompanhar por aqui.",
+      who: "Participante · palestra de liderança",
+    },
+    {
+      quote: "Equipe só me mandou áudios e texto dizendo que tu é muito boaaaa.",
+      who: "Contratante · devolutiva pós-evento",
+    },
+    {
+      quote: "Sensacional! Muito bom ouvir pessoas competentes.",
+      who: "Participante · convenção",
+    },
+    {
+      quote: "Sim, gostei muito da sua palestra! Sucesso!",
+      who: "Participante · congresso",
+    },
+  ];
+  return (
+    <section className="py-24 md:py-32 relative">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <div className="max-w-3xl mb-14">
+          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">O que dizem depois</p>
+          <h2 className="text-4xl md:text-5xl leading-tight text-balance">
+            Mensagens reais.<br />
+            <span className="text-muted-foreground/70">Chegam antes do próximo convite.</span>
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {items.map((t) => (
+            <figure
+              key={t.quote}
+              className="rounded-2xl border border-border bg-card p-7 flex flex-col gap-5 transition-colors hover:border-primary/40"
+            >
+              <Quote className="h-5 w-5 text-primary" />
+              <blockquote className="text-foreground/90 leading-relaxed">
+                "{t.quote}"
+              </blockquote>
+              <figcaption className="mt-auto text-xs uppercase tracking-widest text-muted-foreground">
+                {t.who}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
