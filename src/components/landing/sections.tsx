@@ -99,6 +99,7 @@ export function Authority() {
   const items = [
     "20+ anos em gestão comercial e liderança",
     "Credenciada SEBRAE SC · PR · SP · RJ",
+    "Foco no único KPI que não dá pra fingir: disposição espontânea da equipe",
   ];
   return (
     <section aria-labelledby="authority-heading" className="border-y border-border bg-surface/50">
