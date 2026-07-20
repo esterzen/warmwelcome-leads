@@ -123,17 +123,22 @@ export function Manifesto() {
       <div className="mx-auto max-w-5xl px-5 md:px-10">
         <p className="text-xs uppercase tracking-[0.3em] text-primary mb-8">O ponto cego da liderança</p>
         <h2 className="text-4xl md:text-6xl leading-tight text-balance">
-          Quase todo líder acha que está liderando.<br />
-          <span className="text-muted-foreground/70">Muitos estão apenas sendo</span>{" "}
-          <span className="italic text-primary">obedecidos</span>.
+          O problema não é a equipe cansada.<br />
+          <span className="text-muted-foreground/70">É a equipe que</span>{" "}
+          <span className="italic text-primary">não entrega</span>{" "}
+          <span className="text-muted-foreground/70">quando você não está na sala.</span>
         </h2>
         <div className="mt-10 grid md:grid-cols-2 gap-8 text-lg leading-relaxed">
           <p className="text-muted-foreground">
-            A diferença só aparece quando você não está na sala: nas decisões que ficam paradas, nos erros que só chegam quando já viraram crise, nas reuniões em que todo mundo concorda — sempre.
+            A diferença só aparece quando você não está: decisões que ficam paradas, erros que só chegam quando já viraram crise, reuniões em que todo mundo concorda — sempre. Ser obedecido tem um custo silencioso: <span className="text-foreground">você vira o teto do time</span>.
           </p>
-          <p className="text-muted-foreground">
-            Ser obedecido tem um custo silencioso: <span className="text-foreground">você vira o teto do time</span>. E o time só cresce até onde você consegue estar presente.
-          </p>
+          <div className="rounded-2xl border border-primary/30 bg-primary/5 p-6">
+            <p className="text-xs uppercase tracking-widest text-primary mb-3">O único KPI que não dá pra fingir</p>
+            <p className="text-foreground/90">
+              <span className="font-display text-2xl text-foreground">Disposição espontânea da equipe.</span><br />
+              <span className="text-muted-foreground">O que a equipe faz sem você pedir. É a única medida real de que ela te segue — e não só te obedece.</span>
+            </p>
+          </div>
         </div>
       </div>
     </section>
