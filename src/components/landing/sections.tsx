@@ -192,7 +192,7 @@ export function ProgramCompare() {
             <ul className="mt-6 space-y-3 text-sm text-foreground/90">
               {[
                 "O custo invisível de ser 'só obedecido'",
-                "As 4 condutas diárias de quem é seguido",
+                "As 4 condutas diárias de quem é seguido: como decide, como comunica, como corrige e como aparece",
                 "Como ler os sinais que sua equipe já dá",
                 "Ideal para congressos, convenções e eventos de entidades",
               ].map((i) => (
