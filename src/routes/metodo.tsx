@@ -175,14 +175,14 @@ function MetodoPage() {
           <div className="mx-auto max-w-4xl px-5 md:px-10">
             <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">O problema que o método resolve</p>
             <h2 className="text-3xl md:text-5xl leading-tight text-balance mb-8">
-              A equipe obedece. <span className="text-muted-foreground/70">Mas não segue.</span>
+              O problema não é a equipe cansada. <span className="text-muted-foreground/70">É a equipe que não entrega quando o líder não está.</span>
             </h2>
             <div className="grid md:grid-cols-2 gap-6 text-muted-foreground text-lg leading-relaxed">
               <p>
                 Líderes bem-intencionados viram o teto do próprio time: nada anda sem eles, todo mundo pergunta, todo mundo espera. A equipe entrega — mas só o mínimo, e sempre no ritmo dele.
               </p>
               <p>
-                Não é falta de treinamento técnico. É falta de <strong className="text-foreground">padrão de conduta visível</strong>. O método corrige isso na raiz: define o padrão, comunica, repete e mede.
+                Não é falta de treinamento técnico. É falta de <strong className="text-foreground">padrão de conduta visível</strong>. O método corrige isso na raiz: define o padrão, comunica, repete e mede pelo único KPI que não dá pra fingir — <strong className="text-foreground">a disposição espontânea da equipe</strong>.
               </p>
             </div>
           </div>
