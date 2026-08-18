@@ -48,6 +48,41 @@ const comparativo = [
   ["Motivação", "Externa: nota, aprovação", "Interna: competência, reconhecimento"],
 ];
 
+const tresAbordagens = [
+  ["Pedagogia", "O educador define objetivo, caminho e ritmo.", "Formação inicial, base escolar."],
+  [
+    "Andragogia",
+    "O adulto co-define o percurso com um facilitador, partindo da própria experiência.",
+    "Treinamento corporativo, formação de líderes, EJA.",
+  ],
+  [
+    "Heutagogia",
+    "O próprio aprendiz define o que, quando e como aprender; o facilitador vira recurso.",
+    "Autodesenvolvimento contínuo, times maduros.",
+  ],
+];
+
+const glossario = [
+  ["Andragogia", "Campo que estuda como o adulto aprende. Do grego andrós (homem adulto) + agogós (condutor)."],
+  ["Andragógico / andragógica", "Adjetivo: prática, método ou postura baseada nos princípios da andragogia."],
+  ["Andragogicamente", "Advérbio: conduzir algo segundo a lógica da aprendizagem adulta."],
+  ["Andragogo", "Quem facilita a aprendizagem de adultos — facilitador, não professor no sentido clássico."],
+  ["Andropedagogia", "Variação pouco usada do termo; na literatura consolidada, o termo correto é andragogia."],
+  ["Heutagogia", "Estudo da aprendizagem autodirigida, um estágio além da andragogia."],
+];
+
+const sumario = [
+  ["o-que-e", "O que é andragogia"],
+  ["significado", "Significado e origem da palavra"],
+  ["principios", "Os 6 princípios de Knowles"],
+  ["x-pedagogia", "Andragogia x pedagogia"],
+  ["heutagogia", "Pedagogia, andragogia e heutagogia"],
+  ["eja", "Andragogia na educação de jovens e adultos"],
+  ["workshop", "Como aplico isso em treinamento de liderança"],
+  ["glossario", "Termos relacionados"],
+  ["faq", "Perguntas frequentes"],
+];
+
 export const Route = createFileRoute("/andragogia")({
   head: () => ({
     meta: [
