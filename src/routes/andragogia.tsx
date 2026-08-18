@@ -149,7 +149,50 @@ export const Route = createFileRoute("/andragogia")({
                 text: "Sim. Quanto menos tempo a pessoa passa em sala de aula, mais importante é partir da experiência dela e trabalhar com situações do próprio turno, em vez de conceito abstrato.",
               },
             },
+            {
+              "@type": "Question",
+              name: "O que significa a palavra andragogia?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "A palavra vem do grego andrós (homem adulto) e agogós (condutor). Significa, literalmente, a condução da aprendizagem do adulto — em oposição a pedagogia, de paidós (criança).",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "O que a andragogia estuda?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "A andragogia estuda o processo de aprendizagem na fase adulta: como o adulto decide o que vale aprender, como a experiência prévia dele interfere no aprendizado e em que condições ele transforma conteúdo em mudança de comportamento.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Andragogia e heutagogia são a mesma coisa?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Não. Na andragogia existe um facilitador que estrutura o percurso junto com o adulto. Na heutagogia o próprio aprendiz define o que, quando e como aprender, com autonomia quase total.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "O que é andragogia na educação de jovens e adultos (EJA)?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Na EJA, andragogia é a base que reconhece o estudante adulto como alguém com trabalho, histórico e responsabilidades. O conteúdo parte da vida real dele e do uso imediato, em vez de repetir a lógica escolar infantil.",
+              },
+            },
           ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "DefinedTerm",
+          name: "Andragogia",
+          description:
+            "Andragogia é o campo de estudo sobre como o adulto aprende, sistematizado por Malcolm Knowles em seis princípios: necessidade de saber, autoconceito e autonomia, experiência prévia, prontidão, aprendizagem centrada em problemas e motivação interna.",
+          inDefinedTermSet: "https://www.esterzen.com/andragogia",
         }),
       },
       {
