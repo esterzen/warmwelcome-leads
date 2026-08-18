@@ -33,8 +33,9 @@ export function Nav() {
         </a>
         <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
           <a href="/metodo" className="hover:text-foreground transition-colors">Método</a>
+          <a href="/teste-de-lideranca" className="hover:text-foreground transition-colors">Teste</a>
+          <a href="/nr-1-riscos-psicossociais" className="hover:text-foreground transition-colors">NR-1</a>
           <a href="/#programas" className="hover:text-foreground transition-colors">Programas</a>
-          <a href="/#bastidores" className="hover:text-foreground transition-colors">Bastidores</a>
           <a href="/#faq" className="hover:text-foreground transition-colors">FAQ</a>
           <a href="/#contato" className="hover:text-foreground transition-colors">Contato</a>
         </div>
