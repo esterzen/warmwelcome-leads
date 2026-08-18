@@ -227,10 +227,30 @@ function AndragogiaPage() {
               conversa de corredor do treinamento que mudou o comportamento do líder na segunda-feira. Aqui estão os
               seis princípios, a diferença para a pedagogia e o que isso muda no desenho de um treinamento de liderança.
             </p>
+            <div className="mt-8 rounded-2xl border border-primary/30 bg-surface/40 p-6">
+              <p className="text-xs uppercase tracking-[0.25em] text-primary mb-3">Definição rápida</p>
+              <p className="text-foreground/90 leading-relaxed">
+                <strong>Andragogia</strong> é o campo que estuda o processo de aprendizagem do adulto. Parte do
+                princípio de que o adulto aprende quando entende o porquê, decide junto o caminho, usa a própria
+                experiência como matéria-prima e precisa resolver um problema que já dói agora.
+              </p>
+            </div>
+            <nav aria-label="Sumário" className="mt-8 rounded-2xl border border-border bg-card p-6">
+              <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">Neste artigo</p>
+              <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                {sumario.map(([id, label]) => (
+                  <li key={id}>
+                    <a href={`#${id}`} className="text-foreground/80 hover:text-primary underline-offset-4 hover:underline">
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </section>
 
-        <section className="pb-16">
+        <section id="o-que-e" className="pb-16 scroll-mt-28">
           <div className="mx-auto max-w-4xl px-5 md:px-10">
             <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-4">O que é andragogia</h2>
             <div className="space-y-4 text-foreground/90 leading-relaxed">
@@ -247,6 +267,28 @@ function AndragogiaPage() {
             </div>
           </div>
         </section>
+
+        <section id="significado" className="py-16 border-t border-border/50 scroll-mt-28">
+          <div className="mx-auto max-w-4xl px-5 md:px-10">
+            <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-4">
+              Significado e origem da palavra andragogia
+            </h2>
+            <div className="space-y-4 text-foreground/90 leading-relaxed">
+              <p>
+                <strong>Andragogia significa</strong> "condução do adulto": <em>andrós</em> (homem adulto) +{" "}
+                <em>agogós</em> (aquele que conduz). O termo foi cunhado por Alexander Kapp em 1833 ao descrever a
+                educação de adultos na filosofia de Platão, caiu no esquecimento e voltou no século XX com Eduard
+                Lindeman e, sobretudo, com Malcolm Knowles.
+              </p>
+              <p>
+                Knowles não propôs substituir a pedagogia. Ele propôs um continuum: quanto mais experiência, autonomia e
+                urgência a pessoa traz, mais a condução precisa ser andragógica. Um jovem aprendiz numa área totalmente
+                nova ainda se beneficia de estrutura; um gerente com 15 anos de casa, não.
+              </p>
+            </div>
+          </div>
+        </section>
+
 
         <section className="py-16 border-t border-border/50">
           <div className="mx-auto max-w-5xl px-5 md:px-10">
