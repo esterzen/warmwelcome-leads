@@ -9,13 +9,31 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TiposDeLiderancaRouteImport } from './routes/tipos-de-lideranca'
+import { Route as TesteDeLiderancaRouteImport } from './routes/teste-de-lideranca'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as Nr1RiscosPsicossociaisRouteImport } from './routes/nr-1-riscos-psicossociais'
 import { Route as MetodoRouteImport } from './routes/metodo'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TiposDeLiderancaRoute = TiposDeLiderancaRouteImport.update({
+  id: '/tipos-de-lideranca',
+  path: '/tipos-de-lideranca',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TesteDeLiderancaRoute = TesteDeLiderancaRouteImport.update({
+  id: '/teste-de-lideranca',
+  path: '/teste-de-lideranca',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Nr1RiscosPsicossociaisRoute = Nr1RiscosPsicossociaisRouteImport.update({
+  id: '/nr-1-riscos-psicossociais',
+  path: '/nr-1-riscos-psicossociais',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MetodoRoute = MetodoRouteImport.update({
@@ -32,40 +50,92 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/metodo': typeof MetodoRoute
+  '/nr-1-riscos-psicossociais': typeof Nr1RiscosPsicossociaisRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/teste-de-lideranca': typeof TesteDeLiderancaRoute
+  '/tipos-de-lideranca': typeof TiposDeLiderancaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/metodo': typeof MetodoRoute
+  '/nr-1-riscos-psicossociais': typeof Nr1RiscosPsicossociaisRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/teste-de-lideranca': typeof TesteDeLiderancaRoute
+  '/tipos-de-lideranca': typeof TiposDeLiderancaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/metodo': typeof MetodoRoute
+  '/nr-1-riscos-psicossociais': typeof Nr1RiscosPsicossociaisRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/teste-de-lideranca': typeof TesteDeLiderancaRoute
+  '/tipos-de-lideranca': typeof TiposDeLiderancaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/metodo' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/metodo'
+    | '/nr-1-riscos-psicossociais'
+    | '/sitemap.xml'
+    | '/teste-de-lideranca'
+    | '/tipos-de-lideranca'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/metodo' | '/sitemap.xml'
-  id: '__root__' | '/' | '/metodo' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/metodo'
+    | '/nr-1-riscos-psicossociais'
+    | '/sitemap.xml'
+    | '/teste-de-lideranca'
+    | '/tipos-de-lideranca'
+  id:
+    | '__root__'
+    | '/'
+    | '/metodo'
+    | '/nr-1-riscos-psicossociais'
+    | '/sitemap.xml'
+    | '/teste-de-lideranca'
+    | '/tipos-de-lideranca'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   MetodoRoute: typeof MetodoRoute
+  Nr1RiscosPsicossociaisRoute: typeof Nr1RiscosPsicossociaisRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TesteDeLiderancaRoute: typeof TesteDeLiderancaRoute
+  TiposDeLiderancaRoute: typeof TiposDeLiderancaRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tipos-de-lideranca': {
+      id: '/tipos-de-lideranca'
+      path: '/tipos-de-lideranca'
+      fullPath: '/tipos-de-lideranca'
+      preLoaderRoute: typeof TiposDeLiderancaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/teste-de-lideranca': {
+      id: '/teste-de-lideranca'
+      path: '/teste-de-lideranca'
+      fullPath: '/teste-de-lideranca'
+      preLoaderRoute: typeof TesteDeLiderancaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nr-1-riscos-psicossociais': {
+      id: '/nr-1-riscos-psicossociais'
+      path: '/nr-1-riscos-psicossociais'
+      fullPath: '/nr-1-riscos-psicossociais'
+      preLoaderRoute: typeof Nr1RiscosPsicossociaisRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/metodo': {
@@ -88,7 +158,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   MetodoRoute: MetodoRoute,
+  Nr1RiscosPsicossociaisRoute: Nr1RiscosPsicossociaisRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TesteDeLiderancaRoute: TesteDeLiderancaRoute,
+  TiposDeLiderancaRoute: TiposDeLiderancaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

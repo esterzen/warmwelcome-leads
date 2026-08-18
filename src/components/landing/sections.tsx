@@ -33,8 +33,9 @@ export function Nav() {
         </a>
         <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
           <a href="/metodo" className="hover:text-foreground transition-colors">Método</a>
+          <a href="/teste-de-lideranca" className="hover:text-foreground transition-colors">Teste</a>
+          <a href="/nr-1-riscos-psicossociais" className="hover:text-foreground transition-colors">NR-1</a>
           <a href="/#programas" className="hover:text-foreground transition-colors">Programas</a>
-          <a href="/#bastidores" className="hover:text-foreground transition-colors">Bastidores</a>
           <a href="/#faq" className="hover:text-foreground transition-colors">FAQ</a>
           <a href="/#contato" className="hover:text-foreground transition-colors">Contato</a>
         </div>
@@ -414,10 +415,17 @@ export function Faq() {
 export function Footer() {
   return (
     <footer className="border-t border-border bg-surface/60 py-14">
-      <div className="mx-auto max-w-7xl px-5 md:px-10 grid md:grid-cols-3 gap-10">
+      <div className="mx-auto max-w-7xl px-5 md:px-10 grid md:grid-cols-4 gap-10">
         <div>
           <p className="font-display text-2xl">Ester Zen<span className="text-primary">.</span></p>
           <p className="mt-2 text-sm text-muted-foreground">Comportamento & Resultado</p>
+        </div>
+        <div className="text-sm space-y-2">
+          <p className="text-muted-foreground uppercase tracking-widest text-xs mb-3">Conteúdo</p>
+          <p><a href="/metodo" className="hover:text-primary transition-colors">Método O Líder Que a Equipe Segue</a></p>
+          <p><a href="/teste-de-lideranca" className="hover:text-primary transition-colors">Teste de liderança</a></p>
+          <p><a href="/nr-1-riscos-psicossociais" className="hover:text-primary transition-colors">NR-1 e riscos psicossociais</a></p>
+          <p><a href="/tipos-de-lideranca" className="hover:text-primary transition-colors">Tipos de liderança</a></p>
         </div>
         <div className="text-sm space-y-2">
           <p className="text-muted-foreground uppercase tracking-widest text-xs mb-3">Contato</p>
