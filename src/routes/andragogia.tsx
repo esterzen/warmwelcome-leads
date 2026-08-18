@@ -48,6 +48,41 @@ const comparativo = [
   ["Motivação", "Externa: nota, aprovação", "Interna: competência, reconhecimento"],
 ];
 
+const tresAbordagens = [
+  ["Pedagogia", "O educador define objetivo, caminho e ritmo.", "Formação inicial, base escolar."],
+  [
+    "Andragogia",
+    "O adulto co-define o percurso com um facilitador, partindo da própria experiência.",
+    "Treinamento corporativo, formação de líderes, EJA.",
+  ],
+  [
+    "Heutagogia",
+    "O próprio aprendiz define o que, quando e como aprender; o facilitador vira recurso.",
+    "Autodesenvolvimento contínuo, times maduros.",
+  ],
+];
+
+const glossario = [
+  ["Andragogia", "Campo que estuda como o adulto aprende. Do grego andrós (homem adulto) + agogós (condutor)."],
+  ["Andragógico / andragógica", "Adjetivo: prática, método ou postura baseada nos princípios da andragogia."],
+  ["Andragogicamente", "Advérbio: conduzir algo segundo a lógica da aprendizagem adulta."],
+  ["Andragogo", "Quem facilita a aprendizagem de adultos — facilitador, não professor no sentido clássico."],
+  ["Andropedagogia", "Variação pouco usada do termo; na literatura consolidada, o termo correto é andragogia."],
+  ["Heutagogia", "Estudo da aprendizagem autodirigida, um estágio além da andragogia."],
+];
+
+const sumario = [
+  ["o-que-e", "O que é andragogia"],
+  ["significado", "Significado e origem da palavra"],
+  ["principios", "Os 6 princípios de Knowles"],
+  ["x-pedagogia", "Andragogia x pedagogia"],
+  ["heutagogia", "Pedagogia, andragogia e heutagogia"],
+  ["eja", "Andragogia na educação de jovens e adultos"],
+  ["workshop", "Como aplico isso em treinamento de liderança"],
+  ["glossario", "Termos relacionados"],
+  ["faq", "Perguntas frequentes"],
+];
+
 export const Route = createFileRoute("/andragogia")({
   head: () => ({
     meta: [
@@ -114,7 +149,50 @@ export const Route = createFileRoute("/andragogia")({
                 text: "Sim. Quanto menos tempo a pessoa passa em sala de aula, mais importante é partir da experiência dela e trabalhar com situações do próprio turno, em vez de conceito abstrato.",
               },
             },
+            {
+              "@type": "Question",
+              name: "O que significa a palavra andragogia?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "A palavra vem do grego andrós (homem adulto) e agogós (condutor). Significa, literalmente, a condução da aprendizagem do adulto — em oposição a pedagogia, de paidós (criança).",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "O que a andragogia estuda?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "A andragogia estuda o processo de aprendizagem na fase adulta: como o adulto decide o que vale aprender, como a experiência prévia dele interfere no aprendizado e em que condições ele transforma conteúdo em mudança de comportamento.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Andragogia e heutagogia são a mesma coisa?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Não. Na andragogia existe um facilitador que estrutura o percurso junto com o adulto. Na heutagogia o próprio aprendiz define o que, quando e como aprender, com autonomia quase total.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "O que é andragogia na educação de jovens e adultos (EJA)?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Na EJA, andragogia é a base que reconhece o estudante adulto como alguém com trabalho, histórico e responsabilidades. O conteúdo parte da vida real dele e do uso imediato, em vez de repetir a lógica escolar infantil.",
+              },
+            },
           ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "DefinedTerm",
+          name: "Andragogia",
+          description:
+            "Andragogia é o campo de estudo sobre como o adulto aprende, sistematizado por Malcolm Knowles em seis princípios: necessidade de saber, autoconceito e autonomia, experiência prévia, prontidão, aprendizagem centrada em problemas e motivação interna.",
+          inDefinedTermSet: "https://www.esterzen.com/andragogia",
         }),
       },
       {
@@ -149,10 +227,30 @@ function AndragogiaPage() {
               conversa de corredor do treinamento que mudou o comportamento do líder na segunda-feira. Aqui estão os
               seis princípios, a diferença para a pedagogia e o que isso muda no desenho de um treinamento de liderança.
             </p>
+            <div className="mt-8 rounded-2xl border border-primary/30 bg-surface/40 p-6">
+              <p className="text-xs uppercase tracking-[0.25em] text-primary mb-3">Definição rápida</p>
+              <p className="text-foreground/90 leading-relaxed">
+                <strong>Andragogia</strong> é o campo que estuda o processo de aprendizagem do adulto. Parte do
+                princípio de que o adulto aprende quando entende o porquê, decide junto o caminho, usa a própria
+                experiência como matéria-prima e precisa resolver um problema que já dói agora.
+              </p>
+            </div>
+            <nav aria-label="Sumário" className="mt-8 rounded-2xl border border-border bg-card p-6">
+              <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-4">Neste artigo</p>
+              <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                {sumario.map(([id, label]) => (
+                  <li key={id}>
+                    <a href={`#${id}`} className="text-foreground/80 hover:text-primary underline-offset-4 hover:underline">
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </section>
 
-        <section className="pb-16">
+        <section id="o-que-e" className="pb-16 scroll-mt-28">
           <div className="mx-auto max-w-4xl px-5 md:px-10">
             <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-4">O que é andragogia</h2>
             <div className="space-y-4 text-foreground/90 leading-relaxed">
@@ -170,7 +268,29 @@ function AndragogiaPage() {
           </div>
         </section>
 
-        <section className="py-16 border-t border-border/50">
+        <section id="significado" className="py-16 border-t border-border/50 scroll-mt-28">
+          <div className="mx-auto max-w-4xl px-5 md:px-10">
+            <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-4">
+              Significado e origem da palavra andragogia
+            </h2>
+            <div className="space-y-4 text-foreground/90 leading-relaxed">
+              <p>
+                <strong>Andragogia significa</strong> "condução do adulto": <em>andrós</em> (homem adulto) +{" "}
+                <em>agogós</em> (aquele que conduz). O termo foi cunhado por Alexander Kapp em 1833 ao descrever a
+                educação de adultos na filosofia de Platão, caiu no esquecimento e voltou no século XX com Eduard
+                Lindeman e, sobretudo, com Malcolm Knowles.
+              </p>
+              <p>
+                Knowles não propôs substituir a pedagogia. Ele propôs um continuum: quanto mais experiência, autonomia e
+                urgência a pessoa traz, mais a condução precisa ser andragógica. Um jovem aprendiz numa área totalmente
+                nova ainda se beneficia de estrutura; um gerente com 15 anos de casa, não.
+              </p>
+            </div>
+          </div>
+        </section>
+
+
+        <section id="principios" className="py-16 border-t border-border/50 scroll-mt-28">
           <div className="mx-auto max-w-5xl px-5 md:px-10">
             <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-8">
               Os 6 princípios da andragogia (Knowles)
@@ -186,7 +306,7 @@ function AndragogiaPage() {
           </div>
         </section>
 
-        <section className="py-16 border-t border-border/50">
+        <section id="x-pedagogia" className="py-16 border-t border-border/50 scroll-mt-28">
           <div className="mx-auto max-w-4xl px-5 md:px-10">
             <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-8">Andragogia x pedagogia</h2>
             <div className="overflow-x-auto rounded-2xl border border-border">
@@ -212,7 +332,49 @@ function AndragogiaPage() {
           </div>
         </section>
 
-        <section className="py-16 border-t border-border/50">
+        <section id="heutagogia" className="py-16 border-t border-border/50 scroll-mt-28">
+          <div className="mx-auto max-w-5xl px-5 md:px-10">
+            <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-4">
+              Pedagogia, andragogia e heutagogia
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-8 max-w-3xl">
+              As três não competem: mudam conforme a autonomia de quem aprende. O erro comum nas empresas é tratar
+              líderes experientes com desenho pedagógico — e depois estranhar a sala calada.
+            </p>
+            <div className="grid md:grid-cols-3 gap-5">
+              {tresAbordagens.map(([nome, como, onde]) => (
+                <div key={nome} className="rounded-2xl border border-border bg-card p-6">
+                  <h3 className="text-lg mb-2">{nome}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{como}</p>
+                  <p className="text-xs text-primary mt-4 uppercase tracking-widest">Onde cabe</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{onde}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="eja" className="py-16 border-t border-border/50 scroll-mt-28">
+          <div className="mx-auto max-w-4xl px-5 md:px-10">
+            <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-4">
+              Andragogia na educação de jovens e adultos
+            </h2>
+            <div className="space-y-4 text-foreground/90 leading-relaxed">
+              <p>
+                Na EJA e em qualquer formação de adultos que voltaram a estudar, a andragogia responde a uma pergunta
+                prática: como ensinar alguém que trabalha o dia inteiro, já criou filhos, já resolveu problemas duros —
+                e mesmo assim é colocado numa carteira como se não soubesse nada?
+              </p>
+              <p>
+                A resposta andragógica é reconhecer esse repertório e ancorar o conteúdo nele: matemática pelo
+                orçamento da casa, português pelo documento que a pessoa precisa entender, gestão pelo conflito que ela
+                mediou na semana passada. O mesmo raciocínio vale dentro da empresa — muda o conteúdo, não a lógica.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="workshop" className="py-16 border-t border-border/50 scroll-mt-28">
           <div className="mx-auto max-w-4xl px-5 md:px-10">
             <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-6">
               Como a andragogia aparece no meu workshop
@@ -251,11 +413,33 @@ function AndragogiaPage() {
           </div>
         </section>
 
-        <section className="py-16 border-t border-border/50 pb-24">
+        <section id="glossario" className="py-16 border-t border-border/50 scroll-mt-28">
+          <div className="mx-auto max-w-4xl px-5 md:px-10">
+            <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-8">Termos relacionados</h2>
+            <dl className="divide-y divide-border rounded-2xl border border-border overflow-hidden">
+              {glossario.map(([termo, def]) => (
+                <div key={termo} className="p-5 sm:flex sm:gap-6 bg-card">
+                  <dt className="text-foreground sm:w-56 shrink-0 mb-1 sm:mb-0">{termo}</dt>
+                  <dd className="text-sm text-muted-foreground leading-relaxed">{def}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
+        <section id="faq" className="py-16 border-t border-border/50 scroll-mt-28">
           <div className="mx-auto max-w-4xl px-5 md:px-10">
             <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-8">Perguntas frequentes</h2>
             <div className="space-y-6">
               {[
+                {
+                  q: "O que a andragogia estuda?",
+                  a: "O processo de aprendizagem na fase adulta: como o adulto decide o que vale aprender, como a experiência prévia interfere e em que condições o conteúdo vira mudança de comportamento.",
+                },
+                {
+                  q: "O que significa a palavra andragogia?",
+                  a: "Do grego andrós (homem adulto) + agogós (condutor): a condução da aprendizagem do adulto. Pedagogia, por contraste, vem de paidós (criança).",
+                },
                 {
                   q: "Andragogia e heutagogia são a mesma coisa?",
                   a: "Não. A heutagogia é um passo adiante: o próprio aprendiz define o que, quando e como aprender, com autonomia quase total. A andragogia ainda pressupõe um facilitador que estrutura o percurso junto com o adulto.",
@@ -274,6 +458,20 @@ function AndragogiaPage() {
                   <p className="text-sm text-muted-foreground leading-relaxed">{f.a}</p>
                 </div>
               ))}
+            </div>
+            <div className="mt-10 rounded-2xl border border-border bg-card p-6">
+              <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Para se aprofundar</p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>KNOWLES, M. <em>The Adult Learner</em> — obra que sistematiza os princípios citados aqui.</li>
+                <li>KAPP, A. (1833) — primeiro registro do termo andragogia.</li>
+                <li>LINDEMAN, E. <em>The Meaning of Adult Education</em> (1926).</li>
+              </ul>
+              <p className="mt-5 text-sm text-muted-foreground">
+                Continue por aqui:{" "}
+                <a href="/tipos-de-lideranca" className="text-primary underline underline-offset-4">tipos de liderança</a>,{" "}
+                <a href="/nr-1-riscos-psicossociais" className="text-primary underline underline-offset-4">NR-1 e riscos psicossociais</a>{" "}
+                ou o <a href="/teste-de-lideranca" className="text-primary underline underline-offset-4">teste de liderança</a>.
+              </p>
             </div>
           </div>
         </section>
