@@ -413,11 +413,33 @@ function AndragogiaPage() {
           </div>
         </section>
 
-        <section className="py-16 border-t border-border/50 pb-24">
+        <section id="glossario" className="py-16 border-t border-border/50 scroll-mt-28">
+          <div className="mx-auto max-w-4xl px-5 md:px-10">
+            <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-8">Termos relacionados</h2>
+            <dl className="divide-y divide-border rounded-2xl border border-border overflow-hidden">
+              {glossario.map(([termo, def]) => (
+                <div key={termo} className="p-5 sm:flex sm:gap-6 bg-card">
+                  <dt className="text-foreground sm:w-56 shrink-0 mb-1 sm:mb-0">{termo}</dt>
+                  <dd className="text-sm text-muted-foreground leading-relaxed">{def}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
+        <section id="faq" className="py-16 border-t border-border/50 scroll-mt-28">
           <div className="mx-auto max-w-4xl px-5 md:px-10">
             <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-8">Perguntas frequentes</h2>
             <div className="space-y-6">
               {[
+                {
+                  q: "O que a andragogia estuda?",
+                  a: "O processo de aprendizagem na fase adulta: como o adulto decide o que vale aprender, como a experiência prévia interfere e em que condições o conteúdo vira mudança de comportamento.",
+                },
+                {
+                  q: "O que significa a palavra andragogia?",
+                  a: "Do grego andrós (homem adulto) + agogós (condutor): a condução da aprendizagem do adulto. Pedagogia, por contraste, vem de paidós (criança).",
+                },
                 {
                   q: "Andragogia e heutagogia são a mesma coisa?",
                   a: "Não. A heutagogia é um passo adiante: o próprio aprendiz define o que, quando e como aprender, com autonomia quase total. A andragogia ainda pressupõe um facilitador que estrutura o percurso junto com o adulto.",
