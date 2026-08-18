@@ -332,7 +332,49 @@ function AndragogiaPage() {
           </div>
         </section>
 
-        <section className="py-16 border-t border-border/50">
+        <section id="heutagogia" className="py-16 border-t border-border/50 scroll-mt-28">
+          <div className="mx-auto max-w-5xl px-5 md:px-10">
+            <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-4">
+              Pedagogia, andragogia e heutagogia
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-8 max-w-3xl">
+              As três não competem: mudam conforme a autonomia de quem aprende. O erro comum nas empresas é tratar
+              líderes experientes com desenho pedagógico — e depois estranhar a sala calada.
+            </p>
+            <div className="grid md:grid-cols-3 gap-5">
+              {tresAbordagens.map(([nome, como, onde]) => (
+                <div key={nome} className="rounded-2xl border border-border bg-card p-6">
+                  <h3 className="text-lg mb-2">{nome}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{como}</p>
+                  <p className="text-xs text-primary mt-4 uppercase tracking-widest">Onde cabe</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{onde}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="eja" className="py-16 border-t border-border/50 scroll-mt-28">
+          <div className="mx-auto max-w-4xl px-5 md:px-10">
+            <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-4">
+              Andragogia na educação de jovens e adultos
+            </h2>
+            <div className="space-y-4 text-foreground/90 leading-relaxed">
+              <p>
+                Na EJA e em qualquer formação de adultos que voltaram a estudar, a andragogia responde a uma pergunta
+                prática: como ensinar alguém que trabalha o dia inteiro, já criou filhos, já resolveu problemas duros —
+                e mesmo assim é colocado numa carteira como se não soubesse nada?
+              </p>
+              <p>
+                A resposta andragógica é reconhecer esse repertório e ancorar o conteúdo nele: matemática pelo
+                orçamento da casa, português pelo documento que a pessoa precisa entender, gestão pelo conflito que ela
+                mediou na semana passada. O mesmo raciocínio vale dentro da empresa — muda o conteúdo, não a lógica.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="workshop" className="py-16 border-t border-border/50 scroll-mt-28">
           <div className="mx-auto max-w-4xl px-5 md:px-10">
             <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-6">
               Como a andragogia aparece no meu workshop
