@@ -459,6 +459,20 @@ function AndragogiaPage() {
                 </div>
               ))}
             </div>
+            <div className="mt-10 rounded-2xl border border-border bg-card p-6">
+              <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">Para se aprofundar</p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>KNOWLES, M. <em>The Adult Learner</em> — obra que sistematiza os princípios citados aqui.</li>
+                <li>KAPP, A. (1833) — primeiro registro do termo andragogia.</li>
+                <li>LINDEMAN, E. <em>The Meaning of Adult Education</em> (1926).</li>
+              </ul>
+              <p className="mt-5 text-sm text-muted-foreground">
+                Continue por aqui:{" "}
+                <a href="/tipos-de-lideranca" className="text-primary underline underline-offset-4">tipos de liderança</a>,{" "}
+                <a href="/nr-1-riscos-psicossociais" className="text-primary underline underline-offset-4">NR-1 e riscos psicossociais</a>{" "}
+                ou o <a href="/teste-de-lideranca" className="text-primary underline underline-offset-4">teste de liderança</a>.
+              </p>
+            </div>
           </div>
         </section>
       </main>
