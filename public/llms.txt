@@ -11,3 +11,5 @@ Ester Zen ajuda líderes a pararem de ser o teto do próprio time — a diferen�
 - [Teste de liderança](/teste-de-lideranca): Teste gratuito de 7 perguntas que diagnostica se a equipe segue o líder ou apenas obedece, com captura de contato e resultado personalizado.
 - [NR-1 e riscos psicossociais](/nr-1-riscos-psicossociais): O que a NR-1 exige sobre fatores psicossociais, o papel da liderança e como o workshop in-company vira evidência no PGR.
 - [Tipos de liderança](/tipos-de-lideranca): Guia dos 8 estilos de liderança (autocrática, democrática, liberal, situacional, servidora, transformacional, coach e tóxica) com sinais, aplicação e riscos.
+- [Andragogia](/andragogia): O que é andragogia, os 6 princípios de Malcolm Knowles, comparativo com pedagogia e como aplicar em treinamentos de liderança que mudam comportamento.
+

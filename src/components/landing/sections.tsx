@@ -426,6 +426,8 @@ export function Footer() {
           <p><a href="/teste-de-lideranca" className="hover:text-primary transition-colors">Teste de liderança</a></p>
           <p><a href="/nr-1-riscos-psicossociais" className="hover:text-primary transition-colors">NR-1 e riscos psicossociais</a></p>
           <p><a href="/tipos-de-lideranca" className="hover:text-primary transition-colors">Tipos de liderança</a></p>
+          <p><a href="/andragogia" className="hover:text-primary transition-colors">Andragogia</a></p>
+
         </div>
         <div className="text-sm space-y-2">
           <p className="text-muted-foreground uppercase tracking-widest text-xs mb-3">Contato</p>

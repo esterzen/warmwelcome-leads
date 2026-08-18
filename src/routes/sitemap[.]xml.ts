@@ -19,6 +19,8 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/teste-de-lideranca", changefreq: "monthly", priority: "0.9" },
           { path: "/nr-1-riscos-psicossociais", changefreq: "monthly", priority: "0.8" },
           { path: "/tipos-de-lideranca", changefreq: "monthly", priority: "0.8" },
+          { path: "/andragogia", changefreq: "monthly", priority: "0.8" },
+
         ];
 
         const urls = entries.map((e) =>
