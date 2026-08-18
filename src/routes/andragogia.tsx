@@ -290,7 +290,7 @@ function AndragogiaPage() {
         </section>
 
 
-        <section className="py-16 border-t border-border/50">
+        <section id="principios" className="py-16 border-t border-border/50 scroll-mt-28">
           <div className="mx-auto max-w-5xl px-5 md:px-10">
             <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-8">
               Os 6 princípios da andragogia (Knowles)
@@ -306,7 +306,7 @@ function AndragogiaPage() {
           </div>
         </section>
 
-        <section className="py-16 border-t border-border/50">
+        <section id="x-pedagogia" className="py-16 border-t border-border/50 scroll-mt-28">
           <div className="mx-auto max-w-4xl px-5 md:px-10">
             <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-8">Andragogia x pedagogia</h2>
             <div className="overflow-x-auto rounded-2xl border border-border">
