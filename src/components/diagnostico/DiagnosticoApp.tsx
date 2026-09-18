@@ -310,6 +310,16 @@ export function DiagnosticoApp() {
             <p className="text-muted-foreground leading-relaxed">{etapas[piorIndex].recomendacao}</p>
           </div>
 
+          <div className="rounded-2xl border border-border bg-background p-6 mb-8">
+            <p className="text-xs uppercase tracking-widest text-primary mb-2">Próximo passo</p>
+            <h3 className="text-2xl leading-snug mb-2">
+              Consultoria e Treinamento prático de vendas e atendimento
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Para equipes que atendem no balcão, no direct e no WhatsApp.
+            </p>
+          </div>
+
           <div className="flex flex-col sm:flex-row gap-3">
             <Button asChild size="lg" className="gap-2">
               <a
