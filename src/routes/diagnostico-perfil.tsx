@@ -69,8 +69,6 @@ function DiagnosticoPage() {
           </div>
         </section>
       </main>
-      <Footer />
-      <WhatsappFab />
     </div>
   );
 }
