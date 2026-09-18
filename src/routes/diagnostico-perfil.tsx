@@ -31,7 +31,7 @@ function DiagnosticoPage() {
         <section className="pt-28 md:pt-36 pb-6">
           <div className="mx-auto max-w-3xl px-5 md:px-10">
             <p className="text-xs uppercase tracking-[0.3em] text-primary mb-5">
-              Do post ao caixa · CDL Palhoça
+              Do post ao caixa
             </p>
             <h1 className="text-3xl md:text-5xl leading-[1.05] text-balance">
               Diagnóstico do seu <span className="italic text-primary">perfil</span>

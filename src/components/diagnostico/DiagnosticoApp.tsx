@@ -314,7 +314,7 @@ export function DiagnosticoApp() {
             <Button asChild size="lg" className="gap-2">
               <a
                 href={buildWhatsappUrl(
-                  `Olá, Ester! Fiz o diagnóstico do perfil na palestra da CDL Palhoça e tirei ${total} pontos.${
+                  `Olá, Ester! Fiz o diagnóstico do perfil e tirei ${total} pontos.${
                     cadastro ? ` Sou ${cadastro.nome}, do ${cadastro.negocio}.` : ""
                   }`,
                 )}
