@@ -1,6 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Nav, Footer } from "@/components/landing/sections";
-import { WhatsappFab } from "@/components/landing/WhatsappFab";
 import { DiagnosticoApp } from "@/components/diagnostico/DiagnosticoApp";
 
 const TITLE = "Diagnóstico do Perfil — Do post ao caixa | Ester Zen";
