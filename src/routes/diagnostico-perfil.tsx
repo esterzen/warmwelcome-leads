@@ -31,11 +31,11 @@ function DiagnosticoPage() {
               Do post ao caixa
             </p>
             <h1 className="text-3xl md:text-5xl leading-[1.05] text-balance">
-              Diagnóstico do seu <span className="italic text-primary">perfil</span>
+              Diagnóstico de <span className="italic text-primary">Posicionamento e Venda</span>
             </h1>
             <p className="mt-5 text-muted-foreground leading-relaxed">
-              20 perguntas sobre posicionamento, conteúdo e atendimento nas redes sociais. Responda com o
-              que você faz hoje, não com o que pretende fazer.
+              Posicionamento, conteúdo e atendimento: responda com o que você faz hoje, não com o que
+              pretende fazer.
             </p>
           </div>
         </section>

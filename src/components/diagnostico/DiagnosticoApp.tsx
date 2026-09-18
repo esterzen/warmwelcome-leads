@@ -135,12 +135,7 @@ export function DiagnosticoApp() {
     <div className="rounded-3xl border border-border bg-card p-6 md:p-10">
       {step === "intro" && (
         <div className="max-w-xl">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Do post ao caixa</p>
-          <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-4">
-            Diagnóstico do seu perfil
-          </h2>
           <p className="text-muted-foreground leading-relaxed mb-8">
-            {TOTAL_PERGUNTAS} perguntas sobre posicionamento, conteúdo e atendimento nas redes sociais.
             Leva cerca de 3 minutos.
           </p>
           <Button size="lg" className="gap-2 w-full sm:w-auto" onClick={() => setStep("cadastro")}>
