@@ -20,7 +20,6 @@ const cadastroSchema = z.object({
     .trim()
     .min(14, "Informe um WhatsApp válido com DDD")
     .max(16),
-  instagram: z.string().trim().max(100).optional().or(z.literal("")),
   consentimento: z.literal(true, {
     errorMap: () => ({ message: "É necessário autorizar o contato" }),
   }),
@@ -54,7 +53,7 @@ export function DiagnosticoApp() {
       nome: "",
       negocio: "",
       whatsapp: "",
-      instagram: "",
+
       consentimento: false as unknown as true,
     },
   });
@@ -68,9 +67,9 @@ export function DiagnosticoApp() {
       nome: d.nome,
       negocio: d.negocio,
       whatsapp: d.whatsapp,
-      instagram: d.instagram || null,
       consentimento: true,
-      origem: "CDL Palhoça",
+      origem: "Diagnóstico do perfil",
+
     });
     setSaving(false);
     if (error) {
@@ -189,10 +188,6 @@ export function DiagnosticoApp() {
               {form.formState.errors.whatsapp && (
                 <p className="text-xs text-destructive mt-1">{form.formState.errors.whatsapp.message}</p>
               )}
-            </div>
-            <div>
-              <Label htmlFor="d-insta">Instagram do negócio</Label>
-              <Input id="d-insta" {...form.register("instagram")} className="mt-1.5 h-12" placeholder="@seunegocio (opcional)" />
             </div>
             <div className="flex items-start gap-3 mt-1">
               <Checkbox
@@ -315,11 +310,21 @@ export function DiagnosticoApp() {
             <p className="text-muted-foreground leading-relaxed">{etapas[piorIndex].recomendacao}</p>
           </div>
 
+          <div className="rounded-2xl border border-border bg-background p-6 mb-8">
+            <p className="text-xs uppercase tracking-widest text-primary mb-2">Próximo passo</p>
+            <h3 className="text-2xl leading-snug mb-2">
+              Consultoria e Treinamento prático de vendas e atendimento
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Para equipes que atendem no balcão, no direct e no WhatsApp.
+            </p>
+          </div>
+
           <div className="flex flex-col sm:flex-row gap-3">
             <Button asChild size="lg" className="gap-2">
               <a
                 href={buildWhatsappUrl(
-                  `Olá, Ester! Fiz o diagnóstico do perfil na palestra da CDL Palhoça e tirei ${total} pontos.${
+                  `Olá, Ester! Fiz o diagnóstico do perfil e tirei ${total} pontos.${
                     cadastro ? ` Sou ${cadastro.nome}, do ${cadastro.negocio}.` : ""
                   }`,
                 )}
