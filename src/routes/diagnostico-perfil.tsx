@@ -1,6 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Nav, Footer } from "@/components/landing/sections";
-import { WhatsappFab } from "@/components/landing/WhatsappFab";
 import { DiagnosticoApp } from "@/components/diagnostico/DiagnosticoApp";
 
 const TITLE = "Diagnóstico do Perfil — Do post ao caixa | Ester Zen";
@@ -26,9 +24,8 @@ export const Route = createFileRoute("/diagnostico-perfil")({
 function DiagnosticoPage() {
   return (
     <div className="dark min-h-screen bg-background text-foreground">
-      <Nav />
       <main>
-        <section className="pt-28 md:pt-36 pb-6">
+        <section className="pt-12 md:pt-20 pb-6">
           <div className="mx-auto max-w-3xl px-5 md:px-10">
             <p className="text-xs uppercase tracking-[0.3em] text-primary mb-5">
               Do post ao caixa
@@ -72,8 +69,6 @@ function DiagnosticoPage() {
           </div>
         </section>
       </main>
-      <Footer />
-      <WhatsappFab />
     </div>
   );
 }
