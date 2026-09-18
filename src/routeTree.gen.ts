@@ -14,6 +14,7 @@ import { Route as TesteDeLiderancaRouteImport } from './routes/teste-de-lideranc
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Nr1RiscosPsicossociaisRouteImport } from './routes/nr-1-riscos-psicossociais'
 import { Route as MetodoRouteImport } from './routes/metodo'
+import { Route as DiagnosticoPerfilRouteImport } from './routes/diagnostico-perfil'
 import { Route as AndragogiaRouteImport } from './routes/andragogia'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -42,6 +43,11 @@ const MetodoRoute = MetodoRouteImport.update({
   path: '/metodo',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DiagnosticoPerfilRoute = DiagnosticoPerfilRouteImport.update({
+  id: '/diagnostico-perfil',
+  path: '/diagnostico-perfil',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AndragogiaRoute = AndragogiaRouteImport.update({
   id: '/andragogia',
   path: '/andragogia',
@@ -56,6 +62,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/andragogia': typeof AndragogiaRoute
+  '/diagnostico-perfil': typeof DiagnosticoPerfilRoute
   '/metodo': typeof MetodoRoute
   '/nr-1-riscos-psicossociais': typeof Nr1RiscosPsicossociaisRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/andragogia': typeof AndragogiaRoute
+  '/diagnostico-perfil': typeof DiagnosticoPerfilRoute
   '/metodo': typeof MetodoRoute
   '/nr-1-riscos-psicossociais': typeof Nr1RiscosPsicossociaisRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/andragogia': typeof AndragogiaRoute
+  '/diagnostico-perfil': typeof DiagnosticoPerfilRoute
   '/metodo': typeof MetodoRoute
   '/nr-1-riscos-psicossociais': typeof Nr1RiscosPsicossociaisRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/andragogia'
+    | '/diagnostico-perfil'
     | '/metodo'
     | '/nr-1-riscos-psicossociais'
     | '/sitemap.xml'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/andragogia'
+    | '/diagnostico-perfil'
     | '/metodo'
     | '/nr-1-riscos-psicossociais'
     | '/sitemap.xml'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/andragogia'
+    | '/diagnostico-perfil'
     | '/metodo'
     | '/nr-1-riscos-psicossociais'
     | '/sitemap.xml'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AndragogiaRoute: typeof AndragogiaRoute
+  DiagnosticoPerfilRoute: typeof DiagnosticoPerfilRoute
   MetodoRoute: typeof MetodoRoute
   Nr1RiscosPsicossociaisRoute: typeof Nr1RiscosPsicossociaisRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MetodoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/diagnostico-perfil': {
+      id: '/diagnostico-perfil'
+      path: '/diagnostico-perfil'
+      fullPath: '/diagnostico-perfil'
+      preLoaderRoute: typeof DiagnosticoPerfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/andragogia': {
       id: '/andragogia'
       path: '/andragogia'
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AndragogiaRoute: AndragogiaRoute,
+  DiagnosticoPerfilRoute: DiagnosticoPerfilRoute,
   MetodoRoute: MetodoRoute,
   Nr1RiscosPsicossociaisRoute: Nr1RiscosPsicossociaisRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
