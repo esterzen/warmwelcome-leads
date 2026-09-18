@@ -20,7 +20,6 @@ const cadastroSchema = z.object({
     .trim()
     .min(14, "Informe um WhatsApp válido com DDD")
     .max(16),
-  instagram: z.string().trim().max(100).optional().or(z.literal("")),
   consentimento: z.literal(true, {
     errorMap: () => ({ message: "É necessário autorizar o contato" }),
   }),
@@ -54,7 +53,7 @@ export function DiagnosticoApp() {
       nome: "",
       negocio: "",
       whatsapp: "",
-      instagram: "",
+
       consentimento: false as unknown as true,
     },
   });
@@ -68,9 +67,9 @@ export function DiagnosticoApp() {
       nome: d.nome,
       negocio: d.negocio,
       whatsapp: d.whatsapp,
-      instagram: d.instagram || null,
       consentimento: true,
-      origem: "CDL Palhoça",
+      origem: "Diagnóstico do perfil",
+
     });
     setSaving(false);
     if (error) {
@@ -189,10 +188,6 @@ export function DiagnosticoApp() {
               {form.formState.errors.whatsapp && (
                 <p className="text-xs text-destructive mt-1">{form.formState.errors.whatsapp.message}</p>
               )}
-            </div>
-            <div>
-              <Label htmlFor="d-insta">Instagram do negócio</Label>
-              <Input id="d-insta" {...form.register("instagram")} className="mt-1.5 h-12" placeholder="@seunegocio (opcional)" />
             </div>
             <div className="flex items-start gap-3 mt-1">
               <Checkbox
