@@ -40,34 +40,12 @@ function DiagnosticoPage() {
           </div>
         </section>
 
-        <section className="pb-12">
+        <section className="pb-20 md:pb-28">
           <div className="mx-auto max-w-3xl px-5 md:px-10">
             <DiagnosticoApp />
           </div>
         </section>
 
-        <section className="pb-20 md:pb-28">
-          <div className="mx-auto max-w-3xl px-5 md:px-10">
-            <div className="rounded-3xl border border-border bg-card p-6 md:p-10 flex flex-col sm:flex-row items-center gap-6">
-              <img
-                src="/qr-diagnostico-perfil.svg"
-                alt="QR Code para acessar o diagnóstico do perfil"
-                width={200}
-                height={200}
-                className="h-44 w-44 rounded-xl bg-white p-2 shrink-0"
-              />
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-primary mb-2">Compartilhe</p>
-                <h2 className="text-xl md:text-2xl leading-snug mb-2">
-                  Aponte a câmera para fazer o diagnóstico
-                </h2>
-                <p className="text-muted-foreground leading-relaxed break-all">
-                  www.esterzen.com/diagnostico-perfil
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
   );
