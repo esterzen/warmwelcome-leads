@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      diagnostico_leads: {
+        Row: {
+          consentimento: boolean
+          created_at: string
+          faixa: string | null
+          id: string
+          instagram: string | null
+          negocio: string
+          nome: string
+          origem: string | null
+          pontuacao_etapas: Json
+          respostas: Json
+          total: number | null
+          whatsapp: string
+        }
+        Insert: {
+          consentimento?: boolean
+          created_at?: string
+          faixa?: string | null
+          id?: string
+          instagram?: string | null
+          negocio: string
+          nome: string
+          origem?: string | null
+          pontuacao_etapas?: Json
+          respostas?: Json
+          total?: number | null
+          whatsapp: string
+        }
+        Update: {
+          consentimento?: boolean
+          created_at?: string
+          faixa?: string | null
+          id?: string
+          instagram?: string | null
+          negocio?: string
+          nome?: string
+          origem?: string | null
+          pontuacao_etapas?: Json
+          respostas?: Json
+          total?: number | null
+          whatsapp?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
