@@ -2,8 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav, Footer } from "@/components/landing/sections";
 import { WhatsappFab } from "@/components/landing/WhatsappFab";
 import { LeadQuiz } from "@/components/quiz/LeadQuiz";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import img0565 from "@/assets/IMG_0565.jpg.asset.json";
 
 const OG_IMAGE = `https://www.esterzen.com${img0565.url}`;
