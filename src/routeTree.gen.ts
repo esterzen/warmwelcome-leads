@@ -9,43 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TiposDeLiderancaRouteImport } from './routes/tipos-de-lideranca'
-import { Route as TesteDeLiderancaRouteImport } from './routes/teste-de-lideranca'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as Nr1RiscosPsicossociaisRouteImport } from './routes/nr-1-riscos-psicossociais'
-import { Route as MetodoRouteImport } from './routes/metodo'
-import { Route as DiagnosticoPerfilRouteImport } from './routes/diagnostico-perfil'
-import { Route as AndragogiaRouteImport } from './routes/andragogia'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AndragogiaRouteImport } from './routes/andragogia'
+import { Route as DiagnosticoPerfilRouteImport } from './routes/diagnostico-perfil'
+import { Route as MetodoRouteImport } from './routes/metodo'
+import { Route as Nr1RiscosPsicossociaisRouteImport } from './routes/nr-1-riscos-psicossociais'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as TesteDeLiderancaRouteImport } from './routes/teste-de-lideranca'
+import { Route as TiposDeLiderancaRouteImport } from './routes/tipos-de-lideranca'
 
-const TiposDeLiderancaRoute = TiposDeLiderancaRouteImport.update({
-  id: '/tipos-de-lideranca',
-  path: '/tipos-de-lideranca',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TesteDeLiderancaRoute = TesteDeLiderancaRouteImport.update({
-  id: '/teste-de-lideranca',
-  path: '/teste-de-lideranca',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Nr1RiscosPsicossociaisRoute = Nr1RiscosPsicossociaisRouteImport.update({
-  id: '/nr-1-riscos-psicossociais',
-  path: '/nr-1-riscos-psicossociais',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MetodoRoute = MetodoRouteImport.update({
-  id: '/metodo',
-  path: '/metodo',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DiagnosticoPerfilRoute = DiagnosticoPerfilRouteImport.update({
-  id: '/diagnostico-perfil',
-  path: '/diagnostico-perfil',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AndragogiaRoute = AndragogiaRouteImport.update({
@@ -53,9 +28,34 @@ const AndragogiaRoute = AndragogiaRouteImport.update({
   path: '/andragogia',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const DiagnosticoPerfilRoute = DiagnosticoPerfilRouteImport.update({
+  id: '/diagnostico-perfil',
+  path: '/diagnostico-perfil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MetodoRoute = MetodoRouteImport.update({
+  id: '/metodo',
+  path: '/metodo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Nr1RiscosPsicossociaisRoute = Nr1RiscosPsicossociaisRouteImport.update({
+  id: '/nr-1-riscos-psicossociais',
+  path: '/nr-1-riscos-psicossociais',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TesteDeLiderancaRoute = TesteDeLiderancaRouteImport.update({
+  id: '/teste-de-lideranca',
+  path: '/teste-de-lideranca',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TiposDeLiderancaRoute = TiposDeLiderancaRouteImport.update({
+  id: '/tipos-de-lideranca',
+  path: '/tipos-de-lideranca',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -136,46 +136,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/tipos-de-lideranca': {
-      id: '/tipos-de-lideranca'
-      path: '/tipos-de-lideranca'
-      fullPath: '/tipos-de-lideranca'
-      preLoaderRoute: typeof TiposDeLiderancaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/teste-de-lideranca': {
-      id: '/teste-de-lideranca'
-      path: '/teste-de-lideranca'
-      fullPath: '/teste-de-lideranca'
-      preLoaderRoute: typeof TesteDeLiderancaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/nr-1-riscos-psicossociais': {
-      id: '/nr-1-riscos-psicossociais'
-      path: '/nr-1-riscos-psicossociais'
-      fullPath: '/nr-1-riscos-psicossociais'
-      preLoaderRoute: typeof Nr1RiscosPsicossociaisRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/metodo': {
-      id: '/metodo'
-      path: '/metodo'
-      fullPath: '/metodo'
-      preLoaderRoute: typeof MetodoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/diagnostico-perfil': {
-      id: '/diagnostico-perfil'
-      path: '/diagnostico-perfil'
-      fullPath: '/diagnostico-perfil'
-      preLoaderRoute: typeof DiagnosticoPerfilRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/andragogia': {
@@ -185,11 +150,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AndragogiaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/diagnostico-perfil': {
+      id: '/diagnostico-perfil'
+      path: '/diagnostico-perfil'
+      fullPath: '/diagnostico-perfil'
+      preLoaderRoute: typeof DiagnosticoPerfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/metodo': {
+      id: '/metodo'
+      path: '/metodo'
+      fullPath: '/metodo'
+      preLoaderRoute: typeof MetodoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nr-1-riscos-psicossociais': {
+      id: '/nr-1-riscos-psicossociais'
+      path: '/nr-1-riscos-psicossociais'
+      fullPath: '/nr-1-riscos-psicossociais'
+      preLoaderRoute: typeof Nr1RiscosPsicossociaisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/teste-de-lideranca': {
+      id: '/teste-de-lideranca'
+      path: '/teste-de-lideranca'
+      fullPath: '/teste-de-lideranca'
+      preLoaderRoute: typeof TesteDeLiderancaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tipos-de-lideranca': {
+      id: '/tipos-de-lideranca'
+      path: '/tipos-de-lideranca'
+      fullPath: '/tipos-de-lideranca'
+      preLoaderRoute: typeof TiposDeLiderancaRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
