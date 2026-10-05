@@ -2,8 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav, Footer } from "@/components/landing/sections";
 import { WhatsappFab } from "@/components/landing/WhatsappFab";
 import { LeadQuiz } from "@/components/quiz/LeadQuiz";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import img0565 from "@/assets/IMG_0565.jpg.asset.json";
 
 const OG_IMAGE = `https://www.esterzen.com${img0565.url}`;
@@ -78,47 +76,6 @@ function TestePage() {
           </div>
         </section>
 
-        <section className="py-20 md:py-28 border-t border-border/50">
-          <div className="mx-auto max-w-4xl px-5 md:px-10">
-            <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-8">
-              Como interpretar o resultado
-            </h2>
-            <div className="grid md:grid-cols-3 gap-5">
-              {[
-                {
-                  t: "Obedecido",
-                  d: "A entrega depende da sua presença e da sua cobrança. Você virou o teto do time: nada anda sem você.",
-                },
-                {
-                  t: "Zona de transição",
-                  d: "Parte do time já segue o padrão, parte ainda só cumpre. Normalmente trava em um ponto só — clareza, feedback ou coerência.",
-                },
-                {
-                  t: "Seguido",
-                  d: "Existe disposição espontânea: as pessoas fazem além do pedido. O risco aqui é o padrão viver só na sua figura.",
-                },
-              ].map((c) => (
-                <div key={c.t} className="rounded-2xl border border-border bg-card p-6">
-                  <h3 className="text-lg mb-2">{c.t}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{c.d}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-10 rounded-2xl border border-border bg-surface/40 p-7">
-              <h2 className="text-2xl mb-3">O indicador que não dá para fingir</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                Metas, presença e clima podem ser maquiados por um tempo. Disposição espontânea, não. Quando a equipe faz o que ninguém mandou — avisa antes do problema estourar, corrige sem ser cobrada, cuida do detalhe que não estava no processo —, é porque segue. Todo o método{" "}
-                <a href="/metodo" className="text-primary underline underline-offset-4">O Líder Que a Equipe Segue</a>{" "}
-                trabalha em cima desse indicador.
-              </p>
-              <Button asChild size="lg" className="gap-2 mt-7">
-                <a href="/#programas">
-                  Ver palestra e workshop <ArrowRight className="h-4 w-4" />
-                </a>
-              </Button>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
       <WhatsappFab />

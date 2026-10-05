@@ -11,27 +11,37 @@ import { ArrowLeft, ArrowRight, MessageCircle, Mail, Check } from "lucide-react"
 import { buildMailtoUrl, buildWhatsappUrl } from "@/lib/contact";
 import { questions, computeResult, type Choice, type Result } from "./quiz-data";
 
-const leadSchema = z.object({
+const preSchema = z.object({
   nome: z.string().trim().min(2, "Informe seu nome").max(100),
-  email: z.string().trim().email("Email inválido").max(255),
   telefone: z.string().trim().min(10, "WhatsApp inválido").max(20),
+});
+type PreData = z.infer<typeof preSchema>;
+
+const leadSchema = z.object({
+  email: z.string().trim().email("Email inválido").max(255),
   empresa: z.string().trim().max(150).optional().or(z.literal("")),
   consent: z.literal(true, { errorMap: () => ({ message: "Necessário para enviar o resultado" }) }),
 });
 type LeadData = z.infer<typeof leadSchema>;
 
-type Step = "intro" | "questions" | "lead" | "result";
+type Step = "intro" | "pre" | "questions" | "lead" | "result";
 
 export function LeadQuiz() {
   const [step, setStep] = useState<Step>("intro");
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Choice[]>([]);
   const [result, setResult] = useState<Result | null>(null);
-  const [lead, setLead] = useState<LeadData | null>(null);
+  const [pre, setPre] = useState<PreData | null>(null);
+  const [lead, setLead] = useState<(PreData & LeadData) | null>(null);
+
+  const preForm = useForm<PreData>({
+    resolver: zodResolver(preSchema),
+    defaultValues: { nome: "", telefone: "" },
+  });
 
   const form = useForm<LeadData>({
     resolver: zodResolver(leadSchema),
-    defaultValues: { nome: "", email: "", telefone: "", empresa: "", consent: false as unknown as true },
+    defaultValues: { email: "", empresa: "", consent: false as unknown as true },
   });
 
   const answer = (choice: Choice) => {
@@ -44,7 +54,7 @@ export function LeadQuiz() {
     }
   };
 
-  const composeSummary = (d: LeadData, r: Result) => {
+  const composeSummary = (d: PreData & LeadData, r: Result) => {
     const bCount = answers.filter((x) => x === "B").length;
     return [
       "Resultado do teste — Sua equipe te segue ou te obedece?",
@@ -61,9 +71,14 @@ export function LeadQuiz() {
       .join("\n");
   };
 
+  const submitPre = (d: PreData) => {
+    setPre(d);
+    setStep("questions");
+  };
+
   const submitLead = (d: LeadData) => {
     const r = computeResult(answers);
-    setLead(d);
+    setLead({ ...(pre ?? { nome: "", telefone: "" }), ...d });
     setResult(r);
     setStep("result");
   };
@@ -82,18 +97,53 @@ export function LeadQuiz() {
       {step === "intro" && (
         <div className="max-w-xl">
           <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Teste gratuito</p>
-          <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-4">
-            Sua equipe te segue — ou apenas te obedece?
-          </h2>
-          <p className="text-muted-foreground leading-relaxed mb-2">
+          <p className="text-lg leading-relaxed mb-2">
             7 perguntas. Cerca de 2 minutos. Responda com o que sua equipe <strong className="text-foreground">faz hoje</strong>, não com o que você gostaria que ela fizesse.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-8">
             No final você recebe um diagnóstico com o que está travando a entrega do seu time.
           </p>
-          <Button size="lg" className="gap-2" onClick={() => setStep("questions")}>
+          <Button size="lg" className="gap-2" onClick={() => setStep("pre")}>
             Começar o teste <ArrowRight className="h-4 w-4" />
           </Button>
+        </div>
+      )}
+
+      {step === "pre" && (
+        <div className="max-w-lg">
+          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Antes de começar</p>
+          <h2 className="text-2xl md:text-3xl leading-tight text-balance mb-3">
+            Para onde enviamos seu diagnóstico?
+          </h2>
+          <p className="text-muted-foreground mb-8">
+            Preencha para iniciar o teste e receber o resultado no final.
+          </p>
+          <form className="grid gap-4" onSubmit={preForm.handleSubmit(submitPre)}>
+            <div>
+              <Label htmlFor="p-nome">Nome</Label>
+              <Input id="p-nome" {...preForm.register("nome")} className="mt-1.5" />
+              {preForm.formState.errors.nome && (
+                <p className="text-xs text-destructive mt-1">{preForm.formState.errors.nome.message}</p>
+              )}
+            </div>
+            <div>
+              <Label htmlFor="p-tel">WhatsApp</Label>
+              <Input id="p-tel" {...preForm.register("telefone")} className="mt-1.5" placeholder="(47) 99999-0000" />
+              {preForm.formState.errors.telefone && (
+                <p className="text-xs text-destructive mt-1">{preForm.formState.errors.telefone.message}</p>
+              )}
+            </div>
+            <Button type="submit" size="lg" className="gap-2 mt-2">
+              Ir para o teste <ArrowRight className="h-4 w-4" />
+            </Button>
+          </form>
+          <button
+            type="button"
+            onClick={() => setStep("intro")}
+            className="mt-6 inline-flex items-center gap-1.5 text-sm text-muted-underline hover:text-foreground transition-colors"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" /> Voltar
+          </button>
         </div>
       )}
 
@@ -144,24 +194,10 @@ export function LeadQuiz() {
           </p>
           <form className="grid gap-4" onSubmit={form.handleSubmit(submitLead)}>
             <div>
-              <Label htmlFor="q-nome">Nome</Label>
-              <Input id="q-nome" {...form.register("nome")} className="mt-1.5" />
-              {form.formState.errors.nome && (
-                <p className="text-xs text-destructive mt-1">{form.formState.errors.nome.message}</p>
-              )}
-            </div>
-            <div>
               <Label htmlFor="q-email">Email</Label>
               <Input id="q-email" type="email" {...form.register("email")} className="mt-1.5" />
               {form.formState.errors.email && (
                 <p className="text-xs text-destructive mt-1">{form.formState.errors.email.message}</p>
-              )}
-            </div>
-            <div>
-              <Label htmlFor="q-tel">WhatsApp</Label>
-              <Input id="q-tel" {...form.register("telefone")} className="mt-1.5" placeholder="(47) 99999-0000" />
-              {form.formState.errors.telefone && (
-                <p className="text-xs text-destructive mt-1">{form.formState.errors.telefone.message}</p>
               )}
             </div>
             <div>
@@ -219,6 +255,47 @@ export function LeadQuiz() {
               </a>
             </Button>
           </div>
+
+          <div className="mt-16 pt-12 border-t border-border/50">
+            <h2 className="text-3xl md:text-4xl leading-tight text-balance mb-8">
+              Como interpretar o resultado
+            </h2>
+            <div className="grid md:grid-cols-3 gap-5">
+              {[
+                {
+                  t: "Obedecido",
+                  d: "A entrega depende da sua presença e da sua cobrança. Você virou o teto do time: nada anda sem você.",
+                },
+                {
+                  t: "Zona de transição",
+                  d: "Parte do time já segue o padrão, parte ainda só cumpre. Normalmente trava em um ponto só — clareza, feedback ou coerência.",
+                },
+                {
+                  t: "Seguido",
+                  d: "Existe disposição espontânea: as pessoas fazem além do pedido. O risco aqui é o padrão viver só na sua figura.",
+                },
+              ].map((c) => (
+                <div key={c.t} className="rounded-2xl border border-border bg-card p-6">
+                  <h3 className="text-lg mb-2">{c.t}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{c.d}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10 rounded-2xl border border-border bg-surface/40 p-7">
+              <h2 className="text-2xl mb-3">O indicador que não dá para fingir</h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Metas, presença e clima podem ser maquiados por um tempo. Disposição espontânea, não. Quando a equipe faz o que ninguém mandou — avisa antes do problema estourar, corrige sem ser cobrada, cuida do detalhe que não estava no processo —, é porque segue. Todo o método{" "}
+                <a href="/metodo" className="text-primary underline underline-offset-4">O Líder Que a Equipe Segue</a>{" "}
+                trabalha em cima desse indicador.
+              </p>
+              <Button asChild size="lg" className="gap-2 mt-7">
+                <a href="/#programas">
+                  Ver palestra e workshop <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
+            </div>
+          </div>
+
           <button
             type="button"
             onClick={restart}
