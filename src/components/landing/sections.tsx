@@ -101,7 +101,7 @@ export function Authority() {
   const items = [
     "20+ anos em gestão comercial e liderança de equipes",
     "Palestras em Santa Catarina e todo o Brasil",
-    "Contratação direta ou via SEBRAE e SESCOOP",
+    "Para entidades, cooperativas e empresas",
   ];
   return (
     <section aria-labelledby="authority-heading" className="border-y border-border bg-surface/50">
