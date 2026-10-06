@@ -120,6 +120,32 @@ export function Authority() {
   );
 }
 
+export function VideoShowcase() {
+  return (
+    <section id="video" aria-labelledby="video-heading" className="py-20 md:py-28">
+      <div className="mx-auto max-w-5xl px-5 md:px-10">
+        <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Ester no palco</p>
+        <h2 id="video-heading" className="text-3xl md:text-5xl leading-tight text-balance mb-8">
+          Vendas começa na gestão.{" "}
+          <span className="text-muted-foreground/70">Um minuto de palestra.</span>
+        </h2>
+        <div className="overflow-hidden rounded-2xl border border-border bg-black shadow-2xl">
+          <video
+            className="w-full aspect-video"
+            src="/video/ester-zen-palestra-lideranca.mp4"
+            poster="/video/ester-zen-palestra-lideranca.jpg"
+            controls
+            playsInline
+            preload="metadata"
+          >
+            Seu navegador não reproduz vídeo.
+          </video>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function Manifesto() {
   return (
     <section className="relative py-24 md:py-36">

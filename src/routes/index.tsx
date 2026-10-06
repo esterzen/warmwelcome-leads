@@ -5,6 +5,7 @@ import {
   Nav,
   Hero,
   Authority,
+  VideoShowcase,
   Manifesto,
   ProgramCompare,
   Gallery,
@@ -84,6 +85,20 @@ export const Route = createFileRoute("/")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "VideoObject",
+          name: "Vendas começa na gestão — trecho de palestra de Ester Zen",
+          description: "Trecho de palestra de liderança e gestão de equipes: quando dá errado lá na frente, a gestão está errada. A venda é resultado de estratégia.",
+          thumbnailUrl: "https://www.esterzen.com/video/ester-zen-palestra-lideranca.jpg",
+          contentUrl: "https://www.esterzen.com/video/ester-zen-palestra-lideranca.mp4",
+          uploadDate: "2026-10-06",
+          duration: "PT1M8S",
+          inLanguage: "pt-BR",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "FAQPage",
           mainEntity: [
             { "@type": "Question", name: "A Ester atende fora de Santa Catarina?", acceptedAnswer: { "@type": "Answer", text: "Sim. Palestras e workshops são realizados em todo o Brasil. Deslocamento e hospedagem são combinados no orçamento." } },
@@ -106,6 +121,7 @@ function Index() {
       <main>
         <Hero />
         <Authority />
+        <VideoShowcase />
         <Manifesto />
         <ProgramCompare />
         <Gallery />
