@@ -19,16 +19,16 @@ import heroImg from "@/assets/IMG_0582.jpg.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ester Zen | Palestras e Workshops de Liderança" },
+      { title: "Palestra de Liderança e Gestão de Equipes em SC | Ester Zen" },
       {
         name: "description",
         content:
-          "Palestras e workshops de liderança e gestão de equipes para entidades e empresas. Do líder gargalo ao líder que desenvolve.",
+          "Palestras e workshops de liderança e gestão de equipes para entidades e empresas em Santa Catarina e todo o Brasil. Do líder gargalo ao líder que desenvolve.",
       },
-      { property: "og:title", content: "Ester Zen | Palestras e Workshops de Liderança" },
+      { property: "og:title", content: "Palestra de Liderança e Gestão de Equipes em SC | Ester Zen" },
       {
         property: "og:description",
-        content: "Palestras e workshops de liderança e gestão de equipes para entidades e empresas. Do líder gargalo ao líder que desenvolve.",
+        content: "Palestras e workshops de liderança e gestão de equipes para entidades e empresas em Santa Catarina e todo o Brasil. Do líder gargalo ao líder que desenvolve.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://www.esterzen.com/" },
@@ -45,12 +45,13 @@ export const Route = createFileRoute("/")({
           "@type": "Person",
           name: "Ester Zen",
           url: "https://www.esterzen.com/",
-          jobTitle: "Palestrante e consultora de liderança comportamental",
+          jobTitle: "Palestrante de liderança e gestão de equipes",
+          areaServed: ["Santa Catarina", "Paraná", "Brasil"],
           sameAs: [
             "https://instagram.com/esterzen",
             "https://www.youtube.com/@aesterzen",
           ],
-          knowsAbout: ["Liderança", "Gestão comercial", "Comportamento organizacional"],
+          knowsAbout: ["Liderança", "Gestão de equipes", "Gestão de pessoas", "Liderança comercial", "NR-1 e riscos psicossociais", "IA aplicada à gestão"],
         }),
       },
       {
@@ -61,7 +62,7 @@ export const Route = createFileRoute("/")({
           serviceType: "Palestra de liderança",
           name: "Palestra — Do líder gargalo ao líder que desenvolve",
           provider: { "@type": "Person", name: "Ester Zen" },
-          areaServed: "BR",
+          areaServed: ["Santa Catarina", "Paraná", "Brasil"],
           description:
             "Palestra de 50–60 minutos de liderança e gestão de equipes: como o líder deixa de ser o gargalo do time. Para congressos, convenções e eventos de entidades.",
         }),
@@ -74,7 +75,7 @@ export const Route = createFileRoute("/")({
           serviceType: "Workshop de liderança",
           name: "Workshop — Como deixar de ser o gargalo da sua equipe",
           provider: { "@type": "Person", name: "Ester Zen" },
-          areaServed: "BR",
+          areaServed: ["Santa Catarina", "Paraná", "Brasil"],
           description:
             "Workshop in-company de 3–4 horas com 5 etapas práticas e entrega de Plano de Conduta por líder; apoio à NR-1.",
         }),
