@@ -23,12 +23,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Palestras, workshops e consultoria de liderança comportamental e comercial para entidades e empresas. Pare de ser o teto do seu time.",
+          "Palestras e workshops de liderança e gestão de equipes para entidades e empresas. Do líder gargalo ao líder que desenvolve.",
       },
       { property: "og:title", content: "Ester Zen | Palestras e Workshops de Liderança" },
       {
         property: "og:description",
-        content: "Palestras, workshops e consultoria de liderança comportamental e comercial para entidades e empresas. Pare de ser o teto do seu time.",
+        content: "Palestras e workshops de liderança e gestão de equipes para entidades e empresas. Do líder gargalo ao líder que desenvolve.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://www.esterzen.com/" },
@@ -59,11 +59,11 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Palestra de liderança",
-          name: "Palestra — O líder que a equipe segue",
+          name: "Palestra — Do líder gargalo ao líder que desenvolve",
           provider: { "@type": "Person", name: "Ester Zen" },
           areaServed: "BR",
           description:
-            "Palestra de 50–60 minutos sobre a diferença entre ser obedecido e ser seguido, para congressos, convenções e eventos de entidades.",
+            "Palestra de 50–60 minutos de liderança e gestão de equipes: como o líder deixa de ser o gargalo do time. Para congressos, convenções e eventos de entidades.",
         }),
       },
       {
@@ -72,7 +72,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Service",
           serviceType: "Workshop de liderança",
-          name: "Workshop — Como se tornar o líder que a equipe segue",
+          name: "Workshop — Como deixar de ser o gargalo da sua equipe",
           provider: { "@type": "Person", name: "Ester Zen" },
           areaServed: "BR",
           description:

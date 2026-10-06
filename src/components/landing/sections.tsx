@@ -12,6 +12,7 @@ import {
   Youtube,
   Mail,
   Quote,
+  Download,
 } from "lucide-react";
 import { buildWhatsappUrl, CONTACT_EMAIL } from "@/lib/contact";
 
@@ -69,14 +70,14 @@ export function Hero() {
       <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-10 py-16 md:py-24 w-full">
         <div className="max-w-3xl animate-fade-up">
           <p className="text-xs uppercase tracking-[0.3em] text-primary mb-6">
-            Ester Zen · Comportamento & Resultado
+            Palestras e workshops · Liderança e gestão de equipes
           </p>
           <h1 className="text-5xl md:text-7xl lg:text-8xl leading-[0.95] text-balance">
-            Sua equipe te <span className="italic text-primary">segue</span>
-            <span className="block text-muted-foreground/70">— ou apenas te obedece?</span>
+            Do líder <span className="italic text-primary">gargalo</span>
+            <span className="block text-muted-foreground/70">ao líder que desenvolve.</span>
           </h1>
           <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-            Palestras e workshops de liderança comportamental para líderes que precisam parar de ser o teto do próprio time — e virar o padrão que a equipe segue quando eles não estão na sala.
+            Liderança e gestão de equipes para entidades e empresas cujos líderes viraram o gargalo do próprio time. O objetivo é um só: a equipe que entrega sem depender de você.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg" className="gap-2 text-base">
@@ -98,9 +99,9 @@ export function Hero() {
 
 export function Authority() {
   const items = [
-    "20+ anos em gestão comercial e liderança",
-    "Credenciada SEBRAE SC · PR · SP · RJ",
-    "Foco no único KPI que não dá pra fingir: disposição espontânea da equipe",
+    "20+ anos em gestão comercial e liderança de equipes",
+    "Palestras para entidades, cooperativas e empresas",
+    "Contratação direta ou via SEBRAE e SESCOOP",
   ];
   return (
     <section aria-labelledby="authority-heading" className="border-y border-border bg-surface/50">
@@ -132,13 +133,13 @@ export function Manifesto() {
         </h2>
         <div className="mt-10 grid md:grid-cols-2 gap-8 text-lg leading-relaxed">
           <p className="text-muted-foreground">
-            A diferença só aparece quando você não está: decisões que ficam paradas, erros que só chegam quando já viraram crise, reuniões em que todo mundo concorda — sempre. Ser obedecido tem um custo silencioso: <span className="text-foreground">você vira o teto do time</span>.
+            A diferença só aparece quando você não está: decisões que ficam paradas, erros que só chegam quando já viraram crise, reuniões em que todo mundo concorda — sempre. Ser o gargalo tem um custo silencioso: <span className="text-foreground">você vira o teto do time</span>.
           </p>
           <div className="rounded-2xl border border-primary/30 bg-primary/5 p-6">
             <p className="text-xs uppercase tracking-widest text-primary mb-3">O único KPI que não dá pra fingir</p>
             <p className="text-foreground/90">
               <span className="font-display text-2xl text-foreground">Disposição espontânea da equipe.</span><br />
-              <span className="text-muted-foreground">O que a equipe faz sem você pedir. É a única medida real de que ela te segue — e não só te obedece.</span>
+              <span className="text-muted-foreground">O que a equipe faz sem você pedir. É a única medida real de que ela anda sem depender de você.</span>
             </p>
           </div>
         </div>
@@ -173,10 +174,10 @@ export function ProgramCompare() {
               <Clock className="h-3.5 w-3.5" /> 50–60 min · plateia aberta
             </div>
             <h3 className="mt-4 text-3xl md:text-4xl leading-tight text-foreground">
-              Palestra<br /><span className="italic text-primary">"O líder que a equipe segue"</span>
+              Palestra<br /><span className="italic text-primary">"Do líder gargalo ao líder que desenvolve"</span>
             </h3>
             <p className="mt-5 text-foreground/80 leading-relaxed">
-              Uma provocação direta sobre a diferença entre ser obedecido e ser seguido — com histórias reais de gestão, dados de comportamento e um convite: sair da sala sabendo exatamente onde o seu padrão está travando o time.
+              Liderança é uma venda: o líder refecha toda semana, com as mesmas pessoas. Com histórias reais de gestão e dados de comportamento, a plateia sai sabendo exatamente onde o próprio padrão está travando o time.
             </p>
 
             <div className="mt-6 rounded-xl border border-primary/30 bg-primary/5 p-5">
@@ -184,7 +185,6 @@ export function ProgramCompare() {
                 <TrendingUp className="h-3.5 w-3.5" /> ROI para quem contrata
               </p>
               <ul className="space-y-2 text-sm text-foreground/90">
-                <li>→ Evento com <strong>NPS acima de 90</strong> e engajamento sustentado</li>
                 <li>→ Conteúdo que <strong>vira pauta interna</strong> por semanas depois</li>
                 <li>→ Posiciona a entidade como quem <strong>traz debate de verdade</strong></li>
               </ul>
@@ -192,8 +192,8 @@ export function ProgramCompare() {
 
             <ul className="mt-6 space-y-3 text-sm text-foreground/90">
               {[
-                "O custo invisível de ser 'só obedecido'",
-                "As 4 condutas diárias de quem é seguido: como decide, como comunica, como corrige e como aparece",
+                "O custo invisível de ser o gargalo",
+                "As 4 condutas diárias de quem desenvolve a equipe: como decide, como comunica, como corrige e como aparece",
                 "Como ler os sinais que sua equipe já dá",
                 "Ideal para congressos, convenções e eventos de entidades",
               ].map((i) => (
@@ -205,7 +205,7 @@ export function ProgramCompare() {
             </ul>
             <div className="mt-8 pt-6 border-t border-border">
               <Button asChild size="lg" className="w-full gap-2">
-                <a href={wa("a palestra 'O líder que a equipe segue'")} target="_blank" rel="noopener noreferrer">
+                <a href={wa("a palestra 'Do líder gargalo ao líder que desenvolve'")} target="_blank" rel="noopener noreferrer">
                   Levar para minha equipe <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
@@ -221,7 +221,7 @@ export function ProgramCompare() {
               <Users className="h-3.5 w-3.5" /> 3–4 horas · turma fechada
             </div>
             <h3 className="mt-4 text-3xl md:text-4xl leading-tight text-foreground">
-              Workshop<br /><span className="italic text-primary">"Como se tornar o líder que a equipe segue"</span>
+              Workshop<br /><span className="italic text-primary">"Como deixar de ser o gargalo da sua equipe"</span>
             </h3>
             <p className="mt-5 text-foreground/85 leading-relaxed">
               Vai além da provocação: 5 etapas práticas em que cada líder mapeia o próprio padrão, identifica onde trava a equipe e sai com um <strong className="text-foreground">Plano de Conduta</strong> — um contrato pessoal do que vai mudar já na próxima segunda-feira.
@@ -254,7 +254,7 @@ export function ProgramCompare() {
             </ul>
             <div className="mt-8 pt-6 border-t border-primary/20">
               <Button asChild size="lg" className="w-full gap-2">
-                <a href={wa("o workshop 'Como se tornar o líder que a equipe segue'")} target="_blank" rel="noopener noreferrer">
+                <a href={wa("o workshop 'Como deixar de ser o gargalo da sua equipe'")} target="_blank" rel="noopener noreferrer">
                   Quero o workshop na minha empresa <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
@@ -307,18 +307,13 @@ export function ProgramsGrid() {
   const programs = [
     {
       tag: "Vendas",
-      title: "Vendas que constroem relação",
-      body: "Método para times comerciais venderem mais sem perder a confiança do cliente. Foco em comportamento de vendedor consultivo e recorrência.",
+      title: "Liderança comercial",
+      body: "Para quem lidera equipe de vendas: meta traduzida em atendimento, processo de venda que não depende da melhor vendedora e retorno que transforma resultado em padrão da loja.",
     },
     {
-      tag: "Atendimento",
-      title: "Atendimento & Experiência",
-      body: "Transformar o atendimento em vantagem competitiva. Padrões de conduta, jornada do cliente e recuperação de crises.",
-    },
-    {
-      tag: "Mulheres",
-      title: "Marca & Mulheres Empreendedoras",
-      body: "Programas específicos para mulheres à frente do próprio negócio: posicionamento, autoridade e sustentação da marca pessoal.",
+      tag: "IA",
+      title: "Diagnóstico de IA na liderança",
+      body: "Um raio-x dos processos da liderança — integração, metas, comunicação e retorno — com um roteiro de 30, 60 e 90 dias do que já pode virar sistema. Primeiro o processo, depois a ferramenta.",
     },
   ];
   return (
@@ -327,11 +322,11 @@ export function ProgramsGrid() {
         <div className="max-w-3xl">
           <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Outros programas</p>
           <h2 className="text-4xl md:text-5xl leading-tight text-balance">
-            Comportamento como resultado —{" "}
-            <span className="text-muted-foreground/70">em várias frentes.</span>
+            A mesma liderança —{" "}
+            <span className="text-muted-foreground/70">em outras frentes.</span>
           </h2>
         </div>
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
+        <div className="mt-14 grid md:grid-cols-2 gap-6">
           {programs.map((p) => (
             <article key={p.title} className="rounded-2xl border border-border bg-card p-8 transition-colors hover:border-primary/40">
               <p className="text-xs uppercase tracking-widest text-primary">{p.tag}</p>
@@ -363,6 +358,16 @@ export function ForWhom() {
               <p className="mt-3 text-muted-foreground leading-relaxed">{i.d}</p>
             </div>
           ))}
+        </div>
+        <div className="mt-12 flex flex-col sm:flex-row sm:items-center gap-4 rounded-2xl border border-primary/30 bg-primary/5 p-6">
+          <p className="flex-1 text-foreground/90">
+            Vai levar a proposta para a diretoria? Baixe a apresentação de uma página com formatos, duração e ficha técnica.
+          </p>
+          <Button asChild size="lg" variant="outline" className="gap-2">
+            <a href="/Ester-Zen-apresentacao-entidades.pdf" download>
+              <Download className="h-4 w-4" /> Baixar apresentação (PDF)
+            </a>
+          </Button>
         </div>
       </div>
     </section>
