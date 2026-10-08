@@ -126,7 +126,8 @@ export function VideoShowcase() {
       <div className="mx-auto max-w-5xl px-5 md:px-10">
         <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">Ester no palco</p>
         <h2 id="video-heading" className="text-3xl md:text-5xl leading-tight text-balance mb-8">
-          Vendas começa na gestão.{" "}
+          O que mudou?{" "}
+          <span className="italic text-primary">As pessoas.</span>{" "}
           <span className="text-muted-foreground/70">Um minuto de palestra.</span>
         </h2>
         <div className="overflow-hidden rounded-2xl border border-border bg-black shadow-2xl">
