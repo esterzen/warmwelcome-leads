@@ -37,6 +37,7 @@ export function Nav() {
           <a href="/teste-de-lideranca" className="hover:text-foreground transition-colors">Teste</a>
           <a href="/nr-1-riscos-psicossociais" className="hover:text-foreground transition-colors">NR-1</a>
           <a href="/#programas" className="hover:text-foreground transition-colors">Programas</a>
+          <a href="/artigos" className="hover:text-foreground transition-colors">Artigos</a>
           <a href="/#faq" className="hover:text-foreground transition-colors">FAQ</a>
           <a href="/#contato" className="hover:text-foreground transition-colors">Contato</a>
         </div>
@@ -459,6 +460,7 @@ export function Footer() {
           <p><a href="/nr-1-riscos-psicossociais" className="hover:text-primary transition-colors">NR-1 e riscos psicossociais</a></p>
           <p><a href="/tipos-de-lideranca" className="hover:text-primary transition-colors">Tipos de liderança</a></p>
           <p><a href="/andragogia" className="hover:text-primary transition-colors">Andragogia</a></p>
+          <p><a href="/artigos" className="hover:text-primary transition-colors">Artigos</a></p>
 
         </div>
         <div className="text-sm space-y-2">

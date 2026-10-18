@@ -17,6 +17,8 @@ import { Route as Nr1RiscosPsicossociaisRouteImport } from './routes/nr-1-riscos
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TesteDeLiderancaRouteImport } from './routes/teste-de-lideranca'
 import { Route as TiposDeLiderancaRouteImport } from './routes/tipos-de-lideranca'
+import { Route as ArtigosIndexRouteImport } from './routes/artigos.index'
+import { Route as ArtigosSlugRouteImport } from './routes/artigos.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +60,16 @@ const TiposDeLiderancaRoute = TiposDeLiderancaRouteImport.update({
   path: '/tipos-de-lideranca',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArtigosIndexRoute = ArtigosIndexRouteImport.update({
+  id: '/artigos/',
+  path: '/artigos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtigosSlugRoute = ArtigosSlugRouteImport.update({
+  id: '/artigos/$slug',
+  path: '/artigos/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +80,8 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/teste-de-lideranca': typeof TesteDeLiderancaRoute
   '/tipos-de-lideranca': typeof TiposDeLiderancaRoute
+  '/artigos/$slug': typeof ArtigosSlugRoute
+  '/artigos/': typeof ArtigosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +92,8 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/teste-de-lideranca': typeof TesteDeLiderancaRoute
   '/tipos-de-lideranca': typeof TiposDeLiderancaRoute
+  '/artigos/$slug': typeof ArtigosSlugRoute
+  '/artigos': typeof ArtigosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +105,8 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/teste-de-lideranca': typeof TesteDeLiderancaRoute
   '/tipos-de-lideranca': typeof TiposDeLiderancaRoute
+  '/artigos/$slug': typeof ArtigosSlugRoute
+  '/artigos/': typeof ArtigosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +119,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/teste-de-lideranca'
     | '/tipos-de-lideranca'
+    | '/artigos/$slug'
+    | '/artigos/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +131,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/teste-de-lideranca'
     | '/tipos-de-lideranca'
+    | '/artigos/$slug'
+    | '/artigos'
   id:
     | '__root__'
     | '/'
@@ -121,6 +143,8 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/teste-de-lideranca'
     | '/tipos-de-lideranca'
+    | '/artigos/$slug'
+    | '/artigos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +156,8 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TesteDeLiderancaRoute: typeof TesteDeLiderancaRoute
   TiposDeLiderancaRoute: typeof TiposDeLiderancaRoute
+  ArtigosSlugRoute: typeof ArtigosSlugRoute
+  ArtigosIndexRoute: typeof ArtigosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +218,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TiposDeLiderancaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/artigos/': {
+      id: '/artigos/'
+      path: '/artigos'
+      fullPath: '/artigos/'
+      preLoaderRoute: typeof ArtigosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artigos/$slug': {
+      id: '/artigos/$slug'
+      path: '/artigos/$slug'
+      fullPath: '/artigos/$slug'
+      preLoaderRoute: typeof ArtigosSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -204,6 +244,8 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TesteDeLiderancaRoute: TesteDeLiderancaRoute,
   TiposDeLiderancaRoute: TiposDeLiderancaRoute,
+  ArtigosSlugRoute: ArtigosSlugRoute,
+  ArtigosIndexRoute: ArtigosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
