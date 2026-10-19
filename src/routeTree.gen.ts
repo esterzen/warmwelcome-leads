@@ -20,6 +20,7 @@ import { Route as TesteDeLiderancaRouteImport } from './routes/teste-de-lideranc
 import { Route as TiposDeLiderancaRouteImport } from './routes/tipos-de-lideranca'
 import { Route as ArtigosIndexRouteImport } from './routes/artigos.index'
 import { Route as ArtigosSlugRouteImport } from './routes/artigos.$slug'
+import { Route as IaQueResolveApresentacaoRouteImport } from './routes/ia-que-resolve_.apresentacao'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +77,12 @@ const ArtigosSlugRoute = ArtigosSlugRouteImport.update({
   path: '/artigos/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IaQueResolveApresentacaoRoute =
+  IaQueResolveApresentacaoRouteImport.update({
+    id: '/ia-que-resolve_/apresentacao',
+    path: '/ia-que-resolve/apresentacao',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/teste-de-lideranca': typeof TesteDeLiderancaRoute
   '/tipos-de-lideranca': typeof TiposDeLiderancaRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
+  '/ia-que-resolve/apresentacao': typeof IaQueResolveApresentacaoRoute
   '/artigos/': typeof ArtigosIndexRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +109,7 @@ export interface FileRoutesByTo {
   '/teste-de-lideranca': typeof TesteDeLiderancaRoute
   '/tipos-de-lideranca': typeof TiposDeLiderancaRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
+  '/ia-que-resolve/apresentacao': typeof IaQueResolveApresentacaoRoute
   '/artigos': typeof ArtigosIndexRoute
 }
 export interface FileRoutesById {
@@ -115,6 +124,7 @@ export interface FileRoutesById {
   '/teste-de-lideranca': typeof TesteDeLiderancaRoute
   '/tipos-de-lideranca': typeof TiposDeLiderancaRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
+  '/ia-que-resolve_/apresentacao': typeof IaQueResolveApresentacaoRoute
   '/artigos/': typeof ArtigosIndexRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/teste-de-lideranca'
     | '/tipos-de-lideranca'
     | '/artigos/$slug'
+    | '/ia-que-resolve/apresentacao'
     | '/artigos/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +154,7 @@ export interface FileRouteTypes {
     | '/teste-de-lideranca'
     | '/tipos-de-lideranca'
     | '/artigos/$slug'
+    | '/ia-que-resolve/apresentacao'
     | '/artigos'
   id:
     | '__root__'
@@ -156,6 +168,7 @@ export interface FileRouteTypes {
     | '/teste-de-lideranca'
     | '/tipos-de-lideranca'
     | '/artigos/$slug'
+    | '/ia-que-resolve_/apresentacao'
     | '/artigos/'
   fileRoutesById: FileRoutesById
 }
@@ -170,6 +183,7 @@ export interface RootRouteChildren {
   TesteDeLiderancaRoute: typeof TesteDeLiderancaRoute
   TiposDeLiderancaRoute: typeof TiposDeLiderancaRoute
   ArtigosSlugRoute: typeof ArtigosSlugRoute
+  IaQueResolveApresentacaoRoute: typeof IaQueResolveApresentacaoRoute
   ArtigosIndexRoute: typeof ArtigosIndexRoute
 }
 
@@ -252,6 +266,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArtigosSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ia-que-resolve_/apresentacao': {
+      id: '/ia-que-resolve_/apresentacao'
+      path: '/ia-que-resolve/apresentacao'
+      fullPath: '/ia-que-resolve/apresentacao'
+      preLoaderRoute: typeof IaQueResolveApresentacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -266,6 +287,7 @@ const rootRouteChildren: RootRouteChildren = {
   TesteDeLiderancaRoute: TesteDeLiderancaRoute,
   TiposDeLiderancaRoute: TiposDeLiderancaRoute,
   ArtigosSlugRoute: ArtigosSlugRoute,
+  IaQueResolveApresentacaoRoute: IaQueResolveApresentacaoRoute,
   ArtigosIndexRoute: ArtigosIndexRoute,
 }
 export const routeTree = rootRouteImport
