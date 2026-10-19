@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { ChevronLeft, ChevronRight, Maximize, Minimize, Check, X } from "lucide-react";
 import { PhoneDemo } from "@/components/ia/PhoneDemo";
 import {
@@ -31,12 +31,18 @@ export const Route = createFileRoute("/ia-que-resolve_/apresentacao")({
 });
 
 /* ---------- moldura ---------- */
+const PortraitCtx = createContext(false);
 function Frame({ children, n }: { children: ReactNode; n?: number }) {
+  const portrait = useContext(PortraitCtx);
   return (
-    <div className="slide-content grain bg-background text-foreground">
+    <div className={`slide-content grain bg-background text-foreground ${portrait ? "slide-portrait" : ""}`}>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,color-mix(in_oklab,var(--primary)_12%,transparent),transparent_55%)]" />
-      <div className="relative h-full px-[120px] pt-[100px] pb-[110px]">{children}</div>
-      <div className="absolute bottom-[44px] left-[120px] right-[120px] flex justify-between text-muted-foreground slide-chrome">
+      <div
+        className={portrait ? "slide-scroll relative h-full overflow-y-auto px-[72px] pt-[110px] pb-[200px] [&>div.h-full]:h-auto [&>div.h-full]:min-h-full" : "relative h-full px-[120px] pt-[100px] pb-[110px]"}
+        onTouchStart={portrait ? (e) => e.stopPropagation() : undefined}
+        onTouchEnd={undefined}
+      >{children}</div>
+      <div className={`absolute flex justify-between text-muted-foreground slide-chrome ${portrait ? "top-[48px] left-[72px] right-[72px]" : "bottom-[44px] left-[120px] right-[120px]"}`}>
         <span>Ester Zen · IA que resolve</span>
         {n !== undefined && <span>{String(n).padStart(2, "0")}</span>}
       </div>
@@ -128,11 +134,11 @@ const slides: { title: string; render: (n: number) => ReactNode }[] = [
       <Frame n={n}>
         <h2 className="slide-title">Usar IA é diferente de <em className="text-primary">ter IA</em> na empresa.</h2>
         <div className="mt-14 overflow-hidden rounded-3xl border border-border">
-          <div className="grid grid-cols-[0.8fr_1.2fr_1.2fr] bg-card slide-kicker text-muted-foreground">
+          <div className="portrait-hide grid grid-cols-[0.8fr_1.2fr_1.2fr] bg-card slide-kicker text-muted-foreground">
             <span className="p-6" /><span className="p-6">Só o prompt</span><span className="p-6 text-primary">IA na estrutura</span>
           </div>
           {comparativoIA.map(([k, a, b]) => (
-            <div key={k} className="grid grid-cols-[0.8fr_1.2fr_1.2fr] border-t border-border slide-body">
+            <div key={k} className="cmp-row grid grid-cols-[0.8fr_1.2fr_1.2fr] border-t border-border slide-body">
               <span className="px-6 py-5 text-muted-foreground">{k}</span>
               <span className="flex items-center gap-4 px-6 py-5 text-muted-foreground"><X className="h-7 w-7 shrink-0 opacity-50" />{a}</span>
               <span className="flex items-center gap-4 px-6 py-5"><Check className="h-7 w-7 shrink-0 text-primary" />{b}</span>
@@ -335,6 +341,10 @@ function Deck() {
   const [scale, setScale] = useState(0.5);
   const [fs, setFs] = useState(false);
   const [chrome, setChrome] = useState(true);
+  const [portrait, setPortrait] = useState(false);
+  const [canFs, setCanFs] = useState(false);
+  const W = portrait ? 1080 : 1920;
+  const H = portrait ? 1920 : 1080;
   const box = useRef<HTMLDivElement>(null);
   const touch = useRef<number | null>(null);
   const hideT = useRef<ReturnType<typeof setTimeout>>(undefined);
@@ -355,7 +365,12 @@ function Deck() {
   useEffect(() => {
     const el = box.current;
     if (!el) return;
-    const fit = () => setScale(Math.min(el.clientWidth / 1920, el.clientHeight / 1080));
+    setCanFs(!!document.documentElement.requestFullscreen);
+    const fit = () => {
+      const p = el.clientWidth < el.clientHeight;
+      setPortrait(p);
+      setScale(Math.min(el.clientWidth / (p ? 1080 : 1920), el.clientHeight / (p ? 1920 : 1080)));
+    };
     fit();
     const ro = new ResizeObserver(fit);
     ro.observe(el);
@@ -404,10 +419,10 @@ function Deck() {
       <div ref={box} className="absolute inset-0 overflow-hidden" onClick={(e) => (e.clientX > window.innerWidth / 2 ? next() : prev())}>
         <div
           className="absolute left-1/2 top-1/2"
-          style={{ width: 1920, height: 1080, marginLeft: -960, marginTop: -540, transform: `scale(${scale})`, transformOrigin: "center center" }}
+          style={{ width: W, height: H, marginLeft: -W / 2, marginTop: -H / 2, transform: `scale(${scale})`, transformOrigin: "center center" }}
         >
           <div key={i} className="animate-fade-up" style={{ animationDuration: "0.5s" }}>
-            {slides[i].render(i + 1)}
+            <PortraitCtx.Provider value={portrait}>{slides[i].render(i + 1)}</PortraitCtx.Provider>
           </div>
         </div>
       </div>
@@ -416,13 +431,15 @@ function Deck() {
         <div className="h-full bg-primary transition-all duration-500" style={{ width: `${((i + 1) / total) * 100}%` }} />
       </div>
 
-      <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1 rounded-full border border-border bg-card/90 px-2 py-1.5 backdrop-blur transition-opacity ${chrome ? "opacity-100" : "opacity-0"}`}>
+      <div style={{ bottom: "max(12px, env(safe-area-inset-bottom))" }} className={`absolute left-1/2 -translate-x-1/2 flex items-center gap-1 rounded-full border border-border bg-card/90 px-2 py-1.5 backdrop-blur transition-opacity ${chrome ? "opacity-100" : "opacity-0"}`}>
         <button aria-label="Anterior" onClick={prev} className="rounded-full p-2 hover:bg-secondary"><ChevronLeft className="h-4 w-4" /></button>
         <span className="px-2 text-xs tabular-nums text-muted-foreground">{i + 1} / {total}</span>
         <button aria-label="Próximo" onClick={next} className="rounded-full p-2 hover:bg-secondary"><ChevronRight className="h-4 w-4" /></button>
-        <button aria-label={fs ? "Sair da tela cheia" : "Tela cheia"} onClick={toggleFs} className="rounded-full p-2 hover:bg-secondary">
-          {fs ? <Minimize className="h-4 w-4" /> : <Maximize className="h-4 w-4" />}
-        </button>
+        {canFs && (
+          <button aria-label={fs ? "Sair da tela cheia" : "Tela cheia"} onClick={toggleFs} className="rounded-full p-2 hover:bg-secondary">
+            {fs ? <Minimize className="h-4 w-4" /> : <Maximize className="h-4 w-4" />}
+          </button>
+        )}
       </div>
     </div>
   );
