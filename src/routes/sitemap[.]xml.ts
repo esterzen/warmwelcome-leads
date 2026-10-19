@@ -21,6 +21,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/nr-1-riscos-psicossociais", changefreq: "monthly", priority: "0.8" },
           { path: "/tipos-de-lideranca", changefreq: "monthly", priority: "0.8" },
           { path: "/andragogia", changefreq: "monthly", priority: "0.8" },
+          { path: "/ia-que-resolve", changefreq: "monthly", priority: "0.8" },
           { path: "/artigos", changefreq: "weekly", priority: "0.8" },
           ...artigos.map((a) => ({ path: `/artigos/${a.slug}`, changefreq: "monthly" as const, priority: "0.7" })),
 

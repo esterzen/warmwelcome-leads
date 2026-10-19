@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AndragogiaRouteImport } from './routes/andragogia'
 import { Route as DiagnosticoPerfilRouteImport } from './routes/diagnostico-perfil'
+import { Route as IaQueResolveRouteImport } from './routes/ia-que-resolve'
 import { Route as MetodoRouteImport } from './routes/metodo'
 import { Route as Nr1RiscosPsicossociaisRouteImport } from './routes/nr-1-riscos-psicossociais'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -19,6 +20,7 @@ import { Route as TesteDeLiderancaRouteImport } from './routes/teste-de-lideranc
 import { Route as TiposDeLiderancaRouteImport } from './routes/tipos-de-lideranca'
 import { Route as ArtigosIndexRouteImport } from './routes/artigos.index'
 import { Route as ArtigosSlugRouteImport } from './routes/artigos.$slug'
+import { Route as IaQueResolveApresentacaoRouteImport } from './routes/ia-que-resolve_.apresentacao'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -33,6 +35,11 @@ const AndragogiaRoute = AndragogiaRouteImport.update({
 const DiagnosticoPerfilRoute = DiagnosticoPerfilRouteImport.update({
   id: '/diagnostico-perfil',
   path: '/diagnostico-perfil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IaQueResolveRoute = IaQueResolveRouteImport.update({
+  id: '/ia-que-resolve',
+  path: '/ia-que-resolve',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MetodoRoute = MetodoRouteImport.update({
@@ -70,29 +77,39 @@ const ArtigosSlugRoute = ArtigosSlugRouteImport.update({
   path: '/artigos/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IaQueResolveApresentacaoRoute =
+  IaQueResolveApresentacaoRouteImport.update({
+    id: '/ia-que-resolve_/apresentacao',
+    path: '/ia-que-resolve/apresentacao',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/andragogia': typeof AndragogiaRoute
   '/diagnostico-perfil': typeof DiagnosticoPerfilRoute
+  '/ia-que-resolve': typeof IaQueResolveRoute
   '/metodo': typeof MetodoRoute
   '/nr-1-riscos-psicossociais': typeof Nr1RiscosPsicossociaisRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/teste-de-lideranca': typeof TesteDeLiderancaRoute
   '/tipos-de-lideranca': typeof TiposDeLiderancaRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
+  '/ia-que-resolve/apresentacao': typeof IaQueResolveApresentacaoRoute
   '/artigos/': typeof ArtigosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/andragogia': typeof AndragogiaRoute
   '/diagnostico-perfil': typeof DiagnosticoPerfilRoute
+  '/ia-que-resolve': typeof IaQueResolveRoute
   '/metodo': typeof MetodoRoute
   '/nr-1-riscos-psicossociais': typeof Nr1RiscosPsicossociaisRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/teste-de-lideranca': typeof TesteDeLiderancaRoute
   '/tipos-de-lideranca': typeof TiposDeLiderancaRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
+  '/ia-que-resolve/apresentacao': typeof IaQueResolveApresentacaoRoute
   '/artigos': typeof ArtigosIndexRoute
 }
 export interface FileRoutesById {
@@ -100,12 +117,14 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/andragogia': typeof AndragogiaRoute
   '/diagnostico-perfil': typeof DiagnosticoPerfilRoute
+  '/ia-que-resolve': typeof IaQueResolveRoute
   '/metodo': typeof MetodoRoute
   '/nr-1-riscos-psicossociais': typeof Nr1RiscosPsicossociaisRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/teste-de-lideranca': typeof TesteDeLiderancaRoute
   '/tipos-de-lideranca': typeof TiposDeLiderancaRoute
   '/artigos/$slug': typeof ArtigosSlugRoute
+  '/ia-que-resolve_/apresentacao': typeof IaQueResolveApresentacaoRoute
   '/artigos/': typeof ArtigosIndexRoute
 }
 export interface FileRouteTypes {
@@ -114,36 +133,42 @@ export interface FileRouteTypes {
     | '/'
     | '/andragogia'
     | '/diagnostico-perfil'
+    | '/ia-que-resolve'
     | '/metodo'
     | '/nr-1-riscos-psicossociais'
     | '/sitemap.xml'
     | '/teste-de-lideranca'
     | '/tipos-de-lideranca'
     | '/artigos/$slug'
+    | '/ia-que-resolve/apresentacao'
     | '/artigos/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/andragogia'
     | '/diagnostico-perfil'
+    | '/ia-que-resolve'
     | '/metodo'
     | '/nr-1-riscos-psicossociais'
     | '/sitemap.xml'
     | '/teste-de-lideranca'
     | '/tipos-de-lideranca'
     | '/artigos/$slug'
+    | '/ia-que-resolve/apresentacao'
     | '/artigos'
   id:
     | '__root__'
     | '/'
     | '/andragogia'
     | '/diagnostico-perfil'
+    | '/ia-que-resolve'
     | '/metodo'
     | '/nr-1-riscos-psicossociais'
     | '/sitemap.xml'
     | '/teste-de-lideranca'
     | '/tipos-de-lideranca'
     | '/artigos/$slug'
+    | '/ia-que-resolve_/apresentacao'
     | '/artigos/'
   fileRoutesById: FileRoutesById
 }
@@ -151,12 +176,14 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AndragogiaRoute: typeof AndragogiaRoute
   DiagnosticoPerfilRoute: typeof DiagnosticoPerfilRoute
+  IaQueResolveRoute: typeof IaQueResolveRoute
   MetodoRoute: typeof MetodoRoute
   Nr1RiscosPsicossociaisRoute: typeof Nr1RiscosPsicossociaisRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TesteDeLiderancaRoute: typeof TesteDeLiderancaRoute
   TiposDeLiderancaRoute: typeof TiposDeLiderancaRoute
   ArtigosSlugRoute: typeof ArtigosSlugRoute
+  IaQueResolveApresentacaoRoute: typeof IaQueResolveApresentacaoRoute
   ArtigosIndexRoute: typeof ArtigosIndexRoute
 }
 
@@ -181,6 +208,13 @@ declare module '@tanstack/react-router' {
       path: '/diagnostico-perfil'
       fullPath: '/diagnostico-perfil'
       preLoaderRoute: typeof DiagnosticoPerfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ia-que-resolve': {
+      id: '/ia-que-resolve'
+      path: '/ia-que-resolve'
+      fullPath: '/ia-que-resolve'
+      preLoaderRoute: typeof IaQueResolveRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/metodo': {
@@ -232,6 +266,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArtigosSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ia-que-resolve_/apresentacao': {
+      id: '/ia-que-resolve_/apresentacao'
+      path: '/ia-que-resolve/apresentacao'
+      fullPath: '/ia-que-resolve/apresentacao'
+      preLoaderRoute: typeof IaQueResolveApresentacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -239,12 +280,14 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AndragogiaRoute: AndragogiaRoute,
   DiagnosticoPerfilRoute: DiagnosticoPerfilRoute,
+  IaQueResolveRoute: IaQueResolveRoute,
   MetodoRoute: MetodoRoute,
   Nr1RiscosPsicossociaisRoute: Nr1RiscosPsicossociaisRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TesteDeLiderancaRoute: TesteDeLiderancaRoute,
   TiposDeLiderancaRoute: TiposDeLiderancaRoute,
   ArtigosSlugRoute: ArtigosSlugRoute,
+  IaQueResolveApresentacaoRoute: IaQueResolveApresentacaoRoute,
   ArtigosIndexRoute: ArtigosIndexRoute,
 }
 export const routeTree = rootRouteImport

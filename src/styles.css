@@ -218,3 +218,14 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-screen-in, .animate-row-in, .animate-bar-grow, .animate-ping-soft { animation: none; }
 }
+
+/* Apresentação 1920x1080 */
+.slide-content { width: 1920px; height: 1080px; overflow: hidden; position: relative; }
+.slide-title-lg { font-family: var(--font-display); font-size: 112px; line-height: 1; letter-spacing: -0.04em; }
+.slide-title { font-family: var(--font-display); font-size: 84px; line-height: 1.05; letter-spacing: -0.03em; }
+.slide-subtitle { font-family: var(--font-display); font-size: 48px; line-height: 1.15; letter-spacing: -0.02em; }
+.slide-body-lg { font-size: 38px; line-height: 1.25; }
+.slide-body { font-size: 30px; line-height: 1.3; }
+.slide-caption { font-size: 24px; line-height: 1.3; }
+.slide-kicker { font-size: 22px; line-height: 1.1; letter-spacing: 0.2em; text-transform: uppercase; }
+.slide-chrome { font-size: 20px; line-height: 1.15; white-space: nowrap; }
