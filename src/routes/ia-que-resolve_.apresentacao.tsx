@@ -12,6 +12,7 @@ import {
   encontros,
   formatos,
   faqIA,
+  mitoRealidade,
 } from "@/components/ia/ia-data";
 
 export const Route = createFileRoute("/ia-que-resolve_/apresentacao")({
