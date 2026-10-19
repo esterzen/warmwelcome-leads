@@ -51,8 +51,10 @@ const K = ({ children }: { children: ReactNode }) => <p className="slide-kicker 
 
 /** Celular em tamanho de palco */
 function BigPhone({ initial = 0, caption = true }: { initial?: number; caption?: boolean }) {
+  const portrait = useContext(PortraitCtx);
+  const sc = portrait ? 1.75 : caption ? 1.25 : 1.38;
   return (
-    <div className="origin-top" style={{ transform: `scale(${caption ? 1.25 : 1.38})` }}>
+    <div className="origin-top" style={{ transform: `scale(${sc})`, height: portrait ? (607 + (caption ? 70 : 0)) * sc : undefined }}>
       <PhoneDemo initial={initial} showTabs={false} showCaption={caption} />
     </div>
   );
