@@ -13,3 +13,4 @@ Palestra principal: "Do líder gargalo ao líder que desenvolve" — como o líd
 - [Tipos de liderança](/tipos-de-lideranca): Guia dos 8 estilos de liderança (autocrática, democrática, liberal, situacional, servidora, transformacional, coach e tóxica) com sinais, aplicação e riscos.
 - [Andragogia](/andragogia): O que é andragogia, os 6 princípios de Malcolm Knowles, comparativo com pedagogia e como aplicar em treinamentos de liderança que mudam comportamento.
 
+- [IA que resolve](/ia-que-resolve): Palestra e programa de IA aplicada à gestão para pequenas e médias empresas e entidades. Case Oh My Bread (rede de 20 lojas), método em 6 passos, turma de 4 encontros e implementação sob medida.
