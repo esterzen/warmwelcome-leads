@@ -39,8 +39,6 @@ function Frame({ children, n }: { children: ReactNode; n?: number }) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,color-mix(in_oklab,var(--primary)_12%,transparent),transparent_55%)]" />
       <div
         className={portrait ? "slide-scroll relative h-full overflow-y-auto px-[72px] pt-[110px] pb-[200px] [&>div.h-full]:h-auto [&>div.h-full]:min-h-full" : "relative h-full px-[120px] pt-[100px] pb-[110px]"}
-        onTouchStart={portrait ? (e) => e.stopPropagation() : undefined}
-        onTouchEnd={undefined}
       >{children}</div>
       <div className={`absolute flex justify-between text-muted-foreground slide-chrome ${portrait ? "top-[48px] left-[72px] right-[72px]" : "bottom-[44px] left-[120px] right-[120px]"}`}>
         <span>Ester Zen · IA que resolve</span>
