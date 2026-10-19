@@ -47,7 +47,7 @@ const K = ({ children }: { children: ReactNode }) => <p className="slide-kicker 
 /** Celular em tamanho de palco */
 function BigPhone({ initial = 0, caption = true }: { initial?: number; caption?: boolean }) {
   return (
-    <div className="origin-top" style={{ transform: "scale(1.55)" }}>
+    <div className="origin-top" style={{ transform: `scale(${caption ? 1.25 : 1.38})` }}>
       <PhoneDemo initial={initial} showTabs={false} showCaption={caption} />
     </div>
   );
@@ -385,11 +385,12 @@ function Deck() {
     >
       <div ref={box} className="absolute inset-0 overflow-hidden" onClick={(e) => (e.clientX > window.innerWidth / 2 ? next() : prev())}>
         <div
-          key={i}
-          className="absolute left-1/2 top-1/2 animate-fade-up"
-          style={{ width: 1920, height: 1080, marginLeft: -960, marginTop: -540, transform: `scale(${scale})`, transformOrigin: "center center", animationDuration: "0.5s" }}
+          className="absolute left-1/2 top-1/2"
+          style={{ width: 1920, height: 1080, marginLeft: -960, marginTop: -540, transform: `scale(${scale})`, transformOrigin: "center center" }}
         >
-          {slides[i].render(i + 1)}
+          <div key={i} className="animate-fade-up" style={{ animationDuration: "0.5s" }}>
+            {slides[i].render(i + 1)}
+          </div>
         </div>
       </div>
 
