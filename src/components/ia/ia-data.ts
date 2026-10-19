@@ -51,9 +51,15 @@ export const encontros = [
 ] as const;
 
 export const formatos = [
-  ["Para abrir", "Palestra", "Uma noite para entender a diferença entre usar IA e ter IA na estrutura."],
-  ["Para construir", "Turma de quatro encontros", "Com diagnóstico prévio. Cada empresa sai com o seu sistema funcionando."],
-  ["Para aprofundar", "Implementação sob medida", "O sistema construído com a sua equipe, como no caso Oh My Bread."],
+  ["Nível 1 · Abrir a cabeça", "Palestra / Imersão", "Um encontro para ver o case real funcionando e quebrar o mito de que isso é coisa de programador."],
+  ["Nível 2 · Mão na massa", "Workshop prático", "Você entra com uma rotina emperrada (pedido, checklist, treinamento) e sai com o seu primeiro app rodando no celular da equipe."],
+  ["Nível 3 · Lado a lado", "Consultoria de implementação", "Mapeamos e colocamos no ar a estrutura completa da sua empresa, como no caso Oh My Bread."],
+] as const;
+
+export const mitoRealidade = [
+  ["O mito", "Preciso contratar uma software house, gastar uma fortuna e esperar meses."],
+  ["A realidade", "Sua habilidade mais valiosa não é código. É saber como a sua empresa funciona. Se você sabe explicar o processo, você constrói a ferramenta com IA."],
+  ["O papel da Ester", "Não é entregar uma caixa-preta. É conduzir você pelo método para você ter autonomia de criar as ferramentas que a sua empresa precisa."],
 ] as const;
 
 export const faqIA = [

@@ -12,6 +12,7 @@ import {
   encontros,
   formatos,
   faqIA,
+  mitoRealidade,
 } from "@/components/ia/ia-data";
 
 export const Route = createFileRoute("/ia-que-resolve_/apresentacao")({
@@ -61,9 +62,9 @@ const slides: { title: string; render: (n: number) => ReactNode }[] = [
       <Frame>
         <div className="grid h-full grid-cols-[1.15fr_0.85fr] items-center gap-10">
           <div>
-            <K>Palestra e programa</K>
-            <h1 className="slide-title-lg mt-8">IA que <em className="text-primary">resolve</em></h1>
-            <p className="slide-subtitle mt-8 text-muted-foreground">A rotina da sua empresa organizada no celular.</p>
+            <K>IA que resolve</K>
+            <h1 className="slide-title mt-8">Você não precisa de um programador.</h1>
+            <p className="slide-subtitle mt-8 text-muted-foreground">Precisa aprender a transformar a rotina da sua empresa em <em className="text-primary">ferramentas reais no celular</em>.</p>
             <p className="slide-caption mt-14">Ester Zen · Comportamento, relacionamento e resultado</p>
           </div>
           <div className="flex justify-center pt-[40px]"><BigPhone caption={false} /></div>
@@ -100,6 +101,23 @@ const slides: { title: string; render: (n: number) => ReactNode }[] = [
           <p className="slide-body-lg mt-14 max-w-[1300px] text-muted-foreground">
             Prompt é pedir. <span className="text-foreground">Mas pedir o quê, se a rotina não está escrita em lugar nenhum?</span>
           </p>
+        </div>
+      </Frame>
+    ),
+  },
+  {
+    title: "A nova fase da IA",
+    render: (n) => (
+      <Frame n={n}>
+        <K>O que ninguém te contou sobre a nova fase da IA</K>
+        <h2 className="slide-title mt-8">Quem constrói agora é <em className="text-primary">quem conhece a empresa</em>.</h2>
+        <div className="mt-14 grid grid-cols-3 gap-10">
+          {mitoRealidade.map(([t, d], k) => (
+            <div key={t} className={`min-h-[340px] rounded-3xl border p-12 ${k === 1 ? "border-primary bg-primary/10" : "border-border bg-card"}`}>
+              <p className={`slide-kicker ${k === 0 ? "text-muted-foreground line-through" : "text-primary"}`}>{t}</p>
+              <p className="slide-body-lg mt-6">{d}</p>
+            </div>
+          ))}
         </div>
       </Frame>
     ),

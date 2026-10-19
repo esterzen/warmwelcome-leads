@@ -15,6 +15,7 @@ import {
   encontros,
   formatos,
   faqIA,
+  mitoRealidade,
 } from "@/components/ia/ia-data";
 
 const URL = "https://www.esterzen.com/ia-que-resolve";
@@ -91,13 +92,13 @@ function IAPage() {
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_70%_30%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_60%)]" />
           <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:grid-cols-[1.1fr_0.9fr] md:px-10">
             <div className="animate-fade-up">
-              <Eyebrow>Palestra e programa · IA aplicada à gestão</Eyebrow>
+              <Eyebrow>IA que resolve · para quem é dono de empresa</Eyebrow>
               <h1 className="mt-5 text-4xl leading-[1.05] md:text-6xl text-balance">
-                IA que resolve: <em className="text-primary">a rotina da sua empresa</em> organizada no celular.
+                Você não precisa de um programador. <em className="text-primary">Precisa transformar a sua rotina</em> em ferramentas reais no celular.
               </h1>
               <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-                Para a maioria, IA ainda é escrever uma pergunta no ChatGPT. Aqui, ela vira pedido registrado, aviso na hora certa e
-                meta visível para quem vende — sem precisar saber programar.
+                Empresários comuns estão saindo dos grupos de WhatsApp para sistemas próprios que a equipe realmente usa —
+                construídos por eles mesmos, explicando a rotina em português, com a IA fazendo o resto.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild size="lg" className="gap-2">
@@ -132,6 +133,22 @@ function IAPage() {
             <p className="mt-10 max-w-3xl font-display text-2xl md:text-3xl text-balance">
               Funciona enquanto o dono está presente. <span className="text-primary italic">Quando a empresa cresce, ele vira o gargalo.</span>
             </p>
+          </div>
+        </section>
+
+        {/* REVELAÇÃO */}
+        <section className="border-t border-border/60 py-20">
+          <div className="mx-auto max-w-6xl px-5 md:px-10">
+            <Eyebrow>O que ninguém te contou sobre a nova fase da IA</Eyebrow>
+            <h2 className="mt-4 text-3xl md:text-5xl text-balance">Quem constrói agora é <em className="text-primary">quem conhece a empresa</em>.</h2>
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {mitoRealidade.map(([t, d], k) => (
+                <div key={t} className={`rounded-2xl border p-7 ${k === 1 ? "border-primary bg-primary/10" : "border-border bg-card"}`}>
+                  <p className={`text-xs uppercase tracking-widest ${k === 0 ? "text-muted-foreground line-through" : "text-primary"}`}>{t}</p>
+                  <p className="mt-3 font-display text-xl md:text-2xl">{d}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
