@@ -3,19 +3,22 @@ import { Nav, Footer } from "@/components/landing/sections";
 import { WhatsappFab } from "@/components/landing/WhatsappFab";
 import { PhoneDemo } from "@/components/ia/PhoneDemo";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageCircle, Mail, Check, Presentation, X } from "lucide-react";
+import { ArrowRight, MessageCircle, Mail, Check, Presentation, X, ShieldCheck } from "lucide-react";
 import { buildWhatsappUrl, buildMailtoUrl } from "@/lib/contact";
 import {
   cenaHoje,
   comparativoIA,
   ondeEntra,
-  gatilhos,
   caseItens,
   metodo,
-  encontros,
   formatos,
   faqIA,
   mitoRealidade,
+  niveis,
+  seguranca,
+  adesaoEquipe,
+  gradeDia,
+  trilhas,
 } from "@/components/ia/ia-data";
 
 const URL = "https://www.esterzen.com/ia-que-resolve";
@@ -177,6 +180,23 @@ function IAPage() {
           </div>
         </section>
 
+        {/* 3 NIVEIS */}
+        <section className="py-20">
+          <div className="mx-auto max-w-6xl px-5 md:px-10">
+            <Eyebrow>O método dos 3 níveis</Eyebrow>
+            <h2 className="mt-4 text-3xl md:text-5xl text-balance">Onde a sua empresa está <em className="text-primary">na IA</em>?</h2>
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {niveis.map(([n, t, tipo, d], k) => (
+                <div key={n} className={`rounded-2xl border p-7 ${k === 2 ? "border-primary bg-primary/10" : "border-border bg-card"}`}>
+                  <p className="text-xs uppercase tracking-widest text-primary">{n} · {tipo}</p>
+                  <p className="mt-3 font-display text-2xl">{t}</p>
+                  <p className="mt-3 text-muted-foreground">{d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CASE */}
         <section id="case" className="scroll-mt-20 py-24">
           <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:grid-cols-[0.9fr_1.1fr] md:px-10">
@@ -216,16 +236,6 @@ function IAPage() {
                 </div>
               ))}
             </div>
-            <h3 className="mt-16 text-2xl md:text-3xl">O sistema trabalha quando ninguém lembra.</h3>
-            <div className="mt-6 grid gap-5 md:grid-cols-3">
-              {gatilhos.map(([t, d], k) => (
-                <div key={t} className="rounded-2xl border border-border p-6">
-                  <p className="font-display text-4xl text-primary">{k + 1}</p>
-                  <p className="mt-2 font-medium">{t}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{d}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -246,12 +256,36 @@ function IAPage() {
             <p className="mt-8 max-w-3xl text-muted-foreground">
               Quando os passos 1, 2 e 3 são bem feitos, o sistema sai leve e a equipe usa sem esforço.
             </p>
-            <blockquote className="mt-14 border-l-2 border-primary pl-6">
-              <p className="font-display text-2xl md:text-3xl italic text-balance">
-                “Não há nada tão inútil quanto fazer com grande eficiência algo que nem deveria ser feito.”
-              </p>
-              <footer className="mt-3 text-sm text-muted-foreground">Peter Drucker · Antes de automatizar, corte.</footer>
-            </blockquote>
+          </div>
+        </section>
+
+        {/* EQUIPE + DADOS */}
+        <section className="border-t border-border/60 py-20">
+          <div className="mx-auto grid max-w-6xl gap-12 px-5 md:grid-cols-2 md:px-10">
+            <div>
+              <Eyebrow>Por que a equipe resiste</Eyebrow>
+              <h2 className="mt-4 text-3xl md:text-4xl text-balance">E como fazer ela <em className="text-primary">abraçar a IA</em>.</h2>
+              <div className="mt-8 space-y-4">
+                {adesaoEquipe.map(([t, d]) => (
+                  <div key={t} className="rounded-2xl border border-border bg-card p-5">
+                    <p className="font-display text-xl">{t}</p>
+                    <p className="mt-1 text-muted-foreground">{d}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <Eyebrow>Seus dados protegidos</Eyebrow>
+              <h2 className="mt-4 text-3xl md:text-4xl text-balance">O concorrente <em className="text-primary">não vê</em> os seus clientes.</h2>
+              <div className="mt-8 space-y-4">
+                {seguranca.map(([t, d]) => (
+                  <div key={t} className="flex gap-4 rounded-2xl border border-border p-5">
+                    <ShieldCheck className="mt-1 h-5 w-5 shrink-0 text-primary" />
+                    <div><p className="font-display text-xl">{t}</p><p className="mt-1 text-muted-foreground">{d}</p></div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -269,15 +303,28 @@ function IAPage() {
                 </div>
               ))}
             </div>
-            <h3 className="mt-16 text-2xl md:text-3xl">Quatro encontros, mão na massa.</h3>
-            <p className="mt-2 text-muted-foreground">Cada empresa sai com o próprio sistema funcionando.</p>
-            <div className="mt-6 grid gap-4 md:grid-cols-4">
-              {encontros.map(([t, o, s], k) => (
-                <div key={t} className="rounded-2xl border border-border p-5">
-                  <p className="text-sm text-primary">Encontro {k + 1}</p>
+            <h3 className="mt-16 text-2xl md:text-3xl">A imersão de 1 dia, hora a hora.</h3>
+            <p className="mt-2 text-muted-foreground">Manhã para entender. Tarde para construir. Você sai com a ferramenta funcionando.</p>
+            <div className="mt-6 grid gap-5 md:grid-cols-2">
+              {([["Manhã", gradeDia.manha], ["Tarde", gradeDia.tarde]] as const).map(([p, itens]) => (
+                <div key={p} className="rounded-2xl border border-border bg-card p-6">
+                  <p className="text-xs uppercase tracking-widest text-primary">{p}</p>
+                  <ol className="mt-4 space-y-4">
+                    {itens.map(([t, d]) => (
+                      <li key={t}><p className="font-display text-xl">{t}</p><p className="text-sm text-muted-foreground">{d}</p></li>
+                    ))}
+                  </ol>
+                </div>
+              ))}
+            </div>
+            <h3 className="mt-14 text-2xl md:text-3xl">Ninguém começa da tela em branco.</h3>
+            <p className="mt-2 text-muted-foreground">Na oficina, cada empresário escolhe uma trilha e adapta ao próprio negócio.</p>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {trilhas.map(([k, t, d]) => (
+                <div key={k} className="rounded-2xl border border-border p-5">
+                  <p className="text-sm text-primary">{k}</p>
                   <p className="mt-1 font-display text-xl">{t}</p>
-                  <p className="mt-2 text-sm text-muted-foreground">{o}</p>
-                  <p className="mt-3 text-sm">Sai com: <span className="text-primary">{s}</span></p>
+                  <p className="mt-2 text-sm text-muted-foreground">{d}</p>
                 </div>
               ))}
             </div>
