@@ -1,18 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
-import { ChevronLeft, ChevronRight, Maximize, Minimize, Check, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize, Minimize, Check, X, ShieldCheck } from "lucide-react";
 import { PhoneDemo } from "@/components/ia/PhoneDemo";
 import {
   cenaHoje,
   comparativoIA,
   ondeEntra,
-  gatilhos,
   caseItens,
   metodo,
-  encontros,
   formatos,
-  faqIA,
   mitoRealidade,
+  niveis,
+  seguranca,
+  adesaoEquipe,
+  gradeDia,
+  trilhas,
 } from "@/components/ia/ia-data";
 
 export const Route = createFileRoute("/ia-que-resolve_/apresentacao")({
@@ -165,16 +167,17 @@ const slides: { title: string; render: (n: number) => ReactNode }[] = [
     ),
   },
   {
-    title: "Quando ninguém lembra",
+    title: "Os 3 níveis",
     render: (n) => (
       <Frame n={n}>
-        <h2 className="slide-title">O sistema trabalha <em className="text-primary">quando ninguém lembra.</em></h2>
-        <div className="mt-20 grid grid-cols-3 gap-10">
-          {gatilhos.map(([t, d], k) => (
-            <div key={t} className="min-h-[380px] rounded-3xl border border-border p-12">
-              <p className="slide-title text-primary">{k + 1}</p>
-              <p className="slide-body-lg mt-6">{t}</p>
-              <p className="slide-body mt-4 text-muted-foreground">{d}</p>
+        <K>O método dos 3 níveis</K>
+        <h2 className="slide-title mt-8">Onde a sua empresa está <em className="text-primary">na IA</em>?</h2>
+        <div className="mt-14 grid grid-cols-3 gap-10">
+          {niveis.map(([nv, t, tipo, d], k) => (
+            <div key={nv} className={`min-h-[420px] rounded-3xl border p-12 ${k === 2 ? "border-primary bg-primary/10" : "border-border bg-card"}`}>
+              <p className="slide-kicker text-primary">{nv} · {tipo}</p>
+              <p className="slide-subtitle mt-6">{t}</p>
+              <p className="slide-body mt-6 text-muted-foreground">{d}</p>
             </div>
           ))}
         </div>
@@ -237,32 +240,37 @@ const slides: { title: string; render: (n: number) => ReactNode }[] = [
       </Frame>
     ),
   },
-  ...[0, 2].map((start) => ({
-    title: "O que os empresários perguntam",
-    render: (n: number) => (
+  {
+    title: "A equipe abraça",
+    render: (n) => (
       <Frame n={n}>
-        <K>O que os empresários perguntam</K>
+        <K>Por que a equipe resiste</K>
+        <h2 className="slide-title mt-8">E como fazer ela <em className="text-primary">abraçar a IA</em>.</h2>
         <div className="mt-14 grid grid-cols-2 gap-10">
-          {faqIA.slice(start, start + 2).concat(start === 2 ? faqIA.slice(4, 6) : []).slice(0, start === 2 ? 4 : 2).map(([q, a]) => (
-            <div key={q} className="rounded-3xl border border-border bg-card p-10">
-              <p className="slide-subtitle !text-[40px]">“{q}”</p>
-              <p className="slide-caption mt-5 text-muted-foreground">{a}</p>
+          {adesaoEquipe.map(([t, d], k) => (
+            <div key={t} className={`rounded-3xl border p-10 ${k === 0 ? "border-primary bg-primary/10" : "border-border bg-card"}`}>
+              <p className="slide-subtitle !text-[44px]">{t}</p>
+              <p className="slide-body mt-5 text-muted-foreground">{d}</p>
             </div>
           ))}
         </div>
       </Frame>
     ),
-  })),
+  },
   {
-    title: "Drucker",
+    title: "Seus dados protegidos",
     render: (n) => (
       <Frame n={n}>
-        <div className="flex h-full flex-col justify-center">
-          <p className="slide-title max-w-[1550px] italic">“Não há nada tão inútil quanto fazer com grande eficiência algo que nem deveria ser feito.”</p>
-          <p className="slide-body-lg mt-10 text-primary">Peter Drucker</p>
-          <p className="slide-body mt-16 max-w-[1300px] text-muted-foreground">
-            Antes de automatizar, corte. A primeira pergunta do diagnóstico é: o que a equipe faz que ninguém usa?
-          </p>
+        <K>Seus dados protegidos</K>
+        <h2 className="slide-title mt-8">O concorrente <em className="text-primary">não vê</em> os seus clientes.</h2>
+        <div className="mt-14 grid grid-cols-3 gap-10">
+          {seguranca.map(([t, d]) => (
+            <div key={t} className="min-h-[380px] rounded-3xl border border-border bg-card p-12">
+              <ShieldCheck className="h-14 w-14 text-primary" />
+              <p className="slide-subtitle mt-6 !text-[44px]">{t}</p>
+              <p className="slide-body mt-5 text-muted-foreground">{d}</p>
+            </div>
+          ))}
         </div>
       </Frame>
     ),
@@ -282,18 +290,38 @@ const slides: { title: string; render: (n: number) => ReactNode }[] = [
     ),
   },
   {
-    title: "Quatro encontros",
+    title: "Imersão de 1 dia",
     render: (n) => (
       <Frame n={n}>
-        <h2 className="slide-title">Quatro encontros, mão na massa.</h2>
-        <p className="slide-body mt-6 text-muted-foreground">Cada empresa sai com o próprio sistema funcionando.</p>
-        <div className="mt-14 grid grid-cols-4 gap-8">
-          {encontros.map(([t, o, s], k) => (
-            <div key={t} className="min-h-[400px] rounded-3xl border border-border bg-card p-9">
-              <p className="slide-caption text-primary">Encontro {k + 1}</p>
-              <p className="slide-subtitle mt-3 !text-[42px]">{t}</p>
-              <p className="slide-caption mt-5 text-muted-foreground">{o}</p>
-              <p className="slide-caption mt-6">Sai com: <span className="text-primary">{s}</span></p>
+        <h2 className="slide-title">Imersão de 1 dia, <em className="text-primary">mão na massa</em>.</h2>
+        <p className="slide-body mt-6 text-muted-foreground">Manhã para entender. Tarde para construir.</p>
+        <div className="mt-12 grid grid-cols-2 gap-10">
+          {([["Manhã", gradeDia.manha], ["Tarde", gradeDia.tarde]] as const).map(([p, itens]) => (
+            <div key={p} className="rounded-3xl border border-border bg-card p-10">
+              <p className="slide-kicker text-primary">{p}</p>
+              <ol className="mt-6 space-y-6">
+                {itens.map(([t, d]) => (
+                  <li key={t}><p className="slide-body-lg">{t}</p><p className="slide-caption text-muted-foreground">{d}</p></li>
+                ))}
+              </ol>
+            </div>
+          ))}
+        </div>
+      </Frame>
+    ),
+  },
+  {
+    title: "Três trilhas",
+    render: (n) => (
+      <Frame n={n}>
+        <K>Ninguém começa da tela em branco</K>
+        <h2 className="slide-title mt-8">Escolha uma trilha. <em className="text-primary">Saia com ela pronta.</em></h2>
+        <div className="mt-14 grid grid-cols-3 gap-10">
+          {trilhas.map(([k, t, d]) => (
+            <div key={k} className="min-h-[400px] rounded-3xl border border-border bg-card p-12">
+              <p className="slide-kicker text-primary">{k}</p>
+              <p className="slide-subtitle mt-6">{t}</p>
+              <p className="slide-body mt-6 text-muted-foreground">{d}</p>
             </div>
           ))}
         </div>
