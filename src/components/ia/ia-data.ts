@@ -51,9 +51,9 @@ export const encontros = [
 ] as const;
 
 export const formatos = [
-  ["Nível 1 · Abrir a cabeça", "Palestra / Imersão", "Um encontro para ver o case real funcionando e quebrar o mito de que isso é coisa de programador."],
-  ["Nível 2 · Mão na massa", "Workshop prático", "Você entra com uma rotina emperrada (pedido, checklist, treinamento) e sai com o seu primeiro app rodando no celular da equipe."],
-  ["Nível 3 · Lado a lado", "Consultoria de implementação", "Mapeamos e colocamos no ar a estrutura completa da sua empresa, como no caso Oh My Bread."],
+  ["Para abrir a cabeça", "Palestra", "Uma noite para ver o case real funcionando e quebrar o mito de que isso é coisa de programador."],
+  ["Para fazer", "Imersão de 1 dia", "Você entra com uma rotina emperrada e sai, no mesmo dia, com a primeira ferramenta rodando no celular da equipe."],
+  ["Para ir além", "Consultoria de implementação", "Mapeamos e colocamos no ar a estrutura completa da sua empresa, como no caso Oh My Bread."],
 ] as const;
 
 export const mitoRealidade = [
@@ -69,4 +69,44 @@ export const faqIA = [
   ["Isso é coisa de empresa grande.", "A pequena tem uma vantagem: menos processo para mudar e decisão mais rápida. Começa por uma rotina, não pela empresa toda."],
   ["Não tenho tempo para aprender ferramenta.", "Você não vai aprender ferramenta. Vai sair com o sistema da sua empresa funcionando, construído em cima de um problema seu."],
   ["E os meus dados?", "Acesso por login, só para quem precisa. O que é sensível não fica em lugar aberto. Isso é decidido na regra, antes de construir qualquer coisa."],
+] as const;
+
+export const niveis = [
+  ["Nível 1", "IA que responde", "Consultiva", "Você pergunta e ela responde: textos, ideias, cálculos. Ajuda uma pessoa, uma vez de cada vez."],
+  ["Nível 2", "IA que executa", "Operacional", "Ela faz a tarefa repetitiva: resume pedidos, organiza planilhas, escreve o retorno ao cliente no tom da casa."],
+  ["Nível 3", "IA na estrutura", "Estrutural", "A rotina vira ferramenta no celular de toda a equipe, com histórico, avisos e painel. É onde está a Oh My Bread."],
+] as const;
+
+export const seguranca = [
+  ["Cada um vê o que precisa", "Acesso por login. A loja vê a loja; o dono vê tudo."],
+  ["Dado sensível não vai para conversa aberta", "Tabela de preços, clientes e margens ficam no sistema da empresa, não colados num chat qualquer."],
+  ["A regra vem antes da ferramenta", "Quem pode ver, editar e apagar é decidido antes de construir qualquer coisa."],
+] as const;
+
+export const adesaoEquipe = [
+  ["O medo real", "O funcionário não resiste à IA. Resiste a parecer que não sabe usar."],
+  ["Nasce da rotina dela", "A ferramenta repete o que a equipe já faz, com as palavras da loja. Nada novo para decorar."],
+  ["Celular, poucos toques", "Abriu, tocou, registrou. Se precisa de manual, está complicado demais."],
+  ["Começa com quem puxa", "Uma pessoa da equipe testa primeiro e vira referência para as outras."],
+] as const;
+
+export const gradeDia = {
+  manha: [
+    ["Abertura", "O estado real da IA para quem tem empresa: o que vale e o que é perda de tempo"],
+    ["Os 3 níveis", "Da IA que responde à IA na estrutura: onde a sua empresa está hoje"],
+    ["Case Oh My Bread", "Uma rede de 20 lojas que saiu dos grupos de WhatsApp, dissecada por dentro"],
+    ["Seus dados protegidos", "O que pode e o que não pode ir para a IA, explicado sem tecniquês"],
+  ],
+  tarde: [
+    ["O método", "Desmontar uma rotina: onde trava, como é feita, qual é a regra"],
+    ["Oficina mão na massa", "Construir a primeira ferramenta no celular, sem programar"],
+    ["A equipe usando", "Como apresentar à equipe e vencer a resistência na primeira semana"],
+    ["Compromisso de segunda-feira", "Cada participante sai com a ferramenta pronta para testar"],
+  ],
+} as const;
+
+export const trilhas = [
+  ["Trilha A", "Atendimento e vendas", "Para quem perde cliente por demora no retorno: triagem de pedidos e orçamentos com lembrete de quem não respondeu."],
+  ["Trilha B", "Rotina e turno", "Para quem sofre com erro operacional: checklist de abertura, fechamento e conferência no celular."],
+  ["Trilha C", "Treinamento vivo", "Para quem explica tudo de novo a cada contratação: o manual da empresa virando trilha no celular."],
 ] as const;
