@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav, Footer } from "@/components/landing/sections";
 import { WhatsappFab } from "@/components/landing/WhatsappFab";
 import { ArrowRight } from "lucide-react";
-import { artigos, formatarData } from "@/lib/artigos";
+import { publicados, formatarData } from "@/lib/artigos";
 
 const TITLE = "Artigos sobre liderança, vendas e IA na gestão | Ester Zen";
 const DESC =
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/artigos/")({
 });
 
 function ArtigosPage() {
-  const lista = [...artigos].sort((a, b) => b.data.localeCompare(a.data));
+  const lista = [...publicados()].sort((a, b) => b.data.localeCompare(a.data));
   return (
     <div className="dark min-h-screen bg-background text-foreground">
       <Nav />

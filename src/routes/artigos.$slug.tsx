@@ -4,13 +4,13 @@ import { WhatsappFab } from "@/components/landing/WhatsappFab";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { buildWhatsappUrl } from "@/lib/contact";
-import { artigos, formatarData } from "@/lib/artigos";
+import { publicados, formatarData } from "@/lib/artigos";
 
 const BASE = "https://www.esterzen.com";
 
 export const Route = createFileRoute("/artigos/$slug")({
   loader: ({ params }) => {
-    const artigo = artigos.find((a) => a.slug === params.slug);
+    const artigo = publicados().find((a) => a.slug === params.slug);
     if (!artigo) throw notFound();
     return artigo;
   },
