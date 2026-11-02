@@ -55,6 +55,40 @@ export const artigos: Artigo[] = [
       { p: "Para esta semana: escreva o que um funcionário novo precisa saber no primeiro dia. Uma página. Ela vai servir para a próxima pessoa que você contratar, e para a IA também." },
     ],
   },
+  {
+    slug: "hospitalidade-e-o-que-o-cliente-sente",
+    titulo: "Atendimento resolve o pedido. Hospitalidade faz o cliente voltar",
+    descricao:
+      "Um café por conta da casa, escondido embaixo do pires. Por que hospitalidade não é brinde: é a experiência pensada a partir do cliente.",
+    data: "2026-11-09",
+    tema: "Liderança comercial",
+    blocos: [
+      { p: "Pedi um café e, quando levantei a xícara, tinha um adesivo no pires: “Esse café é por nossa conta. Parabéns.”" },
+      { p: "Não era meu aniversário. Não tinha cadastro, cupom, nada. Foi aleatório. E eu saí de lá contando para todo mundo, inclusive para você agora." },
+      { p: "Isso é hospitalidade. Não é o café de graça. É alguém ter pensado no momento em que eu ia descobrir aquilo. É uma experiência pensada a partir do cliente, não do caixa." },
+      { p: "Atendimento é o que você faz. Hospitalidade é o que o cliente sente. Dá para atender certo e mesmo assim o cliente ir embora sem nada para contar." },
+      { p: "E não custa caro. Custa pensar." },
+      { p: "Para esta semana: reúna a equipe e pergunte em que momento da visita o seu cliente poderia ter uma surpresa boa. Escolham um. Façam." },
+      { p: "Atendimento resolve o pedido. Hospitalidade faz o cliente voltar, e trazer alguém junto." },
+    ],
+  },
+  {
+    slug: "acao-sem-informacao",
+    titulo: "Ação sem informação é festa sem convite",
+    descricao:
+      "A empresa prepara a ação e esquece de preparar o cliente. Como informar do ponto de vista do cliente: o que ele ganha por estar ali naquele dia.",
+    data: "2026-11-16",
+    tema: "Liderança comercial",
+    blocos: [
+      { p: "No mesmo café, a vitrine estava linda. Doces de Halloween feitos à mão: aranhas de brigadeiro, abóboras, lápides de chocolate. Trabalho caprichado." },
+      { p: "E eu só descobri porque estava lá. Ninguém sabia." },
+      { p: "Esse é um dos erros que eu mais vejo nas empresas: preparam a ação, investem, se dedicam, e esquecem de preparar o cliente. A ação acontece do ponto de vista do negócio: “temos doces de Halloween”. O cliente nem sabe que existe, nem por que deveria ir." },
+      { p: "Informar não é anunciar o produto. É contar o que o cliente ganha por estar ali naquele dia. “Temos doces temáticos” fala do meu negócio. “Traga as crianças no sábado à tarde: elas escolhem a aranha mais assustadora e você toma o seu café em paz” fala do cliente." },
+      { p: "O conceito é simples: o cliente no meio, não o meu negócio no meio." },
+      { p: "Para a próxima ação: antes de produzir, escreva numa frase o que o cliente ganha por ir e quando ele vai ficar sabendo. Se a frase falar da sua empresa, reescreva." },
+      { p: "Ação sem informação é festa sem convite." },
+    ],
+  },
 ];
 
 // Só aparecem no site os artigos com data de hoje ou anterior (horário de Brasília).
