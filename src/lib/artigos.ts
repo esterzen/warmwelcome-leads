@@ -81,7 +81,7 @@ export const artigos: Artigo[] = [
     tema: "Liderança comercial",
     blocos: [
       { p: "No mesmo café, a vitrine estava linda. Doces de Halloween feitos à mão: aranhas de brigadeiro, abóboras, lápides de chocolate. Trabalho caprichado." },
-      { p: "E eu só descobri porque estava lá. Ninguém sabia." },
+      { p: "E eu só descobri porque estava lá. Até tinha um story anunciando o Halloween, com foto linda. Mas falava do café, não de mim. Não dizia por que eu deveria ir." },
       { p: "Esse é um dos erros que eu mais vejo nas empresas: preparam a ação, investem, se dedicam, e esquecem de preparar o cliente. A ação acontece do ponto de vista do negócio: “temos doces de Halloween”. O cliente nem sabe que existe, nem por que deveria ir." },
       { p: "Informar não é anunciar o produto. É contar o que o cliente ganha por estar ali naquele dia. “Temos doces temáticos” fala do meu negócio. “Traga as crianças no sábado à tarde: elas escolhem a aranha mais assustadora e você toma o seu café em paz” fala do cliente." },
       { p: "O conceito é simples: o cliente no meio, não o meu negócio no meio." },
