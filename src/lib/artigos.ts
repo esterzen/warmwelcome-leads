@@ -89,6 +89,22 @@ export const artigos: Artigo[] = [
       { p: "Ação sem informação é festa sem convite." },
     ],
   },
+  {
+    slug: "ia-executa-lider-decide",
+    titulo: "A IA executa. Quem decide o que é certo é você",
+    descricao:
+      "Antes do sistema, a decisão: quem faz, quando, o que é erro e o que é exceção. Por que IA na empresa é assunto de liderança.",
+    data: "2026-11-13",
+    tema: "IA na liderança",
+    blocos: [
+      { p: "A IA executa. Quem decide o que é certo ainda é você." },
+      { p: "Tem muito empresário esperando que a IA resolva o que a liderança ainda não decidiu. Qual pedido tem prioridade? O que é atraso? Quando a loja pode pedir fora do dia? Se ninguém decidiu, a ferramenta também não sabe." },
+      { p: "Na Oh My Bread, antes do painel existir, a gente sentou para responder justamente isso: quem faz o pedido de insumos, até que horas, o que conta como erro, o que é exceção e quem aprova a exceção. Foi a parte mais importante do trabalho, e não teve nada de tecnologia. Foi decisão de liderança." },
+      { p: "Com a regra escrita, o painel ficou simples. Ele organiza os pedidos e mostra o que está fora do combinado. A equipe não precisa interpretar nada, porque o critério já está ali." },
+      { p: "Por isso eu digo que IA na empresa é assunto de liderança. A ferramenta acelera o critério que já existe. Se o critério é claro, ela deixa tudo mais leve. Se ninguém decidiu, ela só repete a dúvida mais rápido." },
+      { p: "Para esta semana: escolha uma situação que sempre gera a pergunta “e agora, o que eu faço?” na sua equipe. Escreva a resposta: quem decide, em que caso e o que é exceção. Essa página vale para a sua equipe hoje e para qualquer sistema amanhã." },
+    ],
+  },
 ];
 
 // Só aparecem no site os artigos com data de hoje ou anterior (horário de Brasília).
