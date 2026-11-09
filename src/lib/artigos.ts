@@ -70,6 +70,7 @@ export const artigos: Artigo[] = [
       { p: "E não custa caro. Custa pensar." },
       { p: "Para esta semana: reúna a equipe e pergunte em que momento da visita o seu cliente poderia ter uma surpresa boa. Escolham um. Façam." },
       { p: "Atendimento resolve o pedido. Hospitalidade faz o cliente voltar, e trazer alguém junto." },
+      { p: "Eu levo treinamento de atendimento e vendas para dentro da empresa, fechado para a sua equipe: o que observar, o que perguntar, o que lembrar. Se quiser isso na sua, fale comigo: esterzen.com ou (47) 99254-3200." },
     ],
   },
   {
@@ -87,6 +88,7 @@ export const artigos: Artigo[] = [
       { p: "O conceito é simples: o cliente no meio, não o meu negócio no meio." },
       { p: "Para a próxima ação: antes de produzir, escreva numa frase o que o cliente ganha por ir e quando ele vai ficar sabendo. Se a frase falar da sua empresa, reescreva." },
       { p: "Ação sem informação é festa sem convite." },
+      { p: "Eu levo treinamento de vendas e atendimento para dentro da empresa, fechado para a sua equipe, com o planejamento de ações junto. Se quiser isso na sua, fale comigo: esterzen.com ou (47) 99254-3200." },
     ],
   },
   {
@@ -103,6 +105,7 @@ export const artigos: Artigo[] = [
       { p: "Com a regra escrita, o painel ficou simples. Ele organiza os pedidos e mostra o que está fora do combinado. A equipe não precisa interpretar nada, porque o critério já está ali." },
       { p: "Por isso eu digo que IA na empresa é assunto de liderança. A ferramenta acelera o critério que já existe. Se o critério é claro, ela deixa tudo mais leve. Se ninguém decidiu, ela só repete a dúvida mais rápido." },
       { p: "Para esta semana: escolha uma situação que sempre gera a pergunta “e agora, o que eu faço?” na sua equipe. Escreva a resposta: quem decide, em que caso e o que é exceção. Essa página vale para a sua equipe hoje e para qualquer sistema amanhã." },
+      { p: "É isso que eu faço na imersão in-company IA que resolve: em um dia, seus gestores transformam uma rotina que trava em uma ferramenta no celular da equipe, sem programador. Saiba mais em esterzen.com/ia-que-resolve." },
     ],
   },
 ];
