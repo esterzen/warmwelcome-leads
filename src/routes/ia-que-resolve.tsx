@@ -95,13 +95,14 @@ function IAPage() {
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_70%_30%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_60%)]" />
           <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:grid-cols-[1.1fr_0.9fr] md:px-10">
             <div className="animate-fade-up">
-              <Eyebrow>IA que resolve · para quem é dono de empresa</Eyebrow>
+              <Eyebrow>IA que resolve · imersão in-company para empresas</Eyebrow>
               <h1 className="mt-5 text-4xl leading-[1.05] md:text-6xl text-balance">
                 Você não precisa de um programador. <em className="text-primary">Precisa transformar a sua rotina</em> em ferramentas reais no celular.
               </h1>
               <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-                Empresários comuns estão saindo dos grupos de WhatsApp para sistemas próprios que a equipe realmente usa —
-                construídos por eles mesmos, explicando a rotina em português, com a IA fazendo o resto.
+                Em um dia, dentro da sua empresa, eu conduzo os seus gestores a transformar uma rotina que trava (pedidos,
+                checklist de turno, treinamento, metas) em uma ferramenta no celular da equipe. Sem programador: vocês explicam
+                a rotina em português e a IA constrói.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild size="lg" className="gap-2">
@@ -318,7 +319,7 @@ function IAPage() {
               ))}
             </div>
             <h3 className="mt-14 text-2xl md:text-3xl">Ninguém começa da tela em branco.</h3>
-            <p className="mt-2 text-muted-foreground">Na oficina, cada empresário escolhe uma trilha e adapta ao próprio negócio.</p>
+            <p className="mt-2 text-muted-foreground">Na oficina, a empresa escolhe a trilha da rotina que mais trava e a adapta ao próprio negócio.</p>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               {trilhas.map(([k, t, d]) => (
                 <div key={k} className="rounded-2xl border border-border p-5">
@@ -330,7 +331,7 @@ function IAPage() {
             </div>
             <div className="mt-10 flex flex-wrap gap-3">
               <Button asChild size="lg" className="gap-2">
-                <a href={buildWhatsappUrl(waMsg)} target="_blank" rel="noopener noreferrer"><MessageCircle className="h-4 w-4" /> Sou empresário</a>
+                <a href={buildWhatsappUrl(waMsg)} target="_blank" rel="noopener noreferrer"><MessageCircle className="h-4 w-4" /> Quero na minha empresa</a>
               </Button>
               <Button asChild size="lg" variant="outline" className="gap-2">
                 <a href={buildWhatsappUrl(waEntidade)} target="_blank" rel="noopener noreferrer"><MessageCircle className="h-4 w-4" /> Represento uma entidade</a>

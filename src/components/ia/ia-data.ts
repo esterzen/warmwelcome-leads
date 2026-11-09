@@ -51,8 +51,8 @@ export const encontros = [
 ] as const;
 
 export const formatos = [
-  ["Para abrir a cabeça", "Palestra", "Uma noite para ver o case real funcionando e quebrar o mito de que isso é coisa de programador."],
-  ["Para fazer", "Imersão de 1 dia", "Você entra com uma rotina emperrada e sai, no mesmo dia, com a primeira ferramenta rodando no celular da equipe."],
+  ["Para abrir a cabeça", "Palestra", "Na sua empresa, convenção ou entidade: o case real funcionando na tela, para quebrar o mito de que isso é coisa de programador."],
+  ["Para fazer", "Imersão in-company de 1 dia", "Fechada para a sua empresa. Seus gestores entram com uma rotina que trava e saem, no mesmo dia, com a primeira ferramenta rodando no celular da equipe."],
   ["Para ir além", "Consultoria de implementação", "Mapeamos e colocamos no ar a estrutura completa da sua empresa, como no caso Oh My Bread."],
 ] as const;
 
@@ -101,7 +101,7 @@ export const gradeDia = {
     ["O método", "Desmontar uma rotina: onde trava, como é feita, qual é a regra"],
     ["Oficina mão na massa", "Construir a primeira ferramenta no celular, sem programar"],
     ["A equipe usando", "Como apresentar à equipe e vencer a resistência na primeira semana"],
-    ["Compromisso de segunda-feira", "Cada participante sai com a ferramenta pronta para testar"],
+    ["Compromisso de segunda-feira", "A empresa sai com a ferramenta pronta para a equipe testar"],
   ],
 } as const;
 
