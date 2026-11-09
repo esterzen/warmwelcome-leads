@@ -22,9 +22,9 @@ import {
 } from "@/components/ia/ia-data";
 
 const URL = "https://www.esterzen.com/ia-que-resolve";
-const TITLE = "Palestra de IA para empresas: IA que resolve a rotina | Ester Zen";
+const TITLE = "Treinamento de IA para empresas em SC | IA que resolve";
 const DESC =
-  "Palestra e programa de inteligência artificial prática para pequenas e médias empresas: organize pedidos, metas, treinamento e fechamento no celular. Case real de uma rede de 20 lojas.";
+  "Treinamento in-company de IA para empresas em Joinville e SC: em um dia, seus gestores criam uma ferramenta de gestão no celular, sem programador.";
 const waMsg = "Olá, Ester! Vim pela página IA que resolve e quero entender como levar para a minha empresa.";
 const waEntidade = "Olá, Ester! Represento uma entidade e quero levar a palestra IA que resolve para nossos associados.";
 
@@ -48,10 +48,10 @@ export const Route = createFileRoute("/ia-que-resolve")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Service",
-          name: "IA que resolve — palestra e programa de IA aplicada à gestão",
-          serviceType: "Palestra de inteligência artificial para empresas",
+          name: "IA que resolve — treinamento in-company de IA para empresas",
+          serviceType: "Treinamento de inteligência artificial para empresas",
           provider: { "@type": "Person", name: "Ester Zen", url: "https://www.esterzen.com/" },
-          areaServed: ["Santa Catarina", "Paraná", "Brasil"],
+          areaServed: ["Joinville", "Santa Catarina", "Paraná", "Brasil"],
           audience: { "@type": "BusinessAudience", name: "Pequenas e médias empresas, associações comerciais e entidades empresariais" },
           description: DESC,
           url: URL,
@@ -95,7 +95,7 @@ function IAPage() {
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_70%_30%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_60%)]" />
           <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:grid-cols-[1.1fr_0.9fr] md:px-10">
             <div className="animate-fade-up">
-              <Eyebrow>IA que resolve · imersão in-company para empresas</Eyebrow>
+              <Eyebrow>IA que resolve · treinamento de IA para empresas, in-company</Eyebrow>
               <h1 className="mt-5 text-4xl leading-[1.05] md:text-6xl text-balance">
                 Você não precisa de um programador. <em className="text-primary">Precisa transformar a sua rotina</em> em ferramentas reais no celular.
               </h1>

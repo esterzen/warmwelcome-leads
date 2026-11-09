@@ -68,6 +68,7 @@ export const faqIA = [
   ["Minha equipe não vai usar.", "Vai usar, porque o sistema nasce da rotina que ela já faz. Não é um programa novo para aprender: é o mesmo trabalho, no celular, mais simples do que no grupo de WhatsApp."],
   ["Isso é coisa de empresa grande.", "A pequena tem uma vantagem: menos processo para mudar e decisão mais rápida. Começa por uma rotina, não pela empresa toda."],
   ["Não tenho tempo para aprender ferramenta.", "Você não vai aprender ferramenta. Vai sair com o sistema da sua empresa funcionando, construído em cima de um problema seu."],
+  ["Onde acontece o treinamento?", "Dentro da sua empresa, fechado para a sua equipe. Atendo Joinville, o Norte de SC e o Vale do Itajaí; outras regiões de Santa Catarina e do Paraná sob consulta."],
   ["E os meus dados?", "Acesso por login, só para quem precisa. O que é sensível não fica em lugar aberto. Isso é decidido na regra, antes de construir qualquer coisa."],
 ] as const;
 
