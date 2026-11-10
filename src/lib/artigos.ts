@@ -108,6 +108,24 @@ export const artigos: Artigo[] = [
       { p: "É isso que eu faço na imersão in-company IA que resolve: em um dia, seus gestores transformam uma rotina que trava em uma ferramenta no celular da equipe, sem programador. Saiba mais em esterzen.com/ia-que-resolve." },
     ],
   },
+  {
+    slug: "contato-com-cliente-quando-der",
+    titulo: "O contato com a cliente saiu do \"quando der\"",
+    descricao:
+      "Mandar mensagem para a base dependia de alguém lembrar. Com uma ferramenta simples feita com IA, virou parte do turno, com registro de quem respondeu e de quem comprou.",
+    data: "2026-11-20",
+    tema: "IA na liderança",
+    blocos: [
+      { p: "Toda loja tem uma lista de clientes parada no celular." },
+      { p: "Nas lojas da Oh My Bread, mandar mensagem para essa base dependia de alguém lembrar, ter tempo e saber o que escrever no meio do movimento." },
+      { p: "A gente não começou pela IA. Começou pelas perguntas de sempre: quem manda, para quem, em que horário, com qual mensagem e como a gente fica sabendo se funcionou." },
+      { p: "Com isso decidido, eu construí com IA, sem programador, um disparador simples. A atendente abre no celular, a lista da loja já está ali, a mensagem do dia vem pronta com o nome da cliente, e ela toca em \"enviar próximo\". Quando a cliente responde ou compra, fica registrado." },
+      { p: "Depois veio um segundo uso: a mensagem depois do pedido. Quem acabou de confirmar uma compra recebe um retorno, com um texto diferente para cada dia da semana." },
+      { p: "O que mudou não foi a tecnologia. Foi o contato com a cliente sair do \"quando der\" e virar parte do turno. E, com o registro, a loja passou a saber o que funciona, em vez de achar." },
+      { p: "Para esta semana: escolha um contato com cliente que hoje depende de alguém lembrar. Escreva quem faz, quando e com qual mensagem. Esse é o primeiro passo de qualquer ferramenta." },
+      { p: "É isso que eu faço na imersão in-company IA que resolve: em um dia, seus gestores transformam uma rotina que trava em uma ferramenta no celular da equipe, sem programador. Saiba mais em esterzen.com/ia-que-resolve." },
+    ],
+  },
 ];
 
 // Só aparecem no site os artigos com data de hoje ou anterior (horário de Brasília).
