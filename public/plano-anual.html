@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Plano anual para o seu negócio: meta, ações, base de clientes e acompanhamento mensal. Preencha pelo celular e leve em PDF.">
+<meta name="robots" content="noindex">
+<style>
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Plano Anual</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,600;0,700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+<style>
+/* Layout: stepper de uma coluna — barra de passos fixa no topo, cartão de conteúdo, barra de navegação fixa embaixo. */
+:root{
+  --bg:#F3F6F5; --surface:#FFFFFF; --surface-2:#E8EFEE; --fg:#17201F; --muted:#5E7C7A;
+  --line:#C8D6D4; --brand:#1D3B3A; --brand-ink:#FFFFFF; --accent:#C8553D; --accent-soft:#F7E2DC;
+  --ok:#2E6B4F; --field:#FFFFFF; --field-line:#B9C9C7;
+  --f-display:"Gelasio",Georgia,"Times New Roman",serif;
+  --f-body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#101918; --surface:#182423; --surface-2:#1F2E2D; --fg:#EAF1F0; --muted:#9BB3B1;
+  --line:#2E403F; --brand:#D9E5E3; --brand-ink:#101918; --accent:#E8846C; --accent-soft:#3A2520;
+  --ok:#7FC3A1; --field:#101918; --field-line:#3A4E4D; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#101918; --surface:#182423; --surface-2:#1F2E2D; --fg:#EAF1F0; --muted:#9BB3B1;
+  --line:#2E403F; --brand:#D9E5E3; --brand-ink:#101918; --accent:#E8846C; --accent-soft:#3A2520;
+  --ok:#7FC3A1; --field:#101918; --field-line:#3A4E4D; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;
+  padding-bottom:84px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--brand)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+.wrap{max-width:720px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* topo */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--brand);
+  box-shadow:0 1px 0 rgba(0,0,0,.12)}
+.top .wrap{padding-block:10px 0}
+.brandrow{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.brandrow h1{color:var(--brand-ink);font-size:19px;font-weight:700;letter-spacing:.1px}
+.brandrow .sub{color:var(--brand-ink);opacity:.72;font-size:12.5px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:9px 0 10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid rgba(255,255,255,.28);background:transparent;color:var(--brand-ink);
+  opacity:.75;font:600 12.5px/1 var(--f-body);padding:8px 11px;border-radius:999px;cursor:pointer;
+  display:flex;align-items:center;gap:6px}
+.chip b{font:700 11px/1 var(--f-body);opacity:.85}
+.chip[aria-selected="true"]{background:var(--accent);border-color:var(--accent);opacity:1;color:#fff}
+.chip.done{opacity:1;border-color:rgba(255,255,255,.5)}
+
+/* cabeçalho de identificação */
+.ident{background:var(--surface-2);border-bottom:1px solid var(--line)}
+.ident .wrap{padding-block:12px}
+.ident .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:560px){.ident .grid{grid-template-columns:1fr 1fr}.ident .grid > :last-child{grid-column:1/-1}}
+
+/* conteúdo */
+main .wrap{padding-block:18px 10px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 16px 20px}
+.eyebrow{font:700 11.5px/1 var(--f-body);letter-spacing:1.3px;text-transform:uppercase;color:var(--accent);
+  margin-bottom:7px}
+.step h2{font-size:25px;font-weight:700;color:var(--fg);margin-bottom:6px}
+.lead{color:var(--muted);font-size:14.5px;margin:0 0 16px}
+.block{margin-top:18px}
+.block h3{font-size:16.5px;font-weight:700;margin-bottom:9px}
+.hint{color:var(--muted);font-size:13px;margin:6px 0 0}
+
+label{display:block;font:600 12.5px/1.35 var(--f-body);color:var(--muted);margin-bottom:5px}
+input,select,textarea{width:100%;font:400 16px/1.4 var(--f-body);color:var(--fg);background:var(--field);
+  border:1px solid var(--field-line);border-radius:9px;padding:10px 11px;font-variant-numeric:tabular-nums}
+textarea{resize:vertical;min-height:62px}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,.chip:focus-visible{
+  outline:2px solid var(--accent);outline-offset:2px}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:560px){.g3,.g4{grid-template-columns:1fr 1fr}}
+.field.wide{grid-column:1/-1}
+
+/* resultados calculados */
+.out{background:var(--surface-2);border-radius:11px;padding:12px 13px}
+.out .k{font:600 12px/1.3 var(--f-body);color:var(--muted);display:block;margin-bottom:3px}
+.out .v{font-family:var(--f-display);font-size:23px;font-weight:700;color:var(--fg);
+  font-variant-numeric:tabular-nums;line-height:1.15}
+.out.hero{background:var(--brand)}
+.out.hero .k{color:var(--brand-ink);opacity:.72}
+.out.hero .v{color:var(--brand-ink)}
+.note{background:var(--accent-soft);border-radius:11px;padding:12px 13px;font-size:14px}
+.note strong{color:var(--accent)}
+
+/* linhas dinâmicas */
+.row{border:1px solid var(--line);border-radius:12px;padding:13px;margin-bottom:11px;background:var(--surface)}
+.rowhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.rowhead span{font:700 12px/1 var(--f-body);letter-spacing:.9px;text-transform:uppercase;color:var(--muted)}
+.btn{font:600 14px/1 var(--f-body);border-radius:9px;padding:11px 14px;cursor:pointer;border:1px solid var(--line);
+  background:var(--surface);color:var(--fg)}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.ghost{background:transparent;border:none;color:var(--accent);padding:4px 2px;font-size:13px}
+.btn.block{width:100%}
+
+/* checklist */
+.check{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line)}
+.check:last-child{border-bottom:none}
+.check input{width:22px;height:22px;flex:0 0 auto;margin-top:1px;accent-color:var(--accent)}
+.check .t{font-weight:600;font-size:15px}
+.check .d{color:var(--muted);font-size:13.5px}
+
+/* rodapé fixo */
+.bottom{position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--surface);
+  border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.bottom .wrap{padding-block:10px;display:flex;align-items:center;gap:10px}
+.saved{flex:1;min-width:0;font-size:12.5px;color:var(--muted)}
+.saved b{color:var(--ok)}
+.nav{display:flex;gap:8px}
+.nav .btn{padding:11px 15px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));
+  background:var(--brand);color:var(--brand-ink);padding:11px 16px;border-radius:10px;font-size:14px;z-index:40;
+  box-shadow:0 6px 20px rgba(0,0,0,.2);max-width:88vw}
+@media (prefers-reduced-motion:no-preference){.toast{animation:pop .22s ease-out}}
+@keyframes pop{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
+.err{color:var(--accent);font-weight:600;font-size:13px;margin-top:6px}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandrow">
+      <h1>Plano Anual</h1>
+      <span class="sub">Ester Zen · Empreende</span>
+    </div>
+    <div class="chips" id="chips" role="tablist" aria-label="Passos do plano"></div>
+  </div>
+</header>
+
+<section class="ident">
+  <div class="wrap">
+    <div class="grid g3">
+      <div><label for="f_empresa">Empresa</label><input id="f_empresa" autocomplete="organization"></div>
+      <div><label for="f_resp">Responsável</label><input id="f_resp" autocomplete="name"></div>
+      <div><label for="f_periodo">Período do plano</label><input id="f_periodo" placeholder="ex.: 2026"></div>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+
+  <!-- 1 -->
+  <section class="step" id="step1" role="tabpanel" hidden>
+    <p class="eyebrow">Passo 1</p>
+    <h2>Ponto de partida</h2>
+    <p class="lead">Os números dos últimos três meses. Busque no caixa, na maquininha, no sistema ou no caderno. Sem eles, a meta é chute.</p>
+
+    <div class="block">
+      <h3>Últimos três meses</h3>
+      <div id="meses"></div>
+      <div class="grid g2" style="margin-top:12px">
+        <div class="out"><span class="k">Faturamento médio</span><span class="v" id="o_fatmed">—</span></div>
+        <div class="out"><span class="k">Ticket médio</span><span class="v" id="o_ticketmed">—</span></div>
+      </div>
+      <p class="hint">Ticket médio = faturamento ÷ número de clientes atendidos.</p>
+    </div>
+
+    <div class="block">
+      <h3>Sua base de clientes</h3>
+      <div class="grid g3">
+        <div><label for="f_base_total">Clientes cadastrados com nome e telefone</label><input id="f_base_total" inputmode="numeric"></div>
+        <div><label for="f_base_90">Quantos compraram nos últimos 90 dias</label><input id="f_base_90" inputmode="numeric"></div>
+        <div><label for="f_base_chamei">Quantos você chamou no último mês</label><input id="f_base_chamei" inputmode="numeric"></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>De onde vieram os clientes do último mês</h3>
+      <p class="hint" style="margin:0 0 9px">Estime a porcentagem. Não sabe? Essa já é a primeira ação: perguntar "como você nos conheceu?" em toda venda.</p>
+      <div class="grid g4" id="origens"></div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="step" id="step2" role="tabpanel" hidden>
+    <p class="eyebrow">Passo 2</p>
+    <h2>Meta: o número vira clientes por dia</h2>
+    <p class="lead">Faturamento = clientes atendidos × ticket médio. Só existem dois caminhos para faturar mais: atender mais clientes ou vender mais para cada um.</p>
+
+    <div class="block">
+      <div class="grid g3">
+        <div><label for="f_meta_fat">Meta de faturamento do mês (R$)</label><input id="f_meta_fat" inputmode="decimal" placeholder="30000"></div>
+        <div><label for="f_meta_ticket">Ticket médio que vou buscar (R$)</label><input id="f_meta_ticket" inputmode="decimal" placeholder="150"></div>
+        <div><label for="f_meta_dias">Dias de venda no mês</label><input id="f_meta_dias" inputmode="numeric" placeholder="25"></div>
+      </div>
+      <div class="grid g3" style="margin-top:14px">
+        <div class="out"><span class="k">Clientes atendidos no mês</span><span class="v" id="o_clientes">—</span></div>
+        <div class="out hero"><span class="k">Clientes por dia</span><span class="v" id="o_clidia">—</span></div>
+        <div class="out"><span class="k">Faturamento por dia</span><span class="v" id="o_fatdia">—</span></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Como vou aumentar o ticket médio</h3>
+      <div class="grid">
+        <div><label for="f_tk1">Produto ou serviço complementar que vou sugerir em toda venda</label><input id="f_tk1"></div>
+        <div><label for="f_tk2">Kit, combo ou pacote que vou montar</label><input id="f_tk2"></div>
+        <div><label for="f_tk3">Valor mínimo para brinde, entrega ou condição especial</label><input id="f_tk3"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="step" id="step3" role="tabpanel" hidden>
+    <p class="eyebrow">Passo 3</p>
+    <h2>De onde vai vir o faturamento</h2>
+    <p class="lead">Distribua a meta entre os três pilares. A soma precisa dar 100%.</p>
+    <div class="block" id="pilares"></div>
+    <p class="err" id="pilar_err" hidden></p>
+    <div class="note" style="margin-top:16px"><strong>Leitura:</strong> se quase toda a meta depende de novos clientes, o negócio depende do caminho mais caro e fica refém de anúncio. Base e relacionamento custam pouco e dependem de rotina e atendimento.</div>
+  </section>
+
+  <!-- 4 -->
+  <section class="step" id="step4" role="tabpanel" hidden>
+    <p class="eyebrow">Passo 4</p>
+    <h2>Meu plano de ações</h2>
+    <p class="lead">Toda ação precisa de data, responsável e um número de retorno esperado. Se não dá para medir, não dá para saber se funcionou.</p>
+    <div id="acoes"></div>
+    <button class="btn block" id="add_acao" type="button">+ Adicionar ação</button>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="out"><span class="k">Investimento somado</span><span class="v" id="o_acao_inv">—</span></div>
+      <div class="out"><span class="k">Retorno esperado</span><span class="v" id="o_acao_ret">—</span></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="step" id="step5" role="tabpanel" hidden>
+    <p class="eyebrow">Passo 5</p>
+    <h2>Vale a pena? A conta sem sigla</h2>
+    <p class="lead">Serve para anúncio pago, jornal, rádio, panfleto, feira ou agência. Preencha ao fim de cada ação.</p>
+    <div class="block">
+      <div class="grid g2">
+        <div><label for="f_r_inv">Quanto investi (R$)</label><input id="f_r_inv" inputmode="decimal" placeholder="500"></div>
+        <div><label for="f_r_contatos">Quantas pessoas chamaram ou vieram</label><input id="f_r_contatos" inputmode="numeric" placeholder="40"></div>
+        <div><label for="f_r_compraram">Quantas compraram</label><input id="f_r_compraram" inputmode="numeric" placeholder="8"></div>
+        <div><label for="f_r_vendas">Quanto venderam no total (R$)</label><input id="f_r_vendas" inputmode="decimal" placeholder="1200"></div>
+        <div class="field wide"><label for="f_r_margem">Quanto sobra da venda depois do custo do produto ou serviço (%)</label><input id="f_r_margem" inputmode="decimal" placeholder="40"></div>
+      </div>
+      <div class="grid g3" style="margin-top:14px">
+        <div class="out"><span class="k">Custou cada cliente</span><span class="v" id="o_cac">—</span></div>
+        <div class="out"><span class="k">De cada 10 que chamaram</span><span class="v" id="o_conv">—</span></div>
+        <div class="out hero"><span class="k">Resultado da ação</span><span class="v" id="o_result">—</span></div>
+      </div>
+      <p class="hint" id="o_result_txt"></p>
+    </div>
+    <div class="note" style="margin-top:16px"><strong>Muita gente chama e pouca gente compra?</strong> O problema não é o anúncio. É o atendimento: demora na resposta, falta de preço, falta de retorno.</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="step" id="step6" role="tabpanel" hidden>
+    <p class="eyebrow">Passo 6</p>
+    <h2>Contatos da base</h2>
+    <p class="lead">Contato com a base é rotina diária, não campanha de uma vez. Defina quantos contatos por dia cabem na sua agenda e cumpra.</p>
+
+    <div class="block">
+      <div class="grid g4">
+        <div><label for="f_c_dia">Contatos por dia</label><input id="f_c_dia" inputmode="numeric" placeholder="10"></div>
+        <div><label for="f_c_dias">Dias úteis no plano</label><input id="f_c_dias" inputmode="numeric" placeholder="250"></div>
+        <div><label for="f_c_taxa">Compra 1 a cada quantos</label><input id="f_c_taxa" inputmode="numeric" placeholder="10"></div>
+        <div><label for="f_c_ticket">Ticket médio (R$)</label><input id="f_c_ticket" inputmode="decimal" placeholder="150"></div>
+      </div>
+      <div class="grid g3" style="margin-top:14px">
+        <div class="out"><span class="k">Total de contatos</span><span class="v" id="o_c_total">—</span></div>
+        <div class="out"><span class="k">Vendas estimadas</span><span class="v" id="o_c_vendas">—</span></div>
+        <div class="out hero"><span class="k">Faturamento da base</span><span class="v" id="o_c_fat">—</span></div>
+      </div>
+      <p class="hint">Investimento: R$ 0. A base não precisa de verba. Precisa de um horário fixo por dia na agenda.</p>
+    </div>
+
+    <div class="block">
+      <h3>Minha lista de contatos</h3>
+      <p class="hint" style="margin:0 0 10px">Motivo real para chamar, nunca "quanto tempo!". Chegou algo que combina com o que o cliente comprou, época de repor, data especial, pós-venda, convite.</p>
+      <div id="contatos"></div>
+      <button class="btn block" id="add_contato" type="button">+ Adicionar cliente</button>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="step" id="step7" role="tabpanel" hidden>
+    <p class="eyebrow">Passo 7</p>
+    <h2>Acompanhamento mensal</h2>
+    <p class="lead">Todo início de mês, 15 minutos: bati a meta do mês? Qual ação trouxe resultado? O que paro, mantenho ou ajusto?</p>
+    <div id="semanas"></div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="out"><span class="k">Meta somada</span><span class="v" id="o_sem_meta">—</span></div>
+      <div class="out"><span class="k">Realizado somado</span><span class="v" id="o_sem_real">—</span></div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="step" id="step8" role="tabpanel" hidden>
+    <p class="eyebrow">Para sair daqui com o plano andando</p>
+    <h2>Nas próximas 48 horas</h2>
+    <p class="lead">Plano que começa "segunda que vem" não começa.</p>
+    <div class="block" id="checklist"></div>
+
+    <div class="block">
+      <h3>Levar o plano com você</h3>
+      <p class="hint" style="margin:0 0 12px">Tudo o que você digitou fica salvo neste celular. Pode fechar e abrir de novo pelo mesmo QR code que o plano continua aqui.</p>
+      <div class="grid g2">
+        <button class="btn primary" id="btn_pdf" type="button">Baixar meu plano em PDF</button>
+        <button class="btn" id="btn_copy" type="button">Copiar como texto</button>
+      </div>
+      <p class="hint" id="pdf_hint">No iPhone o PDF pode abrir em uma aba: toque em Compartilhar e depois em Salvar em Arquivos.</p>
+    </div>
+
+    <div class="block">
+      <h3>Travou em algum passo?</h3>
+      <p class="hint" style="margin:0 0 12px">Me chama. Respondo pessoalmente.</p>
+      <div class="grid g2">
+        <div class="out">
+          <span class="k">WhatsApp</span>
+          <span class="v" style="display:block;font-size:20px">(47) 99254-3200</span>
+          <button class="btn ghost" type="button" data-copy="(47) 99254-3200">Copiar número</button>
+        </div>
+        <div class="out">
+          <span class="k">E-mail</span>
+          <span class="v" style="display:block;font-size:17px">contato@esterzen.com</span>
+          <button class="btn ghost" type="button" data-copy="contato@esterzen.com">Copiar e-mail</button>
+        </div>
+      </div>
+      <p class="hint" style="margin-top:12px">Instagram @esterzen · YouTube @aesterzen · esterzen.com</p>
+
+      <div style="margin-top:18px"><button class="btn ghost" id="btn_reset" type="button">Apagar tudo e recomeçar</button></div>
+      <p class="err" id="reset_confirm" hidden>Isso apaga o que você preencheu. <button class="btn ghost" id="btn_reset_yes" type="button">Sim, apagar</button> · <button class="btn ghost" id="btn_reset_no" type="button">Cancelar</button></p>
+    </div>
+  </section>
+
+  </div>
+</main>
+
+<div class="bottom">
+  <div class="wrap">
+    <p class="saved" id="saved">Preencha com calma. <b>Salva sozinho neste celular.</b></p>
+    <div class="nav">
+      <button class="btn" id="prev" type="button">Voltar</button>
+      <button class="btn primary" id="next" type="button">Avançar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+var KEY="planoEmpreendeAnual.v1";
+var STEPS=[
+  {id:1,label:"Partida"},{id:2,label:"Meta"},{id:3,label:"Pilares"},{id:4,label:"Ações"},
+  {id:5,label:"Retorno"},{id:6,label:"Base"},{id:7,label:"Mês"},{id:8,label:"48h"}
+];
+var ORIGENS=["Indicação","Rede social","Anúncio pago","Passou na frente","Cliente antigo","Jornal ou rádio","Feira ou evento","Outro"];
+var PILARES=[
+  {k:"novos",n:"Novos clientes",d:"Quem nunca comprou de você"},
+  {k:"base",n:"Base",d:"Quem já comprou e está parado — precisa ser chamado"},
+  {k:"rel",n:"Relacionamento",d:"Quem compra, volta sozinho e indica"}
+];
+var CHECK=[
+  ["Levantar os números","Faturamento e clientes atendidos dos últimos três meses."],
+  ["Definir a meta do mês","E converter em clientes por dia."],
+  ["Montar a lista dos 20 primeiros","Clientes da base com nome, telefone e última compra."],
+  ["Fazer os primeiros 10 contatos","Com motivo real. Anotar resultado e data de retorno."],
+  ["Começar a perguntar","“Como você nos conheceu?” em toda venda, a partir de amanhã."]
+];
+var RESULTADOS=["Comprou","Com interesse, não comprou","Não respondeu","Sem interesse agora","Pediu para não chamar"];
+
+var state={fields:{},acoes:[],contatos:[],checks:[]};
+var cur=1, saveTimer=null;
+
+/* ---------- armazenamento ---------- */
+function load(){
+  try{
+    var raw=localStorage.getItem(KEY);
+    if(raw){var p=JSON.parse(raw);
+      if(p&&typeof p==="object"){
+        state.fields=p.fields||{};
+        state.acoes=Array.isArray(p.acoes)?p.acoes:[];
+        state.contatos=Array.isArray(p.contatos)?p.contatos:[];
+        state.checks=Array.isArray(p.checks)?p.checks:[];
+      }}
+  }catch(e){}
+}
+function save(){
+  try{localStorage.setItem(KEY,JSON.stringify(state));flash("Salvo");}
+  catch(e){var s=document.getElementById("saved");
+    s.innerHTML="Este navegador não guarda os dados. <b>Baixe o PDF no fim.</b>";}
+}
+function flash(msg){
+  var s=document.getElementById("saved");
+  s.innerHTML="<b>"+msg+"</b> às "+new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});
+}
+function queueSave(){clearTimeout(saveTimer);saveTimer=setTimeout(save,400);}
+
+/* ---------- números ---------- */
+function num(v){
+  if(v===null||v===undefined)return 0;
+  var s=String(v).trim(); if(!s)return 0;
+  s=s.replace(/[^\d.,-]/g,"");
+  if(s.indexOf(",")>-1){
+    s=s.replace(/\./g,"").replace(",",".");
+  }else if(s.indexOf(".")>-1){
+    /* sem vírgula: 30.000 é milhar, 1.5 é decimal */
+    var parts=s.split(".");
+    var milhar=parts.length>1;
+    for(var k=1;k<parts.length;k++){if(parts[k].length!==3)milhar=false;}
+    if(milhar)s=parts.join("");
+  }
+  var n=parseFloat(s);
+  return isFinite(n)?n:0;
+}
+function brl(n){
+  if(!isFinite(n))return "—";
+  return "R$ "+n.toLocaleString("pt-BR",{minimumFractionDigits:0,maximumFractionDigits:n%1?2:0});
+}
+function int(n){
+  if(!isFinite(n))return "—";
+  return Math.round(n).toLocaleString("pt-BR");
+}
+function get(id){return state.fields[id]||"";}
+function setField(id,v){state.fields[id]=v;}
+
+/* ---------- construção ---------- */
+function el(tag,cls,html){
+  var e=document.createElement(tag);
+  if(cls)e.className=cls;
+  if(html!==undefined)e.innerHTML=html;
+  return e;
+}
+function inputField(id,label,opts){
+  opts=opts||{};
+  var w=el("div","field"+(opts.wide?" wide":""));
+  var l=el("label",null,label); l.setAttribute("for",id);
+  var i=document.createElement(opts.tag||"input");
+  i.id=id;
+  if(opts.mode)i.setAttribute("inputmode",opts.mode);
+  if(opts.ph)i.placeholder=opts.ph;
+  if(opts.options){
+    i=document.createElement("select"); i.id=id;
+    i.appendChild(new Option("—",""));
+    opts.options.forEach(function(o){i.appendChild(new Option(o,o));});
+  }
+  w.appendChild(l); w.appendChild(i);
+  return w;
+}
+
+function buildMeses(){
+  var box=document.getElementById("meses");
+  var g=el("div","grid");
+  for(var i=1;i<=3;i++){
+    (function(i){
+      var row=el("div","grid g3");
+      row.appendChild(inputField("f_m"+i+"_nome","Mês "+i,{ph:"ex.: julho"}));
+      row.appendChild(inputField("f_m"+i+"_fat","Faturamento (R$)",{mode:"decimal"}));
+      row.appendChild(inputField("f_m"+i+"_cli","Clientes atendidos",{mode:"numeric"}));
+      g.appendChild(row);
+    })(i);
+  }
+  box.appendChild(g);
+}
+function buildOrigens(){
+  var box=document.getElementById("origens");
+  ORIGENS.forEach(function(o,i){
+    box.appendChild(inputField("f_or"+i,o+" (%)",{mode:"numeric"}));
+  });
+}
+function buildPilares(){
+  var box=document.getElementById("pilares");
+  PILARES.forEach(function(p){
+    var card=el("div","row");
+    var h=el("div","rowhead");
+    h.appendChild(el("span",null,p.n));
+    card.appendChild(h);
+    card.appendChild(el("p","hint",p.d));
+    var g=el("div","grid g3");g.style.marginTop="10px";
+    g.appendChild(inputField("f_p_"+p.k,"% da meta",{mode:"numeric"}));
+    var o1=el("div","out",'<span class="k">Em reais</span><span class="v" id="o_p_'+p.k+'_rs">—</span>');
+    var o2=el("div","out",'<span class="k">Clientes</span><span class="v" id="o_p_'+p.k+'_cli">—</span>');
+    g.appendChild(o1);g.appendChild(o2);
+    card.appendChild(g);
+    box.appendChild(card);
+  });
+}
+function buildSemanas(){
+  var box=document.getElementById("semanas");
+  for(var i=1;i<=12;i++){
+    (function(i){
+      var card=el("div","row");
+      var h=el("div","rowhead");h.appendChild(el("span",null,"Mês "+i));card.appendChild(h);
+      var g=el("div","grid g3");
+      g.appendChild(inputField("f_s"+i+"_meta","Meta (R$)",{mode:"decimal"}));
+      g.appendChild(inputField("f_s"+i+"_real","Realizado (R$)",{mode:"decimal"}));
+      g.appendChild(inputField("f_s"+i+"_cont","Contatos feitos",{mode:"numeric"}));
+      card.appendChild(g);
+      var a=inputField("f_s"+i+"_ajuste","O que ajusto no próximo mês",{wide:true});
+      a.style.marginTop="12px";
+      card.appendChild(a);
+      box.appendChild(card);
+    })(i);
+  }
+}
+function buildCheck(){
+  var box=document.getElementById("checklist");
+  CHECK.forEach(function(c,i){
+    var d=el("div","check");
+    var cb=document.createElement("input");
+    cb.type="checkbox";cb.id="chk"+i;
+    cb.checked=!!state.checks[i];
+    cb.addEventListener("change",function(){state.checks[i]=cb.checked;queueSave();});
+    var t=el("div");
+    var lb=el("label");lb.setAttribute("for","chk"+i);lb.style.margin="0";
+    lb.appendChild(el("div","t",c[0]));
+    lb.appendChild(el("div","d",c[1]));
+    t.appendChild(lb);
+    d.appendChild(cb);d.appendChild(t);
+    box.appendChild(d);
+  });
+}
+
+/* ---------- linhas dinâmicas ---------- */
+function renderAcoes(){
+  var box=document.getElementById("acoes");
+  box.innerHTML="";
+  if(!state.acoes.length){
+    box.appendChild(el("p","hint","Nenhuma ação ainda. Comece por uma de cada pilar."));
+  }
+  state.acoes.forEach(function(a,idx){
+    var card=el("div","row");
+    var h=el("div","rowhead");
+    h.appendChild(el("span",null,"Ação "+(idx+1)));
+    var del=el("button","btn ghost","Remover");del.type="button";
+    del.addEventListener("click",function(){state.acoes.splice(idx,1);renderAcoes();calc();queueSave();});
+    h.appendChild(del);card.appendChild(h);
+
+    var g=el("div","grid g2");
+    g.appendChild(dynField(a,"nome","O que vou fazer",{wide:true}));
+    g.appendChild(dynField(a,"pilar","Pilar",{options:["Novos clientes","Base","Relacionamento"]}));
+    g.appendChild(dynField(a,"periodo","Período",{ph:"ex.: 2 meses"}));
+    g.appendChild(dynField(a,"desc","Descrição: quem faz e como",{wide:true,tag:"textarea"}));
+    g.appendChild(dynField(a,"inv","Investimento (R$)",{mode:"decimal"}));
+    g.appendChild(dynField(a,"ret","Retorno esperado (R$)",{mode:"decimal"}));
+    card.appendChild(g);
+    box.appendChild(card);
+  });
+}
+function renderContatos(){
+  var box=document.getElementById("contatos");
+  box.innerHTML="";
+  if(!state.contatos.length){
+    box.appendChild(el("p","hint","Comece pelos que estão sem comprar há mais tempo do que o normal."));
+  }
+  state.contatos.forEach(function(c,idx){
+    var card=el("div","row");
+    var h=el("div","rowhead");
+    h.appendChild(el("span",null,"Cliente "+(idx+1)));
+    var del=el("button","btn ghost","Remover");del.type="button";
+    del.addEventListener("click",function(){state.contatos.splice(idx,1);renderContatos();queueSave();});
+    h.appendChild(del);card.appendChild(h);
+
+    var g=el("div","grid g2");
+    g.appendChild(dynField(c,"nome","Nome"));
+    g.appendChild(dynField(c,"fone","Telefone",{mode:"tel"}));
+    g.appendChild(dynField(c,"ultima","Última compra e o que comprou",{wide:true}));
+    g.appendChild(dynField(c,"motivo","Motivo do contato",{wide:true}));
+    g.appendChild(dynField(c,"result","Resultado",{options:RESULTADOS}));
+    g.appendChild(dynField(c,"quando","Chamar de novo em",{ph:"ex.: 7 dias"}));
+    card.appendChild(g);
+    box.appendChild(card);
+  });
+}
+function dynField(obj,key,label,opts){
+  opts=opts||{};
+  var id="dyn_"+Math.random().toString(36).slice(2,9);
+  var w=el("div","field"+(opts.wide?" wide":""));
+  var l=el("label",null,label);l.setAttribute("for",id);
+  var i;
+  if(opts.options){
+    i=document.createElement("select");
+    i.appendChild(new Option("—",""));
+    opts.options.forEach(function(o){i.appendChild(new Option(o,o));});
+  }else{
+    i=document.createElement(opts.tag||"input");
+  }
+  i.id=id;
+  if(opts.mode)i.setAttribute("inputmode",opts.mode);
+  if(opts.ph)i.placeholder=opts.ph;
+  i.value=obj[key]||"";
+  i.addEventListener("input",function(){obj[key]=i.value;calc();queueSave();});
+  i.addEventListener("change",function(){obj[key]=i.value;calc();queueSave();});
+  w.appendChild(l);w.appendChild(i);
+  return w;
+}
+
+/* ---------- ligar campos fixos ---------- */
+function wireFields(){
+  var all=document.querySelectorAll('input[id^="f_"],select[id^="f_"],textarea[id^="f_"]');
+  Array.prototype.forEach.call(all,function(i){
+    if(state.fields[i.id]!==undefined)i.value=state.fields[i.id];
+    i.addEventListener("input",function(){setField(i.id,i.value);calc();queueSave();});
+    i.addEventListener("change",function(){setField(i.id,i.value);calc();queueSave();});
+  });
+}
+
+/* ---------- cálculos ---------- */
+function calc(){
+  /* passo 1 */
+  var sf=0,sc=0,n=0;
+  for(var i=1;i<=3;i++){
+    var f=num(get("f_m"+i+"_fat")),c=num(get("f_m"+i+"_cli"));
+    if(f>0||c>0){sf+=f;sc+=c;n++;}
+  }
+  document.getElementById("o_fatmed").textContent=n?brl(sf/n):"—";
+  document.getElementById("o_ticketmed").textContent=sc>0?brl(sf/sc):"—";
+
+  /* passo 2 */
+  var meta=num(get("f_meta_fat")),tk=num(get("f_meta_ticket")),dias=num(get("f_meta_dias"));
+  var cli=(tk>0)?meta/tk:0;
+  document.getElementById("o_clientes").textContent=cli>0?int(cli):"—";
+  document.getElementById("o_clidia").textContent=(cli>0&&dias>0)?int(Math.ceil(cli/dias)):"—";
+  document.getElementById("o_fatdia").textContent=(meta>0&&dias>0)?brl(meta/dias):"—";
+
+  /* passo 3 */
+  var soma=0;
+  PILARES.forEach(function(p){
+    var pct=num(get("f_p_"+p.k));soma+=pct;
+    var rs=meta*pct/100;
+    var e1=document.getElementById("o_p_"+p.k+"_rs");
+    var e2=document.getElementById("o_p_"+p.k+"_cli");
+    if(e1)e1.textContent=(meta>0&&pct>0)?brl(rs):"—";
+    if(e2)e2.textContent=(tk>0&&rs>0)?int(rs/tk):"—";
+  });
+  var pe=document.getElementById("pilar_err");
+  if(soma>0&&Math.round(soma)!==100){
+    pe.hidden=false;pe.textContent="A soma está em "+int(soma)+"%. Precisa fechar em 100%.";
+  }else{pe.hidden=true;}
+
+  /* passo 4 */
+  var ti=0,tr=0;
+  state.acoes.forEach(function(a){ti+=num(a.inv);tr+=num(a.ret);});
+  document.getElementById("o_acao_inv").textContent=state.acoes.length?brl(ti):"—";
+  document.getElementById("o_acao_ret").textContent=state.acoes.length?brl(tr):"—";
+
+  /* passo 5 */
+  var inv=num(get("f_r_inv")),ct=num(get("f_r_contatos")),cp=num(get("f_r_compraram"));
+  var vd=num(get("f_r_vendas")),mg=num(get("f_r_margem"));
+  document.getElementById("o_cac").textContent=(inv>0&&cp>0)?brl(inv/cp):"—";
+  document.getElementById("o_conv").textContent=(ct>0&&cp>=0)?(Math.round(cp/ct*10*10)/10).toLocaleString("pt-BR")+" compraram":"—";
+  var res=null;
+  if(vd>0&&mg>0){res=vd*mg/100-inv;}
+  var ro=document.getElementById("o_result");
+  var rt=document.getElementById("o_result_txt");
+  if(res===null){ro.textContent="—";rt.textContent="";}
+  else{
+    ro.textContent=(res<0?"− ":"")+brl(Math.abs(res));
+    rt.textContent=res<0
+      ? "A ação não se pagou: a margem das vendas ficou abaixo do que foi investido. Faturamento não é lucro."
+      : "A margem das vendas cobriu o investimento e sobrou esse valor.";
+  }
+
+  /* passo 6 */
+  var cd=num(get("f_c_dia")),dd=num(get("f_c_dias")),tx=num(get("f_c_taxa")),ck=num(get("f_c_ticket"));
+  var tot=cd*dd, vend=(tx>0)?tot/tx:0;
+  document.getElementById("o_c_total").textContent=tot>0?int(tot):"—";
+  document.getElementById("o_c_vendas").textContent=vend>0?int(vend):"—";
+  document.getElementById("o_c_fat").textContent=(vend>0&&ck>0)?brl(vend*ck):"—";
+
+  /* passo 7 */
+  var sm=0,sr=0,any=false;
+  for(var w=1;w<=12;w++){
+    var a=num(get("f_s"+w+"_meta")),b=num(get("f_s"+w+"_real"));
+    if(a>0||b>0)any=true;
+    sm+=a;sr+=b;
+  }
+  document.getElementById("o_sem_meta").textContent=any?brl(sm):"—";
+  document.getElementById("o_sem_real").textContent=any?brl(sr):"—";
+
+  updateChips();
+}
+
+/* ---------- navegação ---------- */
+function stepFilled(id){
+  var sec=document.getElementById("step"+id);
+  if(!sec)return false;
+  if(id===4)return state.acoes.length>0;
+  if(id===8)return state.checks.some(Boolean);
+  var ins=sec.querySelectorAll('input[id^="f_"],select[id^="f_"],textarea[id^="f_"]');
+  for(var i=0;i<ins.length;i++){if(String(ins[i].value).trim())return true;}
+  return false;
+}
+function buildChips(){
+  var box=document.getElementById("chips");
+  STEPS.forEach(function(s){
+    var b=el("button","chip");
+    b.type="button";b.id="chip"+s.id;b.setAttribute("role","tab");
+    b.innerHTML="<b>"+s.id+"</b> "+s.label;
+    b.addEventListener("click",function(){go(s.id);});
+    box.appendChild(b);
+  });
+}
+function updateChips(){
+  STEPS.forEach(function(s){
+    var c=document.getElementById("chip"+s.id);
+    if(!c)return;
+    c.setAttribute("aria-selected",s.id===cur?"true":"false");
+    if(s.id!==cur&&stepFilled(s.id))c.classList.add("done");else c.classList.remove("done");
+  });
+}
+function go(id){
+  cur=Math.min(8,Math.max(1,id));
+  STEPS.forEach(function(s){
+    document.getElementById("step"+s.id).hidden=(s.id!==cur);
+  });
+  document.getElementById("prev").disabled=(cur===1);
+  var nx=document.getElementById("next");
+  nx.textContent=(cur===8)?"Pronto":"Avançar";
+  nx.disabled=(cur===8);
+  updateChips();
+  var c=document.getElementById("chip"+cur);
+  if(c&&c.scrollIntoView)c.scrollIntoView({block:"nearest",inline:"center"});
+  window.scrollTo({top:0,behavior:"auto"});
+}
+
+/* ---------- saída ---------- */
+function planLines(){
+  var L=[];
+  function sec(t){L.push({t:"h",v:t});}
+  function kv(k,v){if(v!==""&&v!==undefined&&v!==null)L.push({t:"kv",k:k,v:String(v)});}
+  function txt(v){L.push({t:"p",v:v});}
+
+  kv("Empresa",get("f_empresa"));
+  kv("Responsável",get("f_resp"));
+  kv("Período",get("f_periodo"));
+
+  sec("1. Ponto de partida");
+  for(var i=1;i<=3;i++){
+    var nome=get("f_m"+i+"_nome")||("Mês "+i);
+    var f=num(get("f_m"+i+"_fat")),c=num(get("f_m"+i+"_cli"));
+    if(f>0||c>0)kv(nome,brl(f)+" · "+int(c)+" clientes"+(c>0?" · ticket "+brl(f/c):""));
+  }
+  kv("Faturamento médio",document.getElementById("o_fatmed").textContent);
+  kv("Ticket médio",document.getElementById("o_ticketmed").textContent);
+  kv("Clientes cadastrados",get("f_base_total"));
+  kv("Compraram nos últimos 90 dias",get("f_base_90"));
+  kv("Chamados no último mês",get("f_base_chamei"));
+  var ors=[];
+  ORIGENS.forEach(function(o,i){var v=get("f_or"+i);if(String(v).trim())ors.push(o+" "+v+"%");});
+  if(ors.length)kv("Origem dos clientes",ors.join(" · "));
+
+  sec("2. Meta");
+  kv("Meta de faturamento",brl(num(get("f_meta_fat"))));
+  kv("Ticket médio buscado",brl(num(get("f_meta_ticket"))));
+  kv("Dias de venda",get("f_meta_dias"));
+  kv("Clientes no mês",document.getElementById("o_clientes").textContent);
+  kv("Clientes por dia",document.getElementById("o_clidia").textContent);
+  kv("Faturamento por dia",document.getElementById("o_fatdia").textContent);
+  kv("Complementar a sugerir",get("f_tk1"));
+  kv("Kit ou combo",get("f_tk2"));
+  kv("Valor mínimo para condição",get("f_tk3"));
+
+  sec("3. De onde vem o faturamento");
+  PILARES.forEach(function(p){
+    var pct=get("f_p_"+p.k);
+    if(String(pct).trim())kv(p.n,pct+"% · "+document.getElementById("o_p_"+p.k+"_rs").textContent+
+      " · "+document.getElementById("o_p_"+p.k+"_cli").textContent+" clientes");
+  });
+
+  sec("4. Plano de ações");
+  if(!state.acoes.length)txt("Nenhuma ação registrada.");
+  state.acoes.forEach(function(a,i){
+    kv((i+1)+". "+(a.nome||"Ação sem nome"),
+      [a.pilar,a.periodo,a.inv?"investe "+brl(num(a.inv)):"",a.ret?"retorna "+brl(num(a.ret)):""]
+      .filter(Boolean).join(" · "));
+    if(a.desc)txt(a.desc);
+  });
+
+  sec("5. Vale a pena?");
+  if(num(get("f_r_inv"))>0||num(get("f_r_vendas"))>0){
+    kv("Investido",brl(num(get("f_r_inv"))));
+    kv("Chamaram",get("f_r_contatos"));
+    kv("Compraram",get("f_r_compraram"));
+    kv("Venderam",brl(num(get("f_r_vendas"))));
+    kv("Margem",get("f_r_margem")+"%");
+    kv("Custo por cliente",document.getElementById("o_cac").textContent);
+    kv("Resultado da ação",document.getElementById("o_result").textContent);
+  }else txt("Preencher ao fim da primeira ação.");
+
+  sec("6. Contatos da base");
+  kv("Contatos por dia",get("f_c_dia"));
+  kv("Total no plano",document.getElementById("o_c_total").textContent);
+  kv("Vendas estimadas",document.getElementById("o_c_vendas").textContent);
+  kv("Faturamento da base",document.getElementById("o_c_fat").textContent);
+  state.contatos.forEach(function(c,i){
+    kv((i+1)+". "+(c.nome||"Sem nome"),
+      [c.fone,c.ultima,c.motivo,c.result,c.quando?"voltar em "+c.quando:""].filter(Boolean).join(" · "));
+  });
+
+  sec("7. Acompanhamento mensal");
+  for(var w=1;w<=12;w++){
+    var a=num(get("f_s"+w+"_meta")),b=num(get("f_s"+w+"_real")),ct=get("f_s"+w+"_cont"),aj=get("f_s"+w+"_ajuste");
+    if(a>0||b>0||String(ct).trim()||String(aj).trim()){
+      kv("Mês "+w,"meta "+brl(a)+" · realizado "+brl(b)+(String(ct).trim()?" · "+ct+" contatos":""));
+      if(String(aj).trim())txt(aj);
+    }
+  }
+
+  sec("8. Nas próximas 48 horas");
+  CHECK.forEach(function(c,i){kv((state.checks[i]?"[x] ":"[ ] ")+c[0],"");});
+  return L;
+}
+
+function asText(){
+  var out=["PLANO ANUAL","Empreende · Marketing que Vende · Ester Zen",""];
+  planLines().forEach(function(l){
+    if(l.t==="h")out.push("","== "+l.v+" ==");
+    else if(l.t==="kv")out.push(l.k+(l.v?": "+l.v:""));
+    else out.push("   "+l.v);
+  });
+  out.push("","Gerado em "+new Date().toLocaleDateString("pt-BR"));
+  return out.join("\n");
+}
+
+function buildPDF(){
+  var J=(window.jspdf&&window.jspdf.jsPDF)?window.jspdf.jsPDF:null;
+  if(!J)return null;
+  var doc=new J({unit:"mm",format:"a4"});
+  var M=18, W=210, maxW=W-M*2, y=0;
+  var teal=[29,59,58], terr=[200,85,61], ink=[34,34,34], grey=[94,124,122];
+
+  doc.setFillColor(teal[0],teal[1],teal[2]);
+  doc.rect(0,0,W,46,"F");
+  doc.setTextColor(255,255,255);
+  doc.setFont("helvetica","bold");doc.setFontSize(11);
+  doc.text("EMPREENDE  ·  MARKETING QUE VENDE",M,18);
+  doc.setFontSize(26);
+  doc.text("Plano Anual",M,32);
+  doc.setFont("helvetica","normal");doc.setFontSize(10);
+  doc.text("Ester Zen · Comportamento, relacionamento e resultado",M,40);
+  y=58;
+
+  function need(h){
+    if(y+h>280){doc.addPage();y=M+4;}
+  }
+  planLines().forEach(function(l){
+    if(l.t==="h"){
+      need(16);y+=4;
+      doc.setFillColor(232,239,238);
+      doc.rect(M,y-5,maxW,9,"F");
+      doc.setTextColor(teal[0],teal[1],teal[2]);
+      doc.setFont("helvetica","bold");doc.setFontSize(11.5);
+      doc.text(l.v,M+3,y+1.3);
+      y+=12;
+    }else if(l.t==="kv"){
+      doc.setFont("helvetica","bold");doc.setFontSize(9.5);
+      var kw=66;
+      var kl=doc.splitTextToSize(l.k,kw-3);
+      doc.setFont("helvetica","normal");
+      var vl=l.v?doc.splitTextToSize(l.v,maxW-kw):[];
+      var h=Math.max(kl.length,vl.length)*4.6+2.4;
+      need(h+2);
+      doc.setTextColor(ink[0],ink[1],ink[2]);
+      doc.setFont("helvetica","bold");doc.text(kl,M,y);
+      if(vl.length){doc.setFont("helvetica","normal");doc.text(vl,M+kw,y);}
+      y+=h;
+    }else{
+      doc.setFont("helvetica","italic");doc.setFontSize(9);
+      doc.setTextColor(grey[0],grey[1],grey[2]);
+      var pl=doc.splitTextToSize(l.v,maxW-6);
+      need(pl.length*4.4+3);
+      doc.text(pl,M+6,y);
+      y+=pl.length*4.4+3;
+    }
+  });
+
+  need(16);y+=6;
+  doc.setFillColor(terr[0],terr[1],terr[2]);
+  doc.rect(M,y-5,maxW,10,"F");
+  doc.setTextColor(255,255,255);
+  doc.setFont("helvetica","bold");doc.setFontSize(10.5);
+  doc.text("Faturamento não é sorte de mês bom. É conta, rotina e atendimento.",M+3,y+1.6);
+
+  var total=doc.internal.getNumberOfPages();
+  for(var p=1;p<=total;p++){
+    doc.setPage(p);
+    doc.setFont("helvetica","normal");doc.setFontSize(8);
+    doc.setTextColor(grey[0],grey[1],grey[2]);
+    doc.text("Plano Anual · preenchido em "+new Date().toLocaleDateString("pt-BR"),M,289);
+    doc.text(String(p)+"/"+String(total),W-M,289,{align:"right"});
+  }
+  return doc;
+}
+
+function toast(msg){
+  var old=document.getElementById("toast");
+  if(old)old.remove();
+  var t=el("div","toast",msg);t.id="toast";
+  document.body.appendChild(t);
+  setTimeout(function(){if(t.parentNode)t.remove();},3600);
+}
+
+/* ---------- início ---------- */
+load();
+buildMeses();buildOrigens();buildPilares();buildSemanas();buildCheck();
+buildChips();
+wireFields();
+renderAcoes();renderContatos();
+calc();go(1);
+
+document.getElementById("add_acao").addEventListener("click",function(){
+  state.acoes.push({nome:"",pilar:"",periodo:"",desc:"",inv:"",ret:""});
+  renderAcoes();calc();queueSave();
+});
+document.getElementById("add_contato").addEventListener("click",function(){
+  state.contatos.push({nome:"",fone:"",ultima:"",motivo:"",result:"",quando:""});
+  renderContatos();queueSave();
+});
+document.getElementById("prev").addEventListener("click",function(){go(cur-1);});
+document.getElementById("next").addEventListener("click",function(){go(cur+1);});
+
+/* reset */
+var rc=document.getElementById("reset_confirm");
+document.getElementById("btn_reset").addEventListener("click",function(){rc.hidden=false;});
+document.getElementById("btn_reset_no").addEventListener("click",function(){rc.hidden=true;});
+document.getElementById("btn_reset_yes").addEventListener("click",function(){
+  try{localStorage.removeItem(KEY);}catch(e){}
+  state={fields:{},acoes:[],contatos:[],checks:[]};
+  location.reload();
+});
+
+/* copiar */
+document.getElementById("btn_copy").addEventListener("click",function(){
+  var txt=asText();
+  function fallback(){
+    var ta=document.createElement("textarea");
+    ta.value=txt;ta.style.position="fixed";ta.style.top="-1000px";
+    document.body.appendChild(ta);ta.focus();ta.select();
+    toast("Plano selecionado. Toque em Copiar no seu teclado.");
+  }
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){toast("Plano copiado. Cole no WhatsApp ou nas notas.");},fallback);
+  }else fallback();
+});
+
+/* pdf */
+var pdfBtn=document.getElementById("btn_pdf");
+var pdfHint=document.getElementById("pdf_hint");
+pdfBtn.addEventListener("click",function(){
+  var doc=buildPDF();
+  if(!doc){toast("O gerador de PDF não carregou. Use Copiar como texto.");return;}
+  var blob=doc.output("blob");
+  var nome=(get("f_empresa")||"meu-plano").toString().toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-")
+    .replace(/^-|-$/g,"").slice(0,40)||"meu-plano";
+  pdfBtn.disabled=true;pdfBtn.textContent="Gerando…";
+  function done(){pdfBtn.disabled=false;pdfBtn.textContent="Baixar meu plano em PDF";}
+  try{
+    var url=URL.createObjectURL(blob);
+    var arq="plano-anual-"+nome+".pdf";
+    var a=document.createElement("a");
+    if("download" in a){
+      a.href=url;a.download=arq;a.rel="noopener";
+      document.body.appendChild(a);a.click();
+      setTimeout(function(){URL.revokeObjectURL(url);if(a.parentNode)a.remove();},6000);
+      done();toast("PDF gerado. Procure em Downloads.");
+    }else{
+      window.open(url,"_blank");
+      done();toast("PDF aberto numa aba. Use Compartilhar para salvar.");
+    }
+  }catch(e){done();toast("Não deu para baixar aqui. Use Copiar como texto.");}
+});
+if(!(window.jspdf&&window.jspdf.jsPDF)){
+  pdfHint.textContent="Se o botão de PDF não funcionar, use Copiar como texto e cole onde quiser guardar.";
+}
+
+/* copiar contato */
+Array.prototype.forEach.call(document.querySelectorAll("[data-copy]"),function(b){
+  b.addEventListener("click",function(){
+    var v=b.getAttribute("data-copy");
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(v).then(function(){toast("Copiado: "+v);},function(){toast(v);});
+    }else toast(v);
+  });
+});
+})();
+</script>
+
+</body>
+</html>
