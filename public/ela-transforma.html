@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ela empreende, ela transforma · Ester Zen</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=DM+Sans:wght@400;500;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{
+  --bg:#F6F0EA; --surface:#FFFFFF; --surface-2:#EFE5DD; --fg:#2B1B26; --muted:#6B5560;
+  --line:#E0D2C8; --brand:#2B1B26; --brand-ink:#F6F0EA; --accent:#A9643A; --accent-lt:#C9824F;
+  --accent-soft:#F6E4D6; --ok:#3E6B4A; --warn:#9C3D2A; --field:#FFFFFF; --field-line:#CDBBB0;
+  --f-display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --f-body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1A1117; --surface:#241921; --surface-2:#2E2129; --fg:#F3E9E2; --muted:#BCA7AF;
+  --line:#3D2D36; --brand:#120B10; --brand-ink:#F6F0EA; --accent:#E0A276; --accent-lt:#E0A276;
+  --accent-soft:#3A2A22; --ok:#8CC49A; --warn:#F09A86; --field:#1A1117; --field-line:#4A3842; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#1A1117; --surface:#241921; --surface-2:#2E2129; --fg:#F3E9E2; --muted:#BCA7AF;
+  --line:#3D2D36; --brand:#120B10; --brand-ink:#F6F0EA; --accent:#E0A276; --accent-lt:#E0A276;
+  --accent-soft:#3A2A22; --ok:#8CC49A; --warn:#F09A86; --field:#1A1117; --field-line:#4A3842; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:120px}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;
+  padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--brand)}
+h1,h2,h3{margin:0;text-wrap:balance}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--brand)}
+.top .wrap{padding-top:12px}
+.brandrow{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.brandrow h1{font-family:var(--f-display);color:var(--brand-ink);font-size:24px;font-weight:600;line-height:1.1}
+.brandrow .sub{color:var(--brand-ink);opacity:.7;font-size:12.5px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0 11px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid rgba(246,240,234,.28);background:transparent;color:var(--brand-ink);opacity:.72;
+  font:500 12.5px/1 var(--f-body);padding:8px 11px;border-radius:999px;cursor:pointer;display:flex;gap:6px;align-items:center}
+.chip b{font-weight:700;font-size:11px}
+.chip[aria-selected="true"]{background:var(--accent-lt);border-color:var(--accent-lt);color:#2B1B26;opacity:1}
+.chip.done{opacity:1;border-color:rgba(246,240,234,.6)}
+
+main .wrap{padding-top:18px;padding-bottom:10px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 16px 22px}
+.eyebrow{font:700 11.5px/1.3 var(--f-body);letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+.step h2{font-family:var(--f-display);font-size:34px;font-weight:600;line-height:1.05;margin-bottom:8px}
+.lead{color:var(--muted);font-size:15px;margin:0 0 6px}
+.block{margin-top:22px}
+.block h3{font-size:16px;font-weight:700;margin-bottom:10px}
+.pause{background:var(--brand);color:var(--brand-ink);border-radius:14px;padding:16px 16px 18px;margin-top:20px}
+.pause .eyebrow{color:var(--accent-lt)}
+.pause p.q{font-family:var(--f-display);font-style:italic;font-size:24px;line-height:1.2;margin:0 0 12px}
+.pause textarea{background:rgba(246,240,234,.08);border-color:rgba(246,240,234,.3);color:var(--brand-ink)}
+.pause textarea::placeholder{color:rgba(246,240,234,.5)}
+.hint{color:var(--muted);font-size:13px;margin:6px 0 0}
+
+label{display:block;font:500 13px/1.35 var(--f-body);color:var(--muted);margin-bottom:5px}
+.pause label{color:rgba(246,240,234,.75)}
+input,select,textarea{width:100%;font:400 16px/1.45 var(--f-body);color:var(--fg);background:var(--field);
+  border:1px solid var(--field-line);border-radius:10px;padding:11px 12px}
+textarea{resize:vertical;min-height:72px}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,.chip:focus-visible{outline:2px solid var(--accent-lt);outline-offset:2px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:1fr 1fr}
+@media (max-width:560px){.g2{grid-template-columns:1fr}}
+
+.sentence{background:var(--surface-2);border-radius:12px;padding:14px 14px 16px}
+.sentence .lbl{font-family:var(--f-display);font-size:21px;font-style:italic;line-height:1.2;margin:0 0 8px;color:var(--fg)}
+.sentence + .sentence{margin-top:12px}
+
+.scene{border-left:3px solid var(--accent-lt);padding:4px 0 4px 14px;margin:18px 0 0}
+.scene p{margin:0;font-family:var(--f-display);font-size:22px;line-height:1.25;font-style:italic}
+.scene span{display:block;font-size:13px;color:var(--muted);margin-top:4px;font-family:var(--f-body);font-style:normal}
+.check{border-radius:12px;padding:12px 14px;margin-top:12px;font-size:14.5px}
+.check.ok{background:rgba(62,107,74,.12);color:var(--ok)}
+.check.bad{background:var(--accent-soft);color:var(--warn)}
+.check b{display:block;margin-bottom:2px}
+
+.manifesto{font-family:var(--f-display);font-size:21px;line-height:1.35;min-height:220px}
+
+.btn{font:600 14.5px/1 var(--f-body);border-radius:10px;padding:12px 15px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.ghost{background:transparent;border:none;color:var(--accent);padding:6px 2px;font-size:13.5px}
+.btn[disabled]{opacity:.45;cursor:default}
+.btn.block{width:100%}
+.contact{background:var(--surface-2);border-radius:12px;padding:12px 13px}
+.contact .k{font-size:12px;color:var(--muted);display:block}
+.contact .v{font-family:var(--f-display);font-size:22px;font-weight:600;display:block}
+
+.bottom{position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.bottom .wrap{padding-top:10px;padding-bottom:10px;display:flex;align-items:center;gap:10px}
+.saved{flex:1;min-width:0;font-size:12.5px;color:var(--muted);margin:0}
+.saved b{color:var(--ok)}
+.nav{display:flex;gap:8px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(88px + env(safe-area-inset-bottom,0px));
+  background:var(--brand);color:var(--brand-ink);padding:11px 16px;border-radius:10px;font-size:14px;z-index:40;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:88vw}
+.confirm{color:var(--warn);font-size:13.5px;margin-top:6px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandrow">
+      <h1>Minha Marca Pessoal</h1>
+      <span class="sub">Ela empreende, ela transforma · Ester Zen</span>
+    </div>
+    <div class="chips" id="chips" role="tablist" aria-label="Etapas"></div>
+  </div>
+</header>
+
+<main><div class="wrap" id="steps"></div></main>
+
+<div class="bottom">
+  <div class="wrap">
+    <p class="saved" id="saved">Responda com calma. <b>Fica salvo neste celular.</b></p>
+    <div class="nav">
+      <button class="btn" id="prev" type="button">Voltar</button>
+      <button class="btn primary" id="next" type="button">Avançar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+var KEY="elaEmpreendeElaTransforma.v1";
+
+/* Conteúdo: cada etapa espelha um momento da palestra. */
+var STEPS=[
+  {id:"inicio",chip:"Início",eyebrow:"Antes de começar",title:"A marca se constrói de dentro para fora",
+   lead:"A palestra passa por três transformações: você, o seu negócio e quem está em volta. A cada pausa vai aparecer uma pergunta na tela. Responda aqui, no seu ritmo. No fim, você sai com a sua marca pessoal escrita e um PDF para guardar.",
+   blocks:[
+     {type:"fields",grid:"g2",fields:[
+       {id:"nome",label:"Seu nome",ac:"name"},
+       {id:"negocio",label:"Seu negócio ou profissão",ac:"organization"}
+     ]},
+     {type:"note",text:"Ninguém vê o que você escrever aqui. As respostas ficam só neste celular."}
+   ]},
+
+  {id:"essencia",chip:"Essência",eyebrow:"Camada 1 de 6 · Autoconhecimento",title:"Essência",
+   lead:"A essência inclui a sua história e o que você aprendeu a acreditar sobre si mesma.",
+   blocks:[
+     {type:"pause",q:"O que a menina que você foi aprendeu sobre…",fields:[
+       {id:"m_dinheiro",label:"…dinheiro?",area:true},
+       {id:"m_aparecer",label:"…aparecer?",area:true},
+       {id:"m_incomodar",label:"…incomodar?",area:true}
+     ]},
+     {type:"sentences",title:"Agora, a empresária",items:[
+       {id:"acredito",lbl:"Eu acredito que…"},
+       {id:"naoaceito",lbl:"…e por isso não aceito…"}
+     ]}
+   ]},
+
+  {id:"posicionamento",chip:"Posição",eyebrow:"Camada 2 de 6 · Coragem de renunciar",title:"Posicionamento",
+   lead:"Posicionar é escolher, e escolher é renunciar. Quem não renuncia a nada não se posiciona em lugar nenhum.",
+   blocks:[
+     {type:"pause",q:"Quem eu atendo hoje por medo, e não por escolha?",fields:[{id:"medo",area:true}]},
+     {type:"sentences",title:"Minha escolha",items:[
+       {id:"atendo",lbl:"Eu atendo…"},
+       {id:"naoatendo",lbl:"Eu não atendo…"},
+       {id:"naofaco",lbl:"Eu não faço…"}
+     ]}
+   ]},
+
+  {id:"promessa",chip:"Promessa",eyebrow:"Camada 3 de 6 · Empatia",title:"Promessa",
+   lead:"A cliente não compra o produto. Compra o que sente ao lidar com você.",
+   blocks:[
+     {type:"pause",q:"O que a minha cliente sente hoje quando sai de perto de mim?",fields:[{id:"sente_hoje",area:true}]},
+     {type:"sentences",title:"O que eu prometo",items:[
+       {id:"sente",lbl:"Quem passa por mim sai sentindo…"}
+     ]}
+   ]},
+
+  {id:"personalidade",chip:"Personalidade",eyebrow:"Camada 4 de 6 · Autorregulação emocional",title:"Personalidade",
+   lead:"Ela aparece de verdade sob pressão: no pedido de desconto, na reclamação, no atraso.",
+   blocks:[
+     {type:"pause",q:"Em qual situação eu deixo de ser a empresária e volto a ser a menina?",fields:[{id:"volto",area:true}]},
+     {type:"sentences",title:"Como eu me comporto",items:[
+       {id:"palavras",lbl:"Três palavras que descrevem como eu me comporto:"}
+     ]},
+     {type:"desconto"}
+   ]},
+
+  {id:"expressao",chip:"Expressão",eyebrow:"Camada 5 de 6 · Comunicação",title:"Expressão",
+   lead:"Imagem, vocabulário, redes e figurino traduzem as camadas anteriores. Não substituem nenhuma delas.",
+   blocks:[
+     {type:"pause",q:"A minha imagem conta a mesma história que a minha essência?",fields:[
+       {id:"coerente",label:"Hoje",options:["Sim","Em parte","Não"]},
+       {id:"coerente_porque",label:"Onde não conta",area:true}
+     ]},
+     {type:"sentences",title:"Meu vocabulário de marca",items:[
+       {id:"uso",lbl:"Palavras que eu uso:"},
+       {id:"nuncauso",lbl:"Palavras que eu nunca uso:"}
+     ]}
+   ]},
+
+  {id:"experiencia",chip:"Experiência",eyebrow:"Camada 6 de 6 · Escuta e consistência",title:"Experiência",
+   lead:"A marca é decidida nos pequenos momentos. Uma experiência ruim apaga dez posts bons.",
+   blocks:[
+     {type:"pause",q:"Qual ponto de contato meu hoje contradiz quem eu quero ser?",fields:[
+       {id:"ponto",label:"Ponto de contato",options:["WhatsApp","Cobrança","Prazo e atraso","Atendimento presencial","Orçamento","Pós-venda","Redes sociais","Como lido com o erro","Outro"]},
+       {id:"ponto_como",label:"O que acontece hoje",area:true}
+     ]},
+     {type:"fields",grid:"g2",fields:[
+       {id:"mudanca",label:"O que eu vou mudar",area:true,wide:true},
+       {id:"mudanca_quando",label:"Até quando",ph:"ex.: sexta-feira"}
+     ]}
+   ]},
+
+  {id:"emvolta",chip:"Em volta",eyebrow:"Transformação 3 · Quem está em volta",title:"Quem está em volta",
+   lead:"Quando ela muda, muda o que está em volta: a cliente, a equipe, a família e outras mulheres. Ninguém copia o seu discurso. Todo mundo copia o seu comportamento.",
+   blocks:[
+     {type:"pause",q:"Quem está olhando para você empreender?",fields:[{id:"olhando",area:true}]},
+     {type:"sentences",title:"O que eu quero deixar",items:[
+       {id:"aprender",lbl:"Quero que quem me vê empreender aprenda que…"}
+     ]}
+   ]},
+
+  {id:"resposta",chip:"Resposta",eyebrow:"Fechamento",title:"“Quem você pensa que é?”",
+   lead:"A menina não sabia responder. A empresária sabe. Junte as suas respostas e ajuste o texto até ele soar como você.",
+   blocks:[{type:"manifesto"},{type:"saida"}]}
+];
+
+var state={fields:{}};
+var cur=0, saveTimer=null;
+
+/* ---------- armazenamento ---------- */
+function load(){try{var r=localStorage.getItem(KEY);if(r){var p=JSON.parse(r);if(p&&p.fields)state.fields=p.fields;}}catch(e){}}
+function save(){
+  try{localStorage.setItem(KEY,JSON.stringify(state));
+    document.getElementById("saved").innerHTML="<b>Salvo</b> às "+new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});}
+  catch(e){document.getElementById("saved").innerHTML="Este navegador não guarda as respostas. <b>Baixe o PDF no fim.</b>";}
+}
+function queueSave(){clearTimeout(saveTimer);saveTimer=setTimeout(save,400);}
+function saveNow(){clearTimeout(saveTimer);save();}
+document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")saveNow();});
+window.addEventListener("pagehide",saveNow);
+function get(id){var v=state.fields[id];return v==null?"":String(v);}
+
+/* ---------- construção ---------- */
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function field(f){
+  var w=el("div","field");if(f.wide)w.style.gridColumn="1/-1";
+  var id="f_"+f.id, input;
+  if(f.label){var l=el("label",null,f.label);l.setAttribute("for",id);w.appendChild(l);}
+  if(f.options){input=document.createElement("select");input.appendChild(new Option("—",""));
+    f.options.forEach(function(o){input.appendChild(new Option(o,o));});}
+  else input=document.createElement(f.area?"textarea":"input");
+  input.id=id;
+  if(!f.label)input.setAttribute("aria-label",f.aria||"Sua resposta");
+  if(f.ph)input.placeholder=f.ph;
+  if(f.ac)input.setAttribute("autocomplete",f.ac);
+  input.value=get(f.id);
+  function upd(){state.fields[f.id]=input.value;queueSave();updateChips();if(f.onchange)f.onchange();}
+  input.addEventListener("input",upd);
+  input.addEventListener("change",function(){upd();saveNow();});
+  input.addEventListener("blur",saveNow);
+  w.appendChild(input);
+  return w;
+}
+
+function renderBlock(b,host){
+  var box;
+  if(b.type==="fields"){
+    box=el("div","block");var g=el("div","grid "+(b.grid||""));b.fields.forEach(function(f){g.appendChild(field(f));});box.appendChild(g);
+  }else if(b.type==="note"){
+    box=el("p","hint",b.text);box.style.marginTop="14px";
+  }else if(b.type==="pause"){
+    box=el("div","pause");
+    box.appendChild(el("p","eyebrow","Pausa · pense antes de escrever"));
+    box.appendChild(el("p","q",b.q));
+    var g=el("div","grid");b.fields.forEach(function(f){g.appendChild(field(f));});box.appendChild(g);
+  }else if(b.type==="sentences"){
+    box=el("div","block");box.appendChild(el("h3",null,b.title));
+    b.items.forEach(function(it){
+      var s=el("div","sentence");s.appendChild(el("p","lbl",it.lbl));
+      s.appendChild(field({id:it.id,area:true,aria:it.lbl}));box.appendChild(s);
+    });
+  }else if(b.type==="desconto"){
+    box=renderDesconto();
+  }else if(b.type==="manifesto"){
+    box=renderManifesto();
+  }else if(b.type==="saida"){
+    box=renderSaida();
+  }
+  host.appendChild(box);
+}
+
+/* ---------- exercício do desconto ---------- */
+var RISCO=[
+  [/desculp/i,"pede desculpa"],
+  [/infelizmente/i,"“infelizmente” trata o seu preço como um problema"],
+  [/\bmas se\b|a gente v[eê]|vou ver|vejo (com|o que)|posso ver/i,"abre a porta para negociar o que não foi pedido"],
+  [/s[oó] (dessa|desta) vez|excep/i,"cria exceção e ensina a cliente a pedir de novo"],
+  [/caro|pesad/i,"concorda que o preço é alto"],
+  [/porque (eu )?(tenho|pago|gasto)|meu custo|os custos|imposto|material (est[aá]|subiu)/i,"justifica o preço com o seu custo"],
+  [/n[aã]o sei|acho que|talvez/i,"mostra insegurança"]
+];
+function analisarDesconto(){
+  var out=document.getElementById("desc_check");if(!out)return;
+  var t=get("desconto").trim();
+  if(t.length<12){out.hidden=true;return;}
+  var achados=[];RISCO.forEach(function(r){if(r[0].test(t))achados.push(r[1]);});
+  out.hidden=false;
+  if(achados.length){
+    out.className="check bad";
+    out.innerHTML="";out.appendChild(el("b",null,"Aqui quem respondeu foi a menina."));
+    out.appendChild(el("span",null,"A sua resposta "+achados.join("; ")+". Reescreva sem justificar e sem pedir desculpa."));
+  }else{
+    out.className="check ok";
+    out.innerHTML="";out.appendChild(el("b",null,"Resposta de empresária."));
+    out.appendChild(el("span",null,"Sem desculpa, sem justificativa e sem oferecer o que não foi pedido. Leia em voz alta: soa como você?"));
+  }
+}
+function renderDesconto(){
+  var box=el("div","block");
+  box.appendChild(el("h3",null,"Exercício: o pedido de desconto"));
+  var sc=el("div","scene");sc.appendChild(el("p",null,"“Gostei, mas está caro. Faz um desconto?”"));
+  sc.appendChild(el("span",null,"A cliente acabou de ouvir o seu preço."));box.appendChild(sc);
+  var s=el("div","sentence");s.style.marginTop="14px";
+  s.appendChild(el("p","lbl","Escreva exatamente o que você responderia:"));
+  s.appendChild(field({id:"desconto",area:true,aria:"Sua resposta ao pedido de desconto",onchange:analisarDesconto}));
+  box.appendChild(s);
+  var c=el("div","check");c.id="desc_check";c.hidden=true;c.setAttribute("aria-live","polite");box.appendChild(c);
+  box.appendChild(el("p","hint","A leitura é automática e procura palavras de insegurança. Ela não substitui o seu julgamento."));
+  return box;
+}
+
+/* ---------- manifesto ---------- */
+function clean(s){return String(s||"").trim().replace(/\s+/g," ").replace(/[.;,\s]+$/,"");}
+function lower1(s){return s?s.charAt(0).toLowerCase()+s.slice(1):s;}
+function montarManifesto(){
+  var p=[], nome=clean(get("nome")), neg=clean(get("negocio"));
+  if(nome)p.push("Eu sou "+nome+(neg?", de "+neg:"")+".");
+  var a=clean(get("acredito")),n=clean(get("naoaceito"));
+  if(a)p.push("Acredito que "+lower1(a)+(n?" e, por isso, não aceito "+lower1(n):"")+".");
+  else if(n)p.push("Não aceito "+lower1(n)+".");
+  var at=clean(get("atendo")),na=clean(get("naoatendo")),nf=clean(get("naofaco"));
+  if(at)p.push("Atendo "+lower1(at)+".");
+  if(na||nf)p.push([na?"Não atendo "+lower1(na):"",nf?(na?"não faço ":"Não faço ")+lower1(nf):""].filter(Boolean).join(" e ")+".");
+  var se=clean(get("sente"));if(se)p.push("Quem passa por mim sai sentindo "+lower1(se)+".");
+  var pa=clean(get("palavras"));if(pa)p.push("Mesmo sob pressão, sou "+lower1(pa)+".");
+  var ap=clean(get("aprender"));if(ap)p.push("Quero que quem me vê empreender aprenda que "+lower1(ap)+".");
+  return p.join(" ");
+}
+function renderManifesto(){
+  var box=el("div","block");
+  box.appendChild(el("h3",null,"Minha resposta"));
+  var w=field({id:"manifesto",area:true,aria:"Sua resposta: quem você é"});
+  w.querySelector("textarea").className="manifesto";
+  var b=el("button","btn block","Montar a partir das minhas respostas");b.type="button";b.style.marginBottom="12px";
+  b.addEventListener("click",function(){
+    var txt=montarManifesto();
+    if(!txt){toast("Preencha as camadas antes. As frases vêm de lá.");return;}
+    var ta=document.getElementById("f_manifesto");
+    if(ta.value.trim()&&!confirmar){confirmar=true;b.textContent="Substituir o texto atual? Toque de novo";return;}
+    confirmar=false;b.textContent="Montar a partir das minhas respostas";
+    ta.value=txt;state.fields.manifesto=txt;saveNow();updateChips();ta.focus();
+  });
+  var confirmar=false;
+  box.appendChild(b);box.appendChild(w);
+  box.appendChild(el("p","hint","Edite à vontade. Leia em voz alta: se não soa como você, reescreva."));
+
+  var b2=el("div","block");b2.appendChild(el("h3",null,"Meu compromisso dos próximos 7 dias"));
+  var g=el("div","grid g2");
+  g.appendChild(field({id:"compromisso",label:"Uma ação concreta",area:true,wide:true}));
+  g.appendChild(field({id:"compromisso_data",label:"Até quando",ph:"ex.: 26/10"}));
+  b2.appendChild(g);
+  var frag=document.createDocumentFragment();frag.appendChild(box);frag.appendChild(b2);
+  var holder=el("div");holder.appendChild(frag);return holder;
+}
+
+/* ---------- saída ---------- */
+function renderSaida(){
+  var box=el("div","block");
+  box.appendChild(el("h3",null,"Levar com você"));
+  box.appendChild(el("p","hint","Tudo fica salvo neste celular. Se fechar, abra de novo pelo mesmo link."));
+  var g=el("div","grid g2");g.style.marginTop="12px";
+  var pdf=el("button","btn primary","Baixar em PDF");pdf.type="button";pdf.id="btn_pdf";
+  var cp=el("button","btn","Copiar como texto");cp.type="button";cp.id="btn_copy";
+  g.appendChild(pdf);g.appendChild(cp);box.appendChild(g);
+  box.appendChild(el("p","hint","No iPhone o PDF pode abrir numa aba: toque em Compartilhar e depois em Salvar em Arquivos."));
+
+  var c=el("div","block");c.appendChild(el("h3",null,"Quer continuar essa conversa?"));
+  var cg=el("div","grid g2");
+  [["WhatsApp","(47) 99254-3200"],["E-mail","contato@esterzen.com"]].forEach(function(x){
+    var d=el("div","contact");d.appendChild(el("span","k",x[0]));d.appendChild(el("span","v",x[1]));
+    var bt=el("button","btn ghost","Copiar");bt.type="button";
+    bt.addEventListener("click",function(){copiar(x[1],"Copiado: "+x[1]);});d.appendChild(bt);cg.appendChild(d);
+  });
+  c.appendChild(cg);
+  c.appendChild(el("p","hint","Instagram @esterzen · YouTube @aesterzen · esterzen.com"));
+  var rs=el("button","btn ghost","Apagar tudo e recomeçar");rs.type="button";rs.style.marginTop="16px";
+  var cf=el("p","confirm");cf.hidden=true;
+  var yes=el("button","btn ghost","Sim, apagar");yes.type="button";
+  var no=el("button","btn ghost","Cancelar");no.type="button";
+  cf.appendChild(document.createTextNode("Isso apaga todas as respostas deste celular. "));cf.appendChild(yes);cf.appendChild(document.createTextNode(" · "));cf.appendChild(no);
+  rs.addEventListener("click",function(){cf.hidden=false;});
+  no.addEventListener("click",function(){cf.hidden=true;});
+  yes.addEventListener("click",function(){try{localStorage.removeItem(KEY);}catch(e){}location.reload();});
+  c.appendChild(rs);c.appendChild(cf);
+
+  var h=el("div");h.appendChild(box);h.appendChild(c);return h;
+}
+
+/* ---------- texto e PDF ---------- */
+function linhas(){
+  var L=[];function h(t){L.push({t:"h",v:t});}function kv(k,v){v=clean(v);if(v)L.push({t:"kv",k:k,v:v});}
+  h("Quem eu sou");
+  var mf=get("manifesto").trim().replace(/\s+/g," ");
+  if(mf)L.push({t:"big",v:mf});
+  else L.push({t:"p",v:"Resposta ainda não escrita."});
+  kv("Compromisso dos próximos 7 dias",get("compromisso")+(clean(get("compromisso_data"))?" (até "+clean(get("compromisso_data"))+")":""));
+  h("1. Essência");
+  kv("A menina aprendeu sobre dinheiro",get("m_dinheiro"));
+  kv("Sobre aparecer",get("m_aparecer"));
+  kv("Sobre incomodar",get("m_incomodar"));
+  kv("Eu acredito que",get("acredito"));
+  kv("E por isso não aceito",get("naoaceito"));
+  h("2. Posicionamento");
+  kv("Atendo hoje por medo",get("medo"));
+  kv("Eu atendo",get("atendo"));
+  kv("Eu não atendo",get("naoatendo"));
+  kv("Eu não faço",get("naofaco"));
+  h("3. Promessa");
+  kv("O que a cliente sente hoje",get("sente_hoje"));
+  kv("Quem passa por mim sai sentindo",get("sente"));
+  h("4. Personalidade");
+  kv("Quando volto a ser a menina",get("volto"));
+  kv("Como eu me comporto",get("palavras"));
+  kv("Minha resposta ao pedido de desconto",get("desconto"));
+  h("5. Expressão");
+  kv("Minha imagem conta a mesma história",get("coerente"));
+  kv("Onde não conta",get("coerente_porque"));
+  kv("Palavras que uso",get("uso"));
+  kv("Palavras que nunca uso",get("nuncauso"));
+  h("6. Experiência");
+  kv("Ponto de contato que me contradiz",get("ponto"));
+  kv("O que acontece hoje",get("ponto_como"));
+  kv("O que vou mudar",get("mudanca")+(clean(get("mudanca_quando"))?" (até "+clean(get("mudanca_quando"))+")":""));
+  h("Quem está em volta");
+  kv("Quem está olhando para mim",get("olhando"));
+  kv("Quero que aprendam que",get("aprender"));
+  return L.filter(function(l,i){
+    if(l.t!=="h")return true;
+    var nx=L[i+1];return !!(nx&&nx.t!=="h");
+  });
+}
+function asText(){
+  var o=["MINHA MARCA PESSOAL","Ela empreende, ela transforma · Ester Zen",""];
+  linhas().forEach(function(l){
+    if(l.t==="h")o.push("","== "+l.v+" ==");else if(l.t==="kv")o.push(l.k+": "+l.v);else o.push(l.v);
+  });
+  o.push("","Ester Zen · (47) 99254-3200 · contato@esterzen.com · @esterzen");
+  return o.join("\n");
+}
+function buildPDF(){
+  var J=(window.jspdf&&window.jspdf.jsPDF)?window.jspdf.jsPDF:null;if(!J)return null;
+  var d=new J({unit:"mm",format:"a4"}),M=18,W=210,mw=W-M*2,y;
+  var plum=[43,27,38],terr=[201,130,79],ink=[43,27,38],grey=[107,85,96],sand=[239,229,221];
+  d.setFillColor(plum[0],plum[1],plum[2]);d.rect(0,0,W,50,"F");
+  d.setTextColor(201,130,79);d.setFont("helvetica","bold");d.setFontSize(10);
+  d.text("ELA EMPREENDE. ELA TRANSFORMA.",M,17);
+  d.setTextColor(246,240,234);d.setFont("times","bold");d.setFontSize(28);
+  d.text("Minha marca pessoal",M,32);
+  d.setFont("helvetica","normal");d.setFontSize(10.5);
+  var quem=[clean(get("nome")),clean(get("negocio"))].filter(Boolean).join(" · ");
+  d.text(quem||"Ester Zen · Comportamento, relacionamento e resultado",M,42);
+  y=62;
+  function need(h){if(y+h>278){d.addPage();y=M+4;}}
+  linhas().forEach(function(l){
+    if(l.t==="h"){need(32);y+=4;d.setFillColor(sand[0],sand[1],sand[2]);d.rect(M,y-5.5,mw,9.5,"F");
+      d.setTextColor(plum[0],plum[1],plum[2]);d.setFont("helvetica","bold");d.setFontSize(11.5);d.text(l.v,M+3,y+1.2);y+=12;}
+    else if(l.t==="big"){d.setFont("times","italic");d.setFontSize(14);d.setTextColor(ink[0],ink[1],ink[2]);
+      var bl=d.splitTextToSize(l.v,mw-8);need(bl.length*6.4+6);
+      d.setDrawColor(terr[0],terr[1],terr[2]);d.setLineWidth(1.2);d.line(M+1,y-4,M+1,y-4+bl.length*6.4);
+      d.text(bl,M+6,y);y+=bl.length*6.4+6;}
+    else if(l.t==="kv"){d.setFont("helvetica","bold");d.setFontSize(9);
+      var kl=d.splitTextToSize(l.k,mw);d.setFont("helvetica","normal");d.setFontSize(10.5);
+      var vl=d.splitTextToSize(l.v,mw);var hh=kl.length*4.2+vl.length*5+4;need(hh);
+      d.setFont("helvetica","bold");d.setFontSize(9);d.setTextColor(grey[0],grey[1],grey[2]);d.text(kl,M,y);y+=kl.length*4.2+0.8;
+      d.setFont("helvetica","normal");d.setFontSize(10.5);d.setTextColor(ink[0],ink[1],ink[2]);d.text(vl,M,y);y+=vl.length*5+3.2;}
+    else{d.setFont("helvetica","italic");d.setFontSize(10);d.setTextColor(grey[0],grey[1],grey[2]);need(8);d.text(l.v,M,y);y+=8;}
+  });
+  need(16);y+=6;d.setFillColor(terr[0],terr[1],terr[2]);d.rect(M,y-5.5,mw,11,"F");
+  d.setTextColor(43,27,38);d.setFont("helvetica","bold");d.setFontSize(10.5);
+  d.text("Marca é promessa cumprida repetidamente.",M+3,y+1.6);
+  var t=d.internal.getNumberOfPages();
+  for(var p=1;p<=t;p++){d.setPage(p);d.setFont("helvetica","normal");d.setFontSize(8);d.setTextColor(grey[0],grey[1],grey[2]);
+    d.text("Ester Zen · (47) 99254-3200 · contato@esterzen.com · @esterzen",M,289);d.text(p+"/"+t,W-M,289,{align:"right"});}
+  return d;
+}
+function baixarPDF(){
+  var btn=document.getElementById("btn_pdf");
+  var doc=buildPDF();
+  if(!doc){toast("O gerador de PDF não carregou. Use Copiar como texto.");return;}
+  btn.disabled=true;btn.textContent="Gerando…";
+  function done(){btn.disabled=false;btn.textContent="Baixar em PDF";}
+  try{
+    var blob=doc.output("blob"),url=URL.createObjectURL(blob);
+    var nome=(clean(get("nome"))||"minha-marca").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"")
+      .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,40)||"minha-marca";
+    var a=document.createElement("a");
+    if("download" in a){a.href=url;a.download="marca-pessoal-"+nome+".pdf";a.rel="noopener";
+      document.body.appendChild(a);a.click();
+      setTimeout(function(){URL.revokeObjectURL(url);if(a.parentNode)a.remove();},6000);
+      done();toast("PDF gerado. Procure em Downloads.");}
+    else{window.open(url,"_blank");done();toast("PDF aberto numa aba. Use Compartilhar para salvar.");}
+  }catch(e){done();toast("Não deu para baixar aqui. Use Copiar como texto.");}
+}
+function copiar(txt,msg){
+  function fb(){var ta=document.createElement("textarea");ta.value=txt;ta.style.position="fixed";ta.style.top="-1000px";
+    document.body.appendChild(ta);ta.focus();ta.select();
+    try{document.execCommand("copy");toast(msg);}catch(e){toast("Selecione e copie manualmente.");}ta.remove();}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(function(){toast(msg);},fb);else fb();
+}
+function toast(m){var o=document.getElementById("toast");if(o)o.remove();var t=el("div","toast",m);t.id="toast";t.setAttribute("role","status");
+  document.body.appendChild(t);setTimeout(function(){if(t.parentNode)t.remove();},3600);}
+
+/* ---------- navegação ---------- */
+function stepFilled(i){
+  var sec=document.getElementById("step_"+STEPS[i].id);if(!sec)return false;
+  var ins=sec.querySelectorAll("input,select,textarea");
+  for(var k=0;k<ins.length;k++){if(String(ins[k].value).trim())return true;}return false;
+}
+function updateChips(){
+  STEPS.forEach(function(s,i){var c=document.getElementById("chip_"+s.id);
+    c.setAttribute("aria-selected",i===cur?"true":"false");
+    c.classList.toggle("done",i!==cur&&stepFilled(i));});
+}
+function go(i){
+  saveNow();
+  cur=Math.max(0,Math.min(STEPS.length-1,i));
+  STEPS.forEach(function(s,k){document.getElementById("step_"+s.id).hidden=(k!==cur);});
+  document.getElementById("prev").disabled=(cur===0);
+  var nx=document.getElementById("next");nx.disabled=(cur===STEPS.length-1);
+  nx.textContent=(cur===STEPS.length-1)?"Pronto":"Avançar";
+  updateChips();
+  var c=document.getElementById("chip_"+STEPS[cur].id);if(c&&c.scrollIntoView)c.scrollIntoView({block:"nearest",inline:"center"});
+  window.scrollTo(0,0);
+  try{sessionStorage.setItem(KEY+".step",String(cur));}catch(e){}
+}
+
+/* ---------- início ---------- */
+load();
+var host=document.getElementById("steps"), chips=document.getElementById("chips");
+STEPS.forEach(function(s,i){
+  var sec=el("section","step");sec.id="step_"+s.id;sec.setAttribute("role","tabpanel");sec.hidden=true;
+  sec.appendChild(el("p","eyebrow",s.eyebrow));sec.appendChild(el("h2",null,s.title));
+  if(s.lead)sec.appendChild(el("p","lead",s.lead));
+  s.blocks.forEach(function(b){renderBlock(b,sec);});
+  host.appendChild(sec);
+  var c=el("button","chip");c.type="button";c.id="chip_"+s.id;c.setAttribute("role","tab");
+  if(i>0){var n=el("b",null,String(i));c.appendChild(n);}
+  c.appendChild(document.createTextNode(s.chip));
+  c.addEventListener("click",function(){go(i);});chips.appendChild(c);
+});
+document.getElementById("prev").addEventListener("click",function(){go(cur-1);});
+document.getElementById("next").addEventListener("click",function(){go(cur+1);});
+document.getElementById("btn_pdf").addEventListener("click",baixarPDF);
+document.getElementById("btn_copy").addEventListener("click",function(){copiar(asText(),"Copiado. Cole no WhatsApp ou nas notas.");});
+analisarDesconto();
+var start=0;try{start=parseInt(sessionStorage.getItem(KEY+".step")||"0",10)||0;}catch(e){}
+go(start);
+})();
+</script>
+</body>
+</html>
